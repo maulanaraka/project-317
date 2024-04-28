@@ -61,6 +61,7 @@ class AuthOrganizerController extends Controller
             if (password_verify($validation['password'], $data->password)) {
                 $request->session()->put('login', true);
                 $request->session()->put('username', $data->username);
+                $request->session()->put('id_user', $data->id);
                 $request->session()->put('role', 'organizer');
                 return redirect('/organizer/dashboard');
             } else {
@@ -86,20 +87,9 @@ class AuthOrganizerController extends Controller
         session()->forget('login');
         session()->forget('username');
         session()->forget('role');
+        session()->forget('id_user');
         return redirect('/organizer/login');
     }
 
-    // Dashboard Organizer
-    // Auth
-    public function dashboard()
-    {
-        if (session()->get('login') != true) {
-            return redirect('/organizer/login');
-        } else {
-            if (session()->get('role') != 'organizer') {
-                return redirect('/organizer/login');
-            }
-        }
-        return view('Organizer.dashboard');
-    }
+
 }

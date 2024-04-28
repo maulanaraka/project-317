@@ -63,6 +63,7 @@ class AuthCommunityController extends Controller
             if (password_verify($validation['password'], $data->password)) {
                 $request->session()->put('login', true);
                 $request->session()->put('username', $data->username);
+                $request->session()->put('id_user', $data->id);
                 $request->session()->put('role', 'community');
                 return redirect('/community/dashboard');
             } else {
@@ -88,20 +89,9 @@ class AuthCommunityController extends Controller
         session()->forget('login');
         session()->forget('username');
         session()->forget('role');
+        session()->forget('id_user');
         return redirect('/community/login');
     }
 
-    // Dashboard Community
-    // Auth
-    public function dashboard()
-    {
-        if (session()->get('login') != true) {
-            return redirect('/community/login');
-        } else {
-            if (session()->get('role') != 'community') {
-                return redirect('/community/login');
-            }
-        }
-        return view('Community.dashboard');
-    }
+   
 }

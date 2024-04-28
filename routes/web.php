@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthCommunityController;
+use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\AuthOrganizerController;
+use App\Http\Controllers\OrganizerController;
 
 Route::get('/', function () {
     return view('landingPage');
@@ -23,9 +26,15 @@ Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('action
 
 // Authorization Admin
 // Logout
-Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout']);
+Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name("logout");
 // Dashboard
-Route::get('/4dm1n/dashboard', [AuthAdminController::class, 'dashboard']);
+Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard']);
+// Profile
+Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
+// Form Update Profile
+Route::get('/4dm1n/{id}/formUpdateProfile', [AdminController::class, 'formUpdateProfile']);
+// Form Action Update Profile
+Route::put('/4dm1n/updateProfile', [AdminController::class, 'updateProfile']);
 
 
 
@@ -47,8 +56,13 @@ Route::post('/community/login', [AuthCommunityController::class, 'login'])->name
 // Logout
 Route::delete('/community/logout', [AuthCommunityController::class, 'logout']);
 // Dashboard
-Route::get('/community/dashboard', [AuthCommunityController::class, 'dashboard']);
-
+Route::get('/community/dashboard', [CommunityController::class, 'dashboard']);
+// Profile
+Route::get('/community/profile', [CommunityController::class, 'profile']);
+// Form Update Profile
+Route::get('/community/{id}/formUpdateProfile', [CommunityController::class, 'formUpdateProfile']);
+// Form Action Update Profile
+Route::put('/community/updateProfile', [CommunityController::class, 'updateProfile']);
 
 
 
@@ -72,4 +86,10 @@ Route::post('/organizer/login', [AuthOrganizerController::class, 'login'])->name
 // Logout
 Route::delete('/organizer/logout', [AuthOrganizerController::class, 'logout']);
 // Dashboard
-Route::get('/organizer/dashboard', [AuthOrganizerController::class, 'dashboard']);
+Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard']);
+// Profile
+Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
+// Form Update Profile
+Route::get('/organizer/{id}/formUpdateProfile', [OrganizerController::class, 'formUpdateProfile']);
+// Form Action Update Profile
+Route::put('/organizer/updateProfile', [OrganizerController::class, 'updateProfile']);

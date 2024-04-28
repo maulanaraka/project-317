@@ -60,6 +60,7 @@ class AuthAdminController extends Controller
             if (password_verify($validation['password'], $data->password)) {
                 $request->session()->put('login', true);
                 $request->session()->put('username', $data->username);
+                $request->session()->put('id_user', $data->id);
                 $request->session()->put('role', '4dm1n');
                 return redirect('/4dm1n/dashboard');
             } else {
@@ -85,20 +86,11 @@ class AuthAdminController extends Controller
         session()->forget('login');
         session()->forget('username');
         session()->forget('role');
+        session()->forget('id_user');
         return redirect('/4dm1n/login');
     }
 
     // Dashboard Admin
     // Auth
-    public function dashboard()
-    {
-        if (session()->get('login') != true) {
-            return redirect('/4dm1n/login');
-        } else {
-            if (session()->get('role') != '4dm1n') {
-                return redirect('/4dm1n/login');
-            }
-        }
-        return view('Admin.dashboard');
-    }
+ 
 }
