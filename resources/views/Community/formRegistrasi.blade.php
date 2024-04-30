@@ -4,44 +4,73 @@
 
 @section('content')
 
-    <div class="w-1/2 m-auto border-2 border-black p-32">
 
-        <h1 class="text-center">From Registrasi</h1>
+    <section>
+        <div class="w-full flex flex-col md:flex-row">
+            <div class="w-full mb-5 md:w-1/2">
 
-        @if ($errors->any())
-            <div class="w-full h-full m-auto bg-red-300">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+                <div class="w-[100px] h-[100px] mb-10 sm:mb-16 md:mb-24">
+                    <img class="object-cover" src="/images/loginRegis/logo.png" alt="">
+                </div>
+
+                <div >
+                    <div class="w-full flex flex-wrap">
+                        <div class="w-[40%] md:w-[30%] lg:w-[20%]">
+                            <img class="object-cover mx-auto w-1/2" src="/images/loginRegis/logoCommunity.png" alt="">
+                        </div>
+                        <div class="w-[60%] ">
+                            <h1 class="font-bold text-grey text-2xl">Registrasi Sebagai</h1>
+                            <h1 class="font-bold text-[#9DA97D] text-3xl">Community Member</h1>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full flex flex-col sm:mt-10 md:mt-16 lg:mt-20">
+                    <h3 class="text-slate-400 text-md text-center my-3 font-bold">Data Community</h3>
         
-        @if (Session::has('success'))
-            <p class="text-green-500">{{ Session::get('success') }}</p>
-        @endif
-        
-        @if (Session::has('error'))
-            <p class="text-red-500">{{ Session::get('error') }}</p>
-        @endif
+{{-- Alert --}}
+@if ($errors->any())
+                    <div class="w-1/2 m-auto bg-red-300 rounded-lg">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
+                @if (Session::has('success'))
+                <div class="w-1/2 m-auto bg-green-200 rounded-lg">
+                    <p class="text-green-500 text-center">{{ Session::get('success') }}</p>
+                </div>
+                @endif
+                
+                @if (Session::has('error'))
+                <div class="w-1/2 m-auto bg-red-300 rounded-lg">
+                    <p class="text-red-500 text-center">{{ Session::get('error') }}</p>
+                </div>
+                @endif
+{{-- End Alert --}}
 
+                    <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-4">
+                        <form action="/organizer/registrasi" method="POST">
+                            @csrf
+                            @method('post')
 
-        <form action="/community/registrasi" method="POST">
-            @csrf
-            @method('post')
-
-            <div class="w-1/2 m-auto">
-                <input type="email" name="email" id="email" placeholder="email"
-                    class="w-56 h-5 border-2 border-black"><br>
-                <input type="text" name="username" id="username" placeholder="username"
-                    class="w-56 h-5 border-2 border-black"><br>
-                <input type="password" name="password" id="password" placeholder="password"
-                    class="w-56 h-5 border-2 border-black"><br>
-                <input type="number" name="phone" id="phone" placeholder="phone"
-                    class="w-56 h-5 border-2 border-black"><br>
-                <button type="submit" class="w-14 h-10 border-2 border-black text-center ">Kirim</button>
+                            <input type="email" name="email" placeholder="Email" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7  h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="text" name="username" placeholder="Username" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="password" name="password" placeholder="Password" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="number" name="phone" placeholder="Phone" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                        </div>
+                        <button type="submit" class="w-20 h-10 mx-auto bg-blue rounded-xl text-white font-bold font-fredoka">Kirim</button>
+                    </form>
+                </div>
             </div>
-        </form>
-    </div>
+            <div class="w-full md:w-1/2">
+                <img class="object-cover" src="/images/loginRegis/Group116.png" alt="">
+            </div>
+        </div>
+    </section>
+
+   @include("Layout.footer");
 @endsection

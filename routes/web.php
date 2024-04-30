@@ -11,6 +11,9 @@ use App\Http\Controllers\OrganizerController;
 Route::get('/', function () {
     return view('landingPage');
 });
+Route::get('/tes', function () {
+    return view('welcome');
+});
 
 // ========================================================================================================
 //Admin

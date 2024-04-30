@@ -16,12 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('event_date');
-            $table->string('type');
-            $table->string('event_is_approve');
+            $table->string("media");
+            $table->enum('type', ['Request', 'Needs']);
+            $table->boolean('event_is_approve');
+            $table->boolean('contract');
             $table->date('event_approved_date');
             $table->date('event_request_date');
-            $table->foreignId('admin_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('admin');
-            $table->foreignId('organizer_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('organizer');
+            $table->foreignId('admin_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('admin');
+            $table->foreignId('organizer_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('organizer');
+            $table->foreignId('community_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('community');
             $table->timestamps();
         });
     }
