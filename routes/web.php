@@ -11,8 +11,11 @@ use App\Http\Controllers\OrganizerController;
 Route::get('/', function () {
     return view('landingPage');
 });
-Route::get('/tes', function () {
-    return view('welcome');
+Route::get('/accountLogin', function () {
+    return view('accountLogin');
+});
+Route::get('/accountRegister', function () {
+    return view('accountRegister');
 });
 
 // ========================================================================================================
@@ -27,6 +30,7 @@ Route::post('/4dm1n/registrasi', [AuthAdminController::class, 'registrasi'])->na
 // #route Login admin
 Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('actionLogin');
 
+// ========================================================================================================
 // Authorization Admin
 // Logout
 Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name("logout");
@@ -38,6 +42,11 @@ Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
 Route::get('/4dm1n/{id}/formUpdateProfile', [AdminController::class, 'formUpdateProfile']);
 // Form Action Update Profile
 Route::put('/4dm1n/updateProfile', [AdminController::class, 'updateProfile']);
+
+
+// Menampikan semua data pada Event
+Route::get('/4dm1n/event', [AdminController::class, 'getAllEvent']);
+
 
 
 
@@ -67,6 +76,12 @@ Route::get('/community/{id}/formUpdateProfile', [CommunityController::class, 'fo
 // Form Action Update Profile
 Route::put('/community/updateProfile', [CommunityController::class, 'updateProfile']);
 
+// Form Tambah Event Community
+Route::get("/community/formAddEvent", [CommunityController::class, 'formAddEvent']);
+// Action Tambah Event Community
+Route::post("/community/addEvent", [CommunityController::class, 'addEvent']);
+// Menampilkan data pada Event sesuai community yang login
+Route::get("/community/listMyEvent", [CommunityController::class, 'listMyEvent']);
 
 
 

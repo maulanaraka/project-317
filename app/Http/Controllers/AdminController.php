@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Event;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function __construct(){
+       $this->DBadmin = DB::table('admin');
+    }
+
     // Dashboard Admin
     // Auth
     public function dashboard()
@@ -103,4 +109,17 @@ class AdminController extends Controller
             return redirect('/4dm1n/' . session()->get('id_user') . '/formUpdateProfile')->with('error', 'Password does not match!');
         }
     }
+
+// ========================================================================================================
+// Event
+// Event Menampilkan semua data
+    public function getAllEvent(){
+
+    $users = $this->DBadmin 
+            ->leftJoin('event', 'admin.id', '=', 'event.admin_id')
+            ->get();
+    }
+    
+// Event Menmapilkan semua 
+
 }

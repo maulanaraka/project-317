@@ -45,14 +45,16 @@
               Apakah Anda ingin menemukan cara yang lebih efektif untuk menyasar
               dan membantu orang-orang yang membutuhkan?
             </p>
-            <button
+            <a href="/accountLogin">
+              <button
               class="px-8 py-4 text-white font-semibold rounded-lg bg-brand-primary hover:bg-brand-primary/80"
-            >
+              >
               Login
             </button>
+          </a>
             <h5 class="font-semibold text-lg text-brand-gray">
               Belum punya akun?
-              <a href="/register" class="text-brand-secondary hover:underline"
+              <a href="/accounRegister" class="text-brand-secondary hover:underline"
                 >Registrasi</a
               >
             </h5>
@@ -325,6 +327,5 @@
         </div>
       </section>
     </main>
-
-    @include("Layout.footer");
-@endsection
+    @include("Layout.footer")
+    @endsection

@@ -53,7 +53,7 @@
 {{-- End Alert --}}
 
                     <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-4">
-                        <form action="/organizer/registrasi" method="POST">
+                        <form action="/community/registrasi" method="POST">
                             @csrf
                             @method('post')
 
