@@ -24,15 +24,15 @@
                     </div>
                     <div >Status : <span class="{{ $event->event_status ? "text-green-500" : "text-red-500" }}">{{$event->event_status ? "Approved" : "Pending"}}</span></div>
                     <div class="flex justify-center gap-3">
-                        <form action="/community/deleteEvent" method="POST">
+                        <form action="/organizer/deleteEvent" method="POST">
                             @csrf
                             @method("delete")
                             <input type="hidden" name="id" value="{{ $event->id }}" id="">
                             <input type="hidden" name="mediaHidden" value="{{ $event->media }}" id="">
                             <button type="submit" class="w-14 h-10 border-2 border-black text-center bg-red-500" onclick="return confirm('Are you sure?')">Delete</button>
                         </form>
-                        <a href="/community/{{$event->id}}/formUpdateEvent" class="w-14 h-10 border-2 border-black text-center bg-yellow-500">Edit</a>
-                        <a href="/community/{{$event->id}}/detailEvent" class="w-14 h-10 border-2 border-black text-center bg-lime-200">Detail</a>
+                        <a href="/organizer/{{$event->id}}/formUpdateEvent" class="w-14 h-10 border-2 border-black text-center bg-yellow-500">Edit</a>
+                        <a href="/organizer/{{$event->id}}/detailEvent" class="w-14 h-10 border-2 border-black text-center bg-lime-200">Detail</a>
                     </div>
                 </ul>
             </div>

@@ -15,5 +15,9 @@
         <button type="submit" class="w-14 h-10 border-2 border-black text-center ">Logout</button>
         </form> 
       
+        <div class="flex flex-wrap w-full mt-10 space-x-4">
+            <a href="/organizer/formAddEvent" class="border-2 border-black">Tambah Event</a>
+            <a href="/organizer/listMyEvent" class="border-2 border-black">My Event</a>
+        </div>
     </div>
 @endsection
