@@ -112,7 +112,7 @@ Route::post('/organizer/login', [AuthOrganizerController::class, 'login'])->name
 // Logout
 Route::delete('/organizer/logout', [AuthOrganizerController::class, 'logout']);
 // Dashboard
-Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard']);
+Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->name('dashboardOrg');
 // Profile
 Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
 // Form Update Profile
@@ -121,11 +121,11 @@ Route::get('/organizer/{id}/formUpdateProfile', [OrganizerController::class, 'fo
 Route::put('/organizer/updateProfile', [OrganizerController::class, 'updateProfile']);
 
 // Form Tambah Event Community
-Route::get("/organizer/formAddEvent", [OrganizerController::class, 'formAddEvent']);
+Route::get("/organizer/formAddEvent", [OrganizerController::class, 'formAddEvent'])->name('addEventOrg');
 // Action Tambah Event Community
 Route::post("/organizer/addEvent", [OrganizerController::class, 'addEvent']);
 // Menampilkan data pada Event sesuai community yang login
-Route::get("/organizer/listMyEvent", [OrganizerController::class, 'listMyEvent']);
+Route::get("/organizer/listMyEvent", [OrganizerController::class, 'listMyEvent'])->name('eventOrg');
 // Form Update Event
 Route::get("/organizer/{id}/formUpdateEvent", [OrganizerController::class, 'formUpdateEvent']);
 // Action Update Event
