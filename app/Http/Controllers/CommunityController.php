@@ -96,11 +96,11 @@ class CommunityController extends Controller
         // Pengecekan Password
         if ($validation['password'] == $validation['passwordVerify']) {
             // Update Data
-            Community::where('id', session()->get('id_user'))->update([
-                'email' => $emailVerify,
-                'username' => $validation['username'],
-                'password' => bcrypt($validation['password']),
-            ]);
+                Community::where('id', session()->get('id_user'))->update([
+                    'email' => $emailVerify,
+                    'username' => $validation['username'],
+                    'password' => bcrypt($validation['password']),
+                ]);
             // Ubah session username
             session()->put('username', $validation['username']);
             return redirect('/community/profile');
@@ -153,7 +153,7 @@ class CommunityController extends Controller
             'type' => 'Request',
             'event_status' => 0,
             'event_is_approve' => 0,
-            'event_approved_date' => '2024-05-08',
+            'event_approved_date' => '1111-11-11',
             'event_request_date' => now()->format('Y-m-d'),
             'community_id' => session()->get('id_user'),
         ]);
