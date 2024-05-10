@@ -38,7 +38,6 @@
                             <h1 class="text-center">{{ $displayUsername }}</h1>
                         @endif
                     </span>
-                    {{-- <svg id="arrowIcon" class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg> --}}
                 </button>
                 <ul id="profileDropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
                     <li class="py-1">
