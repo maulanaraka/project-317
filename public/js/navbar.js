@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function handleClick() {
         collapseMenu.classList.toggle('hidden');
-        profileButton.classList.toggle('active'); // Toggle active class
+        profileButton.classList.toggle('active');
     }
 
     toggleBtn.addEventListener('click', handleClick);
