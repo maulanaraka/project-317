@@ -35,7 +35,7 @@ Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('action
 // Logout
 Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name("logout");
 // Dashboard
-Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard'])->name("dashboardAdm");
 // Profile
 Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
 // Form Update Profile
@@ -46,6 +46,10 @@ Route::put('/4dm1n/updateProfile', [AdminController::class, 'updateProfile']);
 
 // Menampikan semua data pada Event
 Route::get('/4dm1n/event', [AdminController::class, 'getAllEvent']);
+// Menghapus data event
+Route::delete('/4dm1n/deleteEvent', [AdminController::class, 'deleteEvent']);
+// Melakukan Approval pada event
+Route::put('/4dm1n/approveEvent', [AdminController::class, 'approvalEvent']);
 
 
 
