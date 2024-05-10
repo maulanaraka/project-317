@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdminController extends Controller
 {
@@ -115,11 +117,68 @@ class AdminController extends Controller
 // Event Menampilkan semua data
     public function getAllEvent(){
 
-    $users = $this->DBadmin 
-            ->leftJoin('event', 'admin.id', '=', 'event.admin_id')
-            ->get();
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $allEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
+        ->select('event.*', 'category.category_name')
+        ->get();
+
+        if($allEvent){
+            return view('Admin.Event.event', [
+                'allEvent' => $allEvent
+            ]);
+        }
+
     }
     
-// Event Menmapilkan semua 
+// Hapus Event Admin 
+    public function deleteEvent(Request $request){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        Storage::delete('public/event/'.$request->mediaHidden);
+        $eventDeleted = Event::where('id', $request->id)->delete();
+        if ($eventDeleted) {
+            return redirect('/4dm1n/event')->with('success', 'Event was deleted successfully!');
+        }else{
+            return redirect('/4dm1n/event')->with('error', 'Event was not deleted!');
+        }
+    }
+
+// Approval Event Admin
+
+    public function approvalEvent(Request $request){
+        
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        
+        $eventUpdated = Event::where('id', $request->id)->update([
+            'event_is_approve' => 1,
+            'event_approved_date' => now()->format('Y-m-d'),
+            'admin_id' => session()->get('id_user')
+        ]);
+        if ($eventUpdated) {
+            return redirect('/4dm1n/event')->with('success', 'Event was updated successfully!');
+        } else {
+            return redirect('/4dm1n/event')->with('error', 'Event was not updated!');
+        }
+    }
 
 }

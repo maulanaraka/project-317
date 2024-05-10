@@ -22,7 +22,7 @@
                     <div class="w-[100px] h-[100px] m-auto">
                         <img src="{{ Storage::url('event/').$event->media }}" class="w-full h-full object-cover rounded-full">
                     </div>
-                    <div >Status : <span class="{{ $event->event_status ? "text-green-500" : "text-red-500" }}">{{$event->event_status ? "Approved" : "Pending"}}</span></div>
+                    <div >Status : <span class="{{ $event->event_is_approve ? "text-green-500" : "text-red-500" }}">{{$event->event_is_approve ? "Approved" : "Pending"}}</span></div>
                     <div class="flex justify-center gap-3">
                         <form action="/organizer/deleteEvent" method="POST">
                             @csrf
