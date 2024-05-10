@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -178,6 +179,119 @@ class AdminController extends Controller
             return redirect('/4dm1n/event')->with('success', 'Event was updated successfully!');
         } else {
             return redirect('/4dm1n/event')->with('error', 'Event was not updated!');
+        }
+    }
+
+// Tampil data Category
+    public function getCategory(){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $category = Category::all();
+        return view("Admin.Category.category",[
+            'category' => $category
+        ]);
+    }
+
+// Form Add Category
+    public function formAddCategory(){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        return view("Admin.Category.formAddCategory");
+    }
+
+    // Action Add Category
+    public function addCategory(Request $request){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $validation = $request->validate([
+            'category_name' => 'required|min:3|max:50',
+        ]);
+
+        $addCategory = Category::create([
+            'category_name' => $validation['category_name']
+        ]);
+
+        if ($addCategory) {
+            return redirect('/4dm1n/category')->with('success', 'Category was added successfully!');
+        }else{
+            return redirect('/4dm1n/category')->with('error', 'Category was not added!');
+        }
+    }
+
+    // Form Update Category
+    public function formUpdateCategory($id){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+        $category = Category::find($id);
+        // dd($category);
+        return view("Admin.Category.formUpdateCategory", [
+            'category' => $category
+        ]);
+    }
+
+    public function updateCategory(Request $request){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $validation = $request->validate([
+            'category_name' => 'required|min:3|max:50',
+        ]);
+
+        $updateCategory = Category::where('id', $request->id)->update([
+            'category_name' => $validation['category_name']
+        ]);
+
+        if($updateCategory){
+            return redirect('/4dm1n/category')->with('success', 'Category was updated successfully!');
+        }else{
+            return redirect('/4dm1n/category')->with('error', 'Category was not updated!');
+        }
+
+    }
+
+    // Action Delete
+    public function deleteCategory(Request $request){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $deleteCategory = Category::where('id', $request->id)->delete();
+        if($deleteCategory){
+            return redirect('/4dm1n/category')->with('success', 'Category was deleted successfully!');
+        }else{
+            return redirect('/4dm1n/category')->with('error', 'Category was not deleted!');
         }
     }
 
