@@ -443,5 +443,5 @@
 
 
 
-
+@include("Layout.footer")
 @endsection
