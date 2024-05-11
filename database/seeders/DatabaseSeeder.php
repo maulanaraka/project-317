@@ -23,42 +23,37 @@ class DatabaseSeeder extends Seeder
         // Uncomment if you have User factory set up
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'miawmiaw@example.com',
-        ]);
-
         Admin::create([
             'email' => 'admin@mail.com',
             'username' => 'admin',
-            'password' => Hash::make('admin'),
+            'password' => bcrypt('admin'),
         ]);
 
         Community::create([
             'email' => 'community@mail.com',
             'username' => 'community',
-            'password' => Hash::make('community'),
+            'password' => bcrypt('community'),
             'phone' => '1234567890',
         ]);
 
         Community::create([
             'email' => 'cicakbg@email.com',
             'username' => 'cicakngambang',
-            'password' => Hash::make('password1'),
+            'password' => bcrypt('password1'),
             'phone' => '1234567890',
         ]);
 
         Community::create([
             'email' => 'unicornn@mail.com',
             'username' => 'unicornmanis',
-            'password' => Hash::make('password2'),
+            'password' => bcrypt('password2'),
             'phone' => '1234567890',
         ]);
 
         Community::create([
             'email' => 'melompat@mail.com',
             'username' => 'kudaloncat',
-            'password' => Hash::make('password3'),
+            'password' => bcrypt('password3'),
             'phone' => '1234567890',
         ]);
 
@@ -136,27 +131,27 @@ class DatabaseSeeder extends Seeder
         Organizer::create([
             'email' => 'organizer@mail.com',
             'username' => 'organizer',
-            'password' => Hash::make('organizer'),
+            'password' => bcrypt('organizer'),
             'phone' => '1234567890',
         ]);
 
         Organizer::create([
             'email' => 'kambingkechiyl@example.com',
             'username' => 'orgkambingkcl',
-            'password' => Hash::make('password1'), 
+            'password' => bcrypt('password1'), 
         ]);
         
         Organizer::create([
             'email' => 'organizerimut@example.com',
             'username' => 'orgimut',
-            'password' => Hash::make('password2'), 
+            'password' => bcrypt('password2'), 
             'phone' => '9876543210',
         ]);
 
         Organizer::create([
             'email' => 'orgjahat@example.com',
             'username' => 'orgjahat',
-            'password' => Hash::make('password3'), 
+            'password' => bcrypt('password3'), 
             'phone' => '9876543210',
         ]);
         // Repeat the process for other Organizer creations
