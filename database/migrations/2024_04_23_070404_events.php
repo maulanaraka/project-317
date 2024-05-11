@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('event_date');
             $table->string("media");
-            $table->enum('type', ['Request', 'Needs']);
             $table->boolean('event_status');
             $table->foreignId('event_category')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('category');;
             $table->boolean('event_is_approve');
