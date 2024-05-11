@@ -3,15 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\User;
 use App\Models\Admin;
 use App\Models\Community;
 use App\Models\Event;
-use App\Models\CommunityEvent;
 use App\Models\Organizer;
-use App\Models\Report;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,76 +53,81 @@ class DatabaseSeeder extends Seeder
             'phone' => '1234567890',
         ]);
 
-        // Repeat the process for other Community creations
-
-        Event::create([
-            'title' => 'Event 1',
-            'description' => 'Description for Event 1',
-            'event_date' => '2024-05-15',
-            'type' => 'Type 1',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '2024-05-10',
-            'event_request_date' => '2024-05-05',
-            'admin_id' => 1,
-            'organizer_id' => 1,
+        Category::create([
+            'category_name' => 'pendidikan'
         ]);
         
-        Event::create([
-            'title' => 'Event 2',
-            'description' => 'Description for Event 2',
-            'event_date' => '2024-05-20',
-            'type' => 'Type 2',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '2024-05-12',
-            'event_request_date' => '2024-05-07',
-            'admin_id' => 2,
-            'organizer_id' => 2,
+        Category::create([
+            'category_name' => 'kesehatan'
         ]);
 
-        Event::create([
-            'title' => 'Event 3',
-            'description' => 'Description for Event 3',
-            'event_date' => '2024-05-25',
-            'type' => 'Type 3',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '2024-05-14',
-            'event_request_date' => '2024-05-09',
-            'admin_id' => 1,
-            'organizer_id' => 1,
+        Category::create([
+            'category_name' => 'lingkungan'
+        ]);
+
+        Category::create([
+            'category_name' => 'teknologi'
         ]);
 
         Event::create([
-            'title' => 'Event 4',
-            'description' => 'Description for Event 4',
-            'event_date' => '2024-05-30',
-            'type' => 'Type 4',
+            'title' => 'title 1', 
+            'description' => 'event 1', 
+            'event_date' => '19/08/2022',
+            'media' => ' ',
+            'event_status' => 'waiting for confirmation',
+            'event_category' => 'pendidikan',
             'event_is_approve' => 'yes',
-            'event_approved_date' => '2024-05-16',
-            'event_request_date' => '2024-05-11',
-            'admin_id' => 2,
-            'organizer_id' => 2,
-        ]);
-            // Add other fields here
-
-        // Repeat the process for other Event creations
-
-        Category::create([
-            'community_name' => 'pendidikan',
+            'event_approved_date' => '10/08/2022',
+            'event_request_date' => '12/08/2022',
+            'admin_id' => '1',
+            'organizer_id'=> '1',
+            'community_id' => Null,
         ]);
 
-        Category::create([
-            'community_name' => 'kesehatan',
+        Event::create([
+            'title' => 'title 2', 
+            'description' => 'event 2', 
+            'event_date' => '19/08/2022',
+            'media' => ' ',
+            'event_status' => 'waiting for confirmation',
+            'event_category' => 'kesehatan',
+            'event_is_approve' => 'yes',
+            'event_approved_date' => '10/08/2022',
+            'event_request_date' => '12/08/2022',
+            'admin_id' => '1',
+            'organizer_id'=> '2',
+            'community_id' => Null,
         ]);
 
-        Category::create([
-            'community_name' => 'lingkungan',
+        Event::create([
+            'title' => 'title 3', 
+            'description' => 'event 3', 
+            'event_date' => '19/08/2022',
+            'media' => ' ',
+            'event_status' => 'waiting for confirmation',
+            'event_category' => 'lingkunngan',
+            'event_is_approve' => 'yes',
+            'event_approved_date' => '10/08/2022',
+            'event_request_date' => '12/08/2022',
+            'admin_id' => '1',
+            'organizer_id'=> '3',
+            'community_id' => Null,
         ]);
 
-        Category::create([
-            'community_name' => 'teknologi',
+        Event::create([
+            'title' => 'title 4', 
+            'description' => 'event 4', 
+            'event_date' => '19/08/2022',
+            'media' => ' ',
+            'event_status' => 'waiting for confirmation',
+            'event_category' => 'teknologi',
+            'event_is_approve' => 'yes',
+            'event_approved_date' => '10/08/2022',
+            'event_request_date' => '12/08/2022',
+            'admin_id' => '1',
+            'organizer_id'=> '4',
+            'community_id' => Null,
         ]);
-
-        // Repeat the process for other CommunityEvent creations
 
         Organizer::create([
             'email' => 'organizer@mail.com',
@@ -154,6 +155,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password3'), 
             'phone' => '9876543210',
         ]);
+
+
         // Repeat the process for other Organizer creations
 
         // Repeat the process for other Report creations
