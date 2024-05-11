@@ -68,9 +68,9 @@
                                 class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Show
                                 Profile</a>
                         </li>
-                        {{-- <li class="py-1">
-                        <a href="/organizer/{{$id}}/formUpdateProfile" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Edit Profile</a>
-                    </li> --}}
+                        <li class="py-1">
+                            <a href="/organizer/{{session('id_user')}}/formUpdateProfile" class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Edit Profile</a>
+                        </li>
                         <li class="py-1">
                             <form action="/organizer/logout" method="POST">
                                 @csrf
