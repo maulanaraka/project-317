@@ -51,6 +51,19 @@ Route::delete('/4dm1n/deleteEvent', [AdminController::class, 'deleteEvent']);
 // Melakukan Approval pada event
 Route::put('/4dm1n/approveEvent', [AdminController::class, 'approvalEvent']);
 
+// Menampilkan data category
+Route::get('/4dm1n/category', [AdminController::class, 'getCategory']);
+// Menampilkan Form Update Category
+Route::get('/4dm1n/formUpdateCategory/{id}', [AdminController::class, 'formUpdateCategory']);
+// Form Tambah Data
+Route::get('/4dm1n/formAddCategory', [AdminController::class, 'formAddCategory']);
+// Action Tambah Data
+Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory']);
+// Action Update Data
+Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
+// Action Delete Data
+Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
+
 
 
 

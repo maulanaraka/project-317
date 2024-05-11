@@ -12,4 +12,6 @@ class Category extends Model
     protected $table = 'category';
 
     protected $fillable = ['category_name'];
+
+    public $timestamps = false;
 }
