@@ -59,7 +59,6 @@
                                 <h1 class="text-center">{{ $displayUsername }}</h1>
                             @endif
                         </span>
-
                     </button>
                     <ul id="profileDropdown"
                         class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
@@ -217,8 +216,14 @@
     </div>
     {{-- carousel end --}}
 
+    <div class="py-8 px-8">
+        <button class="hover:bg-sky-500 bg-sky-700 text-white font-bold py-2 px-4 rounded-xl">
+            Lihat Event Lainnya
+        </button>
+    </div>
+
     {{-- table --}}
-    <div class="pt-8">
+    <div class="pt-8 px-8">
         <div class="flex px-4 place-content-between">
             <h3 class="text-gray-700 text-3xl font-medium">Tables</h3>
 
@@ -277,13 +282,13 @@
                         <tr>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                User</th>
+                                Nama Event</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Rol</th>
+                                Kategori</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Created at</th>
+                                Tanggal</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Status</th>
