@@ -54,6 +54,35 @@ class DatabaseSeeder extends Seeder
         
         Community::insert($communities);
 
+        $organizer = [
+            [
+                'email' => 'organizer@mail.com',
+                'username' => 'organizer',
+                'password' => bcrypt('organizer'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'kambingkechiyl@example.com',
+                'username' => 'orgkambingkcl',
+                'password' => bcrypt('password1'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'organizerimut@example.com',
+                'username' => 'orgimut',
+                'password' => bcrypt('password2'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'orgjahat@example.com',
+                'username' => 'orgjahat',
+                'password' => bcrypt('password3'), 
+                'phone' => '9876543210',
+            ],
+        ];
+        
+        Organizer::insert($organizer);        
+
         $categories = [
             ['category_name' => 'pendidikan'],
             ['category_name' => 'kesehatan'],
@@ -152,31 +181,5 @@ class DatabaseSeeder extends Seeder
 
         Event::insert($events);
 
-        Organizer::create([
-            'email' => 'organizer@mail.com',
-            'username' => 'organizer',
-            'password' => bcrypt('organizer'),
-            'phone' => '1234567890',
-        ]);
-
-        Organizer::create([
-            'email' => 'kambingkechiyl@example.com',
-            'username' => 'orgkambingkcl',
-            'password' => bcrypt('password1'), 
-        ]);
-        
-        Organizer::create([
-            'email' => 'organizerimut@example.com',
-            'username' => 'orgimut',
-            'password' => bcrypt('password2'), 
-            'phone' => '9876543210',
-        ]);
-
-        Organizer::create([
-            'email' => 'orgjahat@example.com',
-            'username' => 'orgjahat',
-            'password' => bcrypt('password3'), 
-            'phone' => '9876543210',
-        ]);
     }
 }
