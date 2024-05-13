@@ -69,66 +69,67 @@ class DatabaseSeeder extends Seeder
             'category_name' => 'teknologi'
         ]);
 
-        Event::create([
-            'title' => 'title 1', 
-            'description' => 'event 1', 
-            'event_date' => '19/08/2022',
-            'media' => ' ',
-            'event_status' => 'waiting for confirmation',
-            'event_category' => 'pendidikan',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '10/08/2022',
-            'event_request_date' => '12/08/2022',
-            'admin_id' => '1',
-            'organizer_id'=> '1',
-            'community_id' => Null,
-        ]);
+        // Event::create([
+        //     'title' => 'title 1', 
+        //     'description' => 'event 1', 
+        //     'event_date' => '19/08/2022',
+        //     'media' => ' ',
+        //     'event_status' => 'waiting for confirmation',
+        //     'event_category' => 'pendidikan',
+        //     'event_is_approve' => 'yes',
+        //     'event_approved_date' => '10/08/2022',
+        //     'event_request_date' => '12/08/2022',
+        //     'admin_id' => '1',
+        //     'organizer_id'=> '1',
+        //     'community_id' => Null,
+        // ]);
 
-        Event::create([
-            'title' => 'title 2', 
-            'description' => 'event 2', 
-            'event_date' => '19/08/2022',
-            'media' => ' ',
-            'event_status' => 'waiting for confirmation',
-            'event_category' => 'kesehatan',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '10/08/2022',
-            'event_request_date' => '12/08/2022',
-            'admin_id' => '1',
-            'organizer_id'=> '2',
-            'community_id' => Null,
-        ]);
+        // Event::create([
+        //     'title' => 'title 2', 
+        //     'description' => 'event 2', 
+        //     'event_date' => '19/08/2022',
+        //     'media' => ' ',
+        //     'event_status' => 'waiting for confirmation',
+        //     'event_category' => 'kesehatan',
+        //     'event_is_approve' => 'yes',
+        //     'event_approved_date' => '10/08/2022',
+        //     'event_request_date' => '12/08/2022',
+        //     'admin_id' => '1',
+        //     'organizer_id'=> '2',
+        //     'community_id' => Null,
+        // ]);
 
-        Event::create([
-            'title' => 'title 3', 
-            'description' => 'event 3', 
-            'event_date' => '19/08/2022',
-            'media' => ' ',
-            'event_status' => 'waiting for confirmation',
-            'event_category' => 'lingkunngan',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '10/08/2022',
-            'event_request_date' => '12/08/2022',
-            'admin_id' => '1',
-            'organizer_id'=> '3',
-            'community_id' => Null,
-        ]);
+        // Event::create([
+        //     'title' => 'title 3', 
+        //     'description' => 'event 3', 
+        //     'event_date' => '19/08/2022',
+        //     'media' => ' ',
+        //     'event_status' => 'waiting for confirmation',
+        //     'event_category' => 'lingkunngan',
+        //     'event_is_approve' => 'yes',
+        //     'event_approved_date' => '10/08/2022',
+        //     'event_request_date' => '12/08/2022',
+        //     'admin_id' => '1',
+        //     'organizer_id'=> '3',
+        //     'community_id' => Null,
+        // ]);
 
-        Event::create([
-            'title' => 'title 4', 
-            'description' => 'event 4', 
-            'event_date' => '19/08/2022',
-            'media' => ' ',
-            'event_status' => 'waiting for confirmation',
-            'event_category' => 'teknologi',
-            'event_is_approve' => 'yes',
-            'event_approved_date' => '10/08/2022',
-            'event_request_date' => '12/08/2022',
-            'admin_id' => '1',
-            'organizer_id'=> '4',
-            'community_id' => Null,
-        ]);
+        // Event::create([
+        //     'title' => 'title 4', 
+        //     'description' => 'event 4', 
+        //     'event_date' => '19/08/2022',
+        //     'media' => ' ',
+        //     'event_status' => 'waiting for confirmation',
+        //     'event_category' => 'teknologi',
+        //     'event_is_approve' => 'yes',
+        //     'event_approved_date' => '10/08/2022',
+        //     'event_request_date' => '12/08/2022',
+        //     'admin_id' => '1',
+        //     'organizer_id'=> '4',
+        //     'community_id' => Null,
+        // ]);
 
+       
         Organizer::create([
             'email' => 'organizer@mail.com',
             'username' => 'organizer',

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleClick() {
         collapseMenu.classList.toggle('hidden');
         profileButton.classList.toggle('active');
+        // alert("hello");
     }
 
     toggleBtn.addEventListener('click', handleClick);
@@ -26,3 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+const cek = document.getElementById("cek");
+
