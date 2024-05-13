@@ -14,31 +14,33 @@
                 </div>
 
                 <div class="w-full text-center">
-                    <h1 class="font-bold font-fredoka text-blue text-3xl lg:text-5xl">Pilih <span class="text-[#9EA97E]">Posisimu!</span>
+                    <h1 class="font-bold font-fredoka text-blue text-3xl lg:text-5xl">Pilih <span
+                            class="text-[#9EA97E]">Posisimu!</span>
                     </h1>
-                    <p class="font-bold font-fredoka text-grey mt-2 text-sm lg:text-xl">Hai! Selamat datang ke dalam platform kami.
+                    <p class="font-bold font-fredoka text-grey mt-2 text-sm lg:text-xl">Hai! Selamat datang ke dalam platform
+                        kami.
                         Sebelum masuk, mohon pilih posisi Anda untuk memastikan Anda mendapatkan akses yang tepat.</p>
                 </div>
 
                 <div class="w-full flex flex-col mt-5 sm:mt-10 md:mt-16 md:flex-row lg:mt-20 ">
                     <div class="w-full md:w-1/2 ">
                         <div class="w-[40%]  md:w-1/2 mx-auto ">
-                            <a href="/community/register">
+                            <a href="/community/registrasi">
                                 <img class="w-full" src="/images/loginRegis/logoCommunity.png" alt="">
                             </a>
                         </div>
-                        <a href="/community/register">
+                        <a href="/community/registrasi">
                             <h1 class="font-bold font-fredoka text-blue text-xl text-center">Community</h1>
                         </a>
                     </div>
 
                     <div class="w-full my-10 sm:my-0 md:w-1/2 ">
                         <div class="w-[40%] md:w-1/2 mx-auto ">
-                            <a href="/organizer/register">
+                            <a href="/organizer/registrasi">
                                 <img class="w-full" src="/images/loginRegis/logoOrganizer.png" alt="">
                             </a>
                         </div>
-                        <a href="/organizer/register">
+                        <a href="/organizer/registrasi">
                             <h1 class="font-bold font-fredoka text-[#9EA97E] text-xl text-center">Organizer</h1>
                         </a>
                     </div>
