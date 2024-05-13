@@ -35,7 +35,7 @@
                 </li>
                 <li class='max-lg:border-b max-lg:py-2'>
                     <a href='/organizer/formAddEvent'
-                        class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Tambah
+                        class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Add
                         Event</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-2'>
@@ -361,7 +361,7 @@
 
     <div class="w-1/2 h-1/2 m-auto border-2 border-black p-32">
         @if (session('username'))
-            <h1 class="text-center">Selamat Datang {{ session('username') }}</h1>
+            <h1 class="text-center">Welcome {{ session('username') }}</h1>
         @endif
 
         <form action="/organizer/logout" method="POST">
@@ -371,7 +371,7 @@
         </form>
 
         <div class="flex flex-wrap w-full mt-10 space-x-4">
-            <a href="/organizer/formAddEvent" class="border-2 border-black">Tambah Event</a>
+            <a href="/organizer/formAddEvent" class="border-2 border-black">Add Event</a>
             <a href="/organizer/listMyEvent" class="border-2 border-black">My Event</a>
         </div>
     </div>

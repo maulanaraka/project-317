@@ -20,13 +20,13 @@
                         </div>
                         <div class="w-[60%] ">
                             <h1 class="font-bold text-grey text-2xl">Login Sebagai</h1>
-                            <h1 class="font-bold text-blue text-3xl">Organizer</h1>
+                            <h1 class="font-bold text-blue text-3xl">Community</h1>
                         </div>
                     </div>
                 </div>
                 
                 <div class="w-full flex flex-col sm:mt-10 md:mt-16 lg:mt-20">
-                    <h3 class="text-slate-400 text-md text-center my-3 font-bold">Data Organizer</h3>
+                    <h3 class="text-slate-400 text-md text-center my-3 font-bold">Data Community</h3>
         
 {{-- Alert --}}
 @if ($errors->any())
@@ -52,12 +52,12 @@
                 @endif
 {{-- End Alert --}}
 
-                    <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-[140px] sm:ml-[100px] md:ml-[130px] lg:ml-[205px] xl:ml-[230px]">
-                        <form action="/organizer/login" method="POST">
+                    <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-4">
+                        <form action="/community/login" method="POST">
                             @csrf
                             @method('post')
-                            <input type="email" name="email" placeholder="Email" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
-                            <input type="password" name="password" placeholder="Password" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="text" name="username" placeholder="Username" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="password" name="password" placeholder="Password" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
                         </div>
                         <button type="submit" class="w-20 h-10 mx-auto bg-blue rounded-xl text-white font-bold font-fredoka">Kirim</button>
                     </form>
