@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('event_status');
             $table->foreignId('event_category')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('category');;
             $table->boolean('event_is_approve');
-            $table->date('event_approved_date');
+            $table->date('event_approved_date')->nullable();
             $table->date('event_request_date');
             $table->foreignId('admin_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('admin');
             $table->foreignId('organizer_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('organizer');
