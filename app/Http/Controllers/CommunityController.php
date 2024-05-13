@@ -96,11 +96,11 @@ class CommunityController extends Controller
         // Pengecekan Password
         if ($validation['password'] == $validation['passwordVerify']) {
             // Update Data
-                Community::where('id', session()->get('id_user'))->update([
-                    'email' => $emailVerify,
-                    'username' => $validation['username'],
-                    'password' => bcrypt($validation['password']),
-                ]);
+            Community::where('id', session()->get('id_user'))->update([
+                'email' => $emailVerify,
+                'username' => $validation['username'],
+                'password' => bcrypt($validation['password']),
+            ]);
             // Ubah session username
             session()->put('username', $validation['username']);
             return redirect('/community/profile');
@@ -166,7 +166,8 @@ class CommunityController extends Controller
 
     // Menampilkan data pada Event sesuai community yang login
     // Auth
-    public function listMyEvent(){
+    public function listMyEvent()
+    {
         if (session()->get('login') != true) {
             return redirect('/community/login');
         } else {
@@ -176,46 +177,45 @@ class CommunityController extends Controller
         }
 
         // $myEvents = Event::where('community_id', session()->get('id_user'))->get();
-        // Melakukan join 
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))
-        ->select('event.*', 'category.category_name')
-        ->get();
-        if($myEvents){
+        // Melakukan join
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))->select('event.*', 'category.category_name')->get();
+        if ($myEvents) {
             return view('Community.Event.listMyEvent', [
-                'myEvents' => $myEvents
+                'myEvents' => $myEvents,
             ]);
         }
     }
- // Menampilkan Form Update event
+    // Menampilkan Form Update event
     // Auth
-    public function formUpdateEvent($id){
+    public function formUpdateEvent($id)
+    {
         if (session()->get('login') != true) {
             return redirect('/community/login');
         } else {
             if (session()->get('role') != 'community') {
                 return redirect('/community/login');
             }
-        }   
+        }
 
         $myEvents = Event::where('id', $id)->first();
         // dd($myEvents);
         $category = Category::all();
-        return view('Community.Event.formUpdateEvent',
-        [
+        return view('Community.Event.formUpdateEvent', [
             'myEvent' => $myEvents,
-            'category' => $category
+            'category' => $category,
         ]);
     }
- // Aksi Update event Community
+    // Aksi Update event Community
     // Auth
-    public function updateEvent(Request $request){
+    public function updateEvent(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/community/login');
         } else {
             if (session()->get('role') != 'community') {
                 return redirect('/community/login');
             }
-        } 
+        }
 
         $validation = $request->validate([
             'title' => 'required|min:3|max:255',
@@ -226,13 +226,13 @@ class CommunityController extends Controller
         ]);
 
         $image = $request->file('media');
-        if(!$image){
+        if (!$image) {
             $imageHash = $request->mediaHidden;
-        }else{
-        $image = $request->file('media');
-        $imageHash = $image->hashName();
-        Storage::delete('public/event/'.$request->mediaHidden);
-        $image->storeAs('public/event', $imageHash);
+        } else {
+            $image = $request->file('media');
+            $imageHash = $image->hashName();
+            Storage::delete('public/event/' . $request->mediaHidden);
+            $image->storeAs('public/event', $imageHash);
         }
 
         $eventUpdated = Event::where('id', $request->id)->update([
@@ -240,51 +240,77 @@ class CommunityController extends Controller
             'description' => $validation['description'],
             'event_date' => $validation['event_date'],
             'media' => $imageHash,
-            'event_category' => $validation['event_category']
+            'event_category' => $validation['event_category'],
         ]);
 
         if ($eventUpdated) {
             return redirect('/community/listMyEvent')->with('success', 'Event was updated successfully!');
-        }else{
+        } else {
             return redirect('/community/listMyEvent')->with('error', 'Event was not updated!');
         }
     }
 
- // Hapus Event yang di update
+    // Hapus Event yang di update
     // Auth
 
-    public function deleteEvent(Request $request){
+    public function deleteEvent(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/community/login');
         } else {
             if (session()->get('role') != 'community') {
                 return redirect('/community/login');
             }
-        } 
-        Storage::delete('public/event/'.$request->mediaHidden);
+        }
+        Storage::delete('public/event/' . $request->mediaHidden);
         $eventDeleted = Event::where('id', $request->id)->delete();
         if ($eventDeleted) {
             return redirect('/community/listMyEvent')->with('success', 'Event was deleted successfully!');
-        }else{
+        } else {
             return redirect('/community/listMyEvent')->with('error', 'Event was not deleted!');
         }
     }
 
-
-     // Detail my Event
+    // Detail my Event
     // Auth
 
-    public function detailEvent($id){
+    public function detailEvent($id)
+    {
         if (session()->get('login') != true) {
             return redirect('/community/login');
         } else {
             if (session()->get('role') != 'community') {
                 return redirect('/community/login');
             }
-        } 
+        }
 
-        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin("community", "event.community_id", "=", "community.id")->select('event.*', 'category.category_name', 'community.username','community.phone')->first();
+        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('community', 'event.community_id', '=', 'community.id')->select('event.*', 'category.category_name', 'community.username', 'community.phone')->first();
 
-       return view('Community.Event.detailEvent', compact('event'));
+        return view('Community.Event.detailEvent', compact('event'));
+    }
+
+    // Update Event status jika sudah dilobby oleh community dan sudah di approve oleh admin
+
+    public function updateEventStatus(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/community/login');
+        } else {
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+        }
+
+        $id = $request->id;
+
+        $event = Event::where('id', $id)->update([
+            'event_status' => 1,
+        ]);
+
+        if ($event) {
+            return redirect('/community/listMyEvent')->with('success', 'Event was updated status successfully!');
+        } else {
+            return redirect('/community/listMyEvent')->with('error', 'Event was not updated status!');
+        }
     }
 }
