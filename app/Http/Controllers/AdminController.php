@@ -128,8 +128,10 @@ class AdminController extends Controller
 
         $allEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
         ->select('event.*', 'category.category_name')
+        ->where('event_is_approve', 0)
         ->get();
 
+        // dd($allEvent);
         if($allEvent){
             return view('Admin.Event.event', [
                 'allEvent' => $allEvent
@@ -296,3 +298,7 @@ class AdminController extends Controller
     }
 
 }
+
+// ==============================================================================================================
+// Report
+

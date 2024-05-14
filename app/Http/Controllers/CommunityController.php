@@ -150,7 +150,6 @@ class CommunityController extends Controller
             'event_date' => $validation['event_date'],
             'media' => $imageHash,
             'event_category' => $validation['event_category'],
-            'type' => 'Request',
             'event_status' => 0,
             'event_is_approve' => 0,
             'event_approved_date' => '1111-11-11',

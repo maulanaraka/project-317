@@ -33,16 +33,15 @@ Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('action
 // ========================================================================================================
 // Authorization Admin
 // Logout
-Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name("logout");
+Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard
-Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard'])->name("dashboardAdm");
+Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard'])->name('dashboardAdm');
 // Profile
 Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
 // Form Update Profile
 Route::get('/4dm1n/{id}/formUpdateProfile', [AdminController::class, 'formUpdateProfile']);
 // Form Action Update Profile
 Route::put('/4dm1n/updateProfile', [AdminController::class, 'updateProfile']);
-
 
 // Menampikan semua data pada Event
 Route::get('/4dm1n/event', [AdminController::class, 'getAllEvent']);
@@ -63,11 +62,6 @@ Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory']);
 Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 // Action Delete Data
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
-
-
-
-
-
 
 // ========================================================================================================
 //Community
@@ -94,24 +88,19 @@ Route::get('/community/{id}/formUpdateProfile', [CommunityController::class, 'fo
 Route::put('/community/updateProfile', [CommunityController::class, 'updateProfile']);
 
 // Form Tambah Event Community
-Route::get("/community/formAddEvent", [CommunityController::class, 'formAddEvent']);
+Route::get('/community/formAddEvent', [CommunityController::class, 'formAddEvent']);
 // Action Tambah Event Community
-Route::post("/community/addEvent", [CommunityController::class, 'addEvent']);
+Route::post('/community/addEvent', [CommunityController::class, 'addEvent']);
 // Menampilkan data pada Event sesuai community yang login
-Route::get("/community/listMyEvent", [CommunityController::class, 'listMyEvent']);
+Route::get('/community/listMyEvent', [CommunityController::class, 'listMyEvent']);
 // Form Update Event
-Route::get("/community/{id}/formUpdateEvent", [CommunityController::class, 'formUpdateEvent']);
+Route::get('/community/{id}/formUpdateEvent', [CommunityController::class, 'formUpdateEvent']);
 // Action Update Event
-Route::put("/community/updateEvent", [CommunityController::class, 'updateEvent']);
+Route::put('/community/updateEvent', [CommunityController::class, 'updateEvent']);
 // Hapus Event
 Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEvent']);
 // Detail Event
-Route::get("/community/{id}/detailEvent", [CommunityController::class, 'detailEvent']);
-
-
-
-
-
+Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent']);
 
 // ========================================================================================================
 //Organizer
@@ -138,16 +127,23 @@ Route::get('/organizer/{id}/formUpdateProfile', [OrganizerController::class, 'fo
 Route::put('/organizer/updateProfile', [OrganizerController::class, 'updateProfile']);
 
 // Form Tambah Event Community
-Route::get("/organizer/formAddEvent", [OrganizerController::class, 'formAddEvent'])->name('addEventOrg');
+Route::get('/organizer/formAddEvent', [OrganizerController::class, 'formAddEvent'])->name('addEventOrg');
 // Action Tambah Event Community
-Route::post("/organizer/addEvent", [OrganizerController::class, 'addEvent']);
+Route::post('/organizer/addEvent', [OrganizerController::class, 'addEvent']);
 // Menampilkan data pada Event sesuai community yang login
-Route::get("/organizer/listMyEvent", [OrganizerController::class, 'listMyEvent'])->name('eventOrg');
+Route::get('/organizer/listMyEvent', [OrganizerController::class, 'listMyEvent'])->name('eventOrg');
 // Form Update Event
-Route::get("/organizer/{id}/formUpdateEvent", [OrganizerController::class, 'formUpdateEvent']);
+Route::get('/organizer/{id}/formUpdateEvent', [OrganizerController::class, 'formUpdateEvent']);
 // Action Update Event
-Route::put("/organizer/updateEvent", [OrganizerController::class, 'updateEvent']);
+Route::put('/organizer/updateEvent', [OrganizerController::class, 'updateEvent']);
 // Hapus Event
 Route::delete('/organizer/deleteEvent', [OrganizerController::class, 'deleteEvent']);
 // Detail Event
-Route::get("/organizer/{id}/detailEvent", [OrganizerController::class, 'detailEvent']);
+Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEvent']);
+// Update Status Event 
+Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus']);
+
+// Report
+
+// Menampilkan data yang dapat dilakukan reporting
+Route::get('/organizer/forum', [OrganizerController::class, 'forum']);

@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
-
 class OrganizerController extends Controller
 {
-        // Dashboard Organizer
+    // Dashboard Organizer
     // Auth
     public function dashboard()
     {
@@ -26,11 +25,11 @@ class OrganizerController extends Controller
         }
         return view('Organizer.dashboard');
     }
-     // Profile Organizer
+    // Profile Organizer
     // Auth
     public function profile()
     {
-         if (session()->get('login') != true) {
+        if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
             if (session()->get('role') != 'organizer') {
@@ -41,11 +40,11 @@ class OrganizerController extends Controller
         $dataProfile = Organizer::where('id', session()->get('id_user'))->first();
         return view('Organizer.Profile.profile', compact('dataProfile'));
     }
-     // Form Update Profile Organizer
+    // Form Update Profile Organizer
     // Auth
     public function formUpdateProfile($id)
     {
-         if (session()->get('login') != true) {
+        if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
             if (session()->get('role') != 'organizer') {
@@ -60,11 +59,11 @@ class OrganizerController extends Controller
             return redirect('/organizer/dashboard');
         }
     }
-     // Action Update Profile Organizer
+    // Action Update Profile Organizer
     // Auth
     public function updateProfile(Request $request)
     {
-         if (session()->get('login') != true) {
+        if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
             if (session()->get('role') != 'organizer') {
@@ -97,21 +96,23 @@ class OrganizerController extends Controller
         // Pengecekan Password
         if ($validation['password'] == $validation['passwordVerify']) {
             // Update Data
-           Organizer::where('id', session()->get('id_user'))->update([
+            Organizer::where('id', session()->get('id_user'))->update([
                 'email' => $emailVerify,
                 'username' => $validation['username'],
                 'password' => bcrypt($validation['password']),
             ]);
             // Ubah session username
             session()->put('username', $validation['username']);
-            return redirect('/organizer/profile' );
+            return redirect('/organizer/profile');
         } else {
             return redirect('/organizer/' . session()->get('id_user') . '/formUpdateProfile')->with('error', 'Password does not match!');
         }
     }
 
-        // Menambahkan Event Community
-    // Auth Community
+    // =====================================================================================================================
+    // EVENT
+    // Menambahkan Event Oragnizer
+    // Auth Oragnizer
     public function formAddEvent()
     {
         if (session()->get('login') != true) {
@@ -121,7 +122,6 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
-
 
         $category_list = Category::all();
 
@@ -139,7 +139,6 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
-
 
         // dd($request->all());
         $validation = $request->validate([
@@ -161,7 +160,6 @@ class OrganizerController extends Controller
             'event_date' => $validation['event_date'],
             'media' => $imageHash,
             'event_category' => $validation['event_category'],
-            'type' => 'Request',
             'event_status' => 0,
             'event_is_approve' => 0,
             'event_approved_date' => '2024-05-08',
@@ -176,9 +174,10 @@ class OrganizerController extends Controller
         }
     }
 
-    // Menampilkan data pada Event sesuai community yang login
+    // Menampilkan data pada Event sesuai Oragnizer yang login
     // Auth
-    public function listMyEvent(){
+    public function listMyEvent()
+    {
         if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
@@ -187,21 +186,25 @@ class OrganizerController extends Controller
             }
         }
 
-
         // $myEvents = Event::where('organizer_id', session()->get('id_user'))->get();
-        // Melakukan join 
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))
+        // Melakukan join
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
+        ->where('event.organizer_id', session()->get('id_user'))
+        ->where('event.event_status', 0)
         ->select('event.*', 'category.category_name')
         ->get();
-        if($myEvents){
+
+        // dd($myEvents);
+        if ($myEvents) {
             return view('Organizer.Event.listMyEvent', [
-                'myEvents' => $myEvents
+                'myEvents' => $myEvents,
             ]);
         }
     }
- // Menampilkan Form Update event
+    // Menampilkan Form Update event
     // Auth
-    public function formUpdateEvent($id){
+    public function formUpdateEvent($id)
+    {
         if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
@@ -209,20 +212,19 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
-   
 
         $myEvents = Event::where('id', $id)->first();
         // dd($myEvents);
         $category = Category::all();
-        return view('Organizer.Event.formUpdateEvent',
-        [
+        return view('Organizer.Event.formUpdateEvent', [
             'myEvent' => $myEvents,
-            'category' => $category
+            'category' => $category,
         ]);
     }
- // Aksi Update event Community
+    // Aksi Update event Oragnizer
     // Auth
-    public function updateEvent(Request $request){
+    public function updateEvent(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
@@ -230,7 +232,6 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
- 
 
         $validation = $request->validate([
             'title' => 'required|min:3|max:255',
@@ -241,13 +242,13 @@ class OrganizerController extends Controller
         ]);
 
         $image = $request->file('media');
-        if(!$image){
+        if (!$image) {
             $imageHash = $request->mediaHidden;
-        }else{
-        $image = $request->file('media');
-        $imageHash = $image->hashName();
-        Storage::delete('public/event/'.$request->mediaHidden);
-        $image->storeAs('public/event', $imageHash);
+        } else {
+            $image = $request->file('media');
+            $imageHash = $image->hashName();
+            Storage::delete('public/event/' . $request->mediaHidden);
+            $image->storeAs('public/event', $imageHash);
         }
 
         $eventUpdated = Event::where('id', $request->id)->update([
@@ -255,20 +256,21 @@ class OrganizerController extends Controller
             'description' => $validation['description'],
             'event_date' => $validation['event_date'],
             'media' => $imageHash,
-            'event_category' => $validation['event_category']
+            'event_category' => $validation['event_category'],
         ]);
 
         if ($eventUpdated) {
             return redirect('/organizer/listMyEvent')->with('success', 'Event was updated successfully!');
-        }else{
+        } else {
             return redirect('/organizer/listMyEvent')->with('error', 'Event was not updated!');
         }
     }
 
- // Hapus Event yang di update
+    // Hapus Event yang di update
     // Auth
 
-    public function deleteEvent(Request $request){
+    public function deleteEvent(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
@@ -276,21 +278,21 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
- 
-        Storage::delete('public/event/'.$request->mediaHidden);
+
+        Storage::delete('public/event/' . $request->mediaHidden);
         $eventDeleted = Event::where('id', $request->id)->delete();
         if ($eventDeleted) {
             return redirect('/organizer/listMyEvent')->with('success', 'Event was deleted successfully!');
-        }else{
+        } else {
             return redirect('/organizer/listMyEvent')->with('error', 'Event was not deleted!');
         }
     }
 
-
-     // Detail my Event
+    // Detail my Event
     // Auth
 
-    public function detailEvent($id){
+    public function detailEvent($id)
+    {
         if (session()->get('login') != true) {
             return redirect('/organizer/login');
         } else {
@@ -298,10 +300,51 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
- 
 
-        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin("organizer", "event.organizer_id", "=", "organizer.id")->select('event.*', 'category.category_name', 'organizer.username','organizer.phone')->first();
+        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('organizer', 'event.organizer_id', '=', 'organizer.id')->select('event.*', 'category.category_name', 'organizer.username', 'organizer.phone')->first();
 
-       return view('Organizer.Event.detailEvent', compact('event'));
+        return view('Organizer.Event.detailEvent', compact('event'));
+    }
+
+    // Update Event status jika sudah dilobby oleh community dan sudah di approve oleh admin 
+
+    public function updateEventStatus(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/organizer/login');
+        } else {
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $id = $request->id;
+
+        $event = Event::where('id', $id)->update([
+           "event_status" => 1,
+        ]);
+
+        if ($event) {
+            return redirect('/organizer/listMyEvent')->with('success', 'Event was updated status successfully!');
+        }else{
+            return redirect('/organizer/listMyEvent')->with('error', 'Event was not updated status!');
+        }
+        
+    }
+
+    // ===============================================================================================
+    // Reporting/Forum
+
+    public function forum(){
+        $myEvents = DB::table('event')
+        ->leftJoin('category', 'event.event_category', '=', 'category.id')
+        ->where('event.organizer_id', session()->get('id_user'))
+        ->where('event.event_status', 1)
+        ->get();
+        
+        return view("Organizer.Forum.forum",[
+            'myEvents' => $myEvents
+        ]);
+
     }
 }

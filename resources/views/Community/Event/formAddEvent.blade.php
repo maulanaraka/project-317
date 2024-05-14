@@ -4,6 +4,10 @@
 
 @section('content')
 
+  {{-- Navbar --}}
+  @include('Layout.navbar')
+  {{-- End Navbar --}}
+
     <div class="w-1/2 m-auto border-2 border-black p-32">
 
         <h1 class="text-center">From Login Community</h1>

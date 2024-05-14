@@ -9,7 +9,10 @@
     {{-- End Navbar --}}
 
     <div class="w-1/2 h-1/2 mx-auto mt-40 border-2 border-black p-2">
-        @if (Session::has('error'))
+    
+    <a href="/organizer/report" class="hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]">Report</a>
+
+        {{-- @if (Session::has('error'))
             <p class="text-red-500">{{ Session::get('error') }}</p>
         @endif
         @if (Session::has('success'))
@@ -64,7 +67,7 @@
             </div>
         @empty
             <h1 class="text-center text-4xl">Belum ada event</h1>
-        @endforelse
+        @endforelse --}}
 
 
     </div>
