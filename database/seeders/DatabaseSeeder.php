@@ -54,6 +54,35 @@ class DatabaseSeeder extends Seeder
         
         Community::insert($communities);
 
+        $organizer = [
+            [
+                'email' => 'organizer@mail.com',
+                'username' => 'organizer',
+                'password' => bcrypt('organizer'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'kambingkechiyl@example.com',
+                'username' => 'orgkambingkcl',
+                'password' => bcrypt('password1'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'organizerimut@example.com',
+                'username' => 'orgimut',
+                'password' => bcrypt('password2'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'orgjahat@example.com',
+                'username' => 'orgjahat',
+                'password' => bcrypt('password3'), 
+                'phone' => '9876543210',
+            ],
+        ];
+        
+        Organizer::insert($organizer);        
+
         $categories = [
             ['category_name' => 'pendidikan'],
             ['category_name' => 'kesehatan'],
@@ -103,7 +132,7 @@ class DatabaseSeeder extends Seeder
                 'event_approved_date' => null,
                 'event_request_date' => '2022-08-13',
                 'admin_id' => 1,
-                'organizer_id' => 5,
+                'organizer_id' => 1,
                 'community_id' => null,
             ],
             [
@@ -117,7 +146,7 @@ class DatabaseSeeder extends Seeder
                 'event_approved_date' => '2022-08-11',
                 'event_request_date' => '2022-08-14',
                 'admin_id' => 1,
-                'organizer_id' => 6,
+                'organizer_id' => 2,
                 'community_id' => null,
             ],
             [
@@ -131,7 +160,7 @@ class DatabaseSeeder extends Seeder
                 'event_approved_date' => '2022-08-12',
                 'event_request_date' => '2022-08-15',
                 'admin_id' => 1,
-                'organizer_id' => 7,
+                'organizer_id' => 3,
                 'community_id' => null,
             ],
             [
@@ -145,38 +174,82 @@ class DatabaseSeeder extends Seeder
                 'event_approved_date' => '2022-08-13',
                 'event_request_date' => '2022-08-16',
                 'admin_id' => 1,
-                'organizer_id' => 8,
+                'organizer_id' => 4,
                 'community_id' => null,
             ],
         ];
 
         Event::insert($events);
 
-        Organizer::create([
-            'email' => 'organizer@mail.com',
-            'username' => 'organizer',
-            'password' => bcrypt('organizer'),
-            'phone' => '1234567890',
-        ]);
+        $report = [
+            [
+                'report' => 'event 1',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-09',
+                'report_approved_date' => '2022-08-10',
+                'report_request_date' => '2022-08-12',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 3,
+            ],
+            [
+                'report' => 'event 2',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-12',
+                'report_approved_date' => '2022-08-13',
+                'report_request_date' => '2022-08-14',
+                'event_id' => 2,
+                'admin_id' => 1,
+                'organizer_id' => 2,
+            ],
+            [
+                'report' => 'event 3',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-15',
+                'report_approved_date' => '2022-08-16',
+                'report_request_date' => '2022-08-17',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 4',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-20',
+                'report_approved_date' => '2022-08-21',
+                'report_request_date' => '2022-08-22',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 5',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-25',
+                'report_approved_date' => '2022-08-26',
+                'report_request_date' => '2022-08-27',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 6',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-22',
+                'event_approved_date' => '2022-08-23',
+                'event_request_date' => '2022-08-24',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ]
 
-        Organizer::create([
-            'email' => 'kambingkechiyl@example.com',
-            'username' => 'orgkambingkcl',
-            'password' => bcrypt('password1'), 
-        ]);
-        
-        Organizer::create([
-            'email' => 'organizerimut@example.com',
-            'username' => 'orgimut',
-            'password' => bcrypt('password2'), 
-            'phone' => '9876543210',
-        ]);
+        ]
 
-        Organizer::create([
-            'email' => 'orgjahat@example.com',
-            'username' => 'orgjahat',
-            'password' => bcrypt('password3'), 
-            'phone' => '9876543210',
-        ]);
     }
 }
