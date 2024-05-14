@@ -4,7 +4,11 @@
 
 @section('content')
 
-    <div class="w-1/2 h-1/2 m-auto border-2 border-black p-2">
+  {{-- Navbar --}}
+  @include('Layout.navbar')
+  {{-- End Navbar --}}
+
+    <div class="w-1/2 h-1/2 mx-auto mt-40 border-2 border-black p-2">
         @if (Session::has('error'))
             <p class="text-red-500">{{ Session::get('error') }}</p>
         @endif
