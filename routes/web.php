@@ -158,7 +158,7 @@ Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateE
 // Report
 
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/organizer/forum', [OrganizerController::class, 'forum']);
+Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('ForumOrg');
 // Menampilkan form membuat report
 Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
 // Menampilkan action membuat report

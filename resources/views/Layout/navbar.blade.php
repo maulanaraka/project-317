@@ -43,7 +43,7 @@
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/organizer/forum'
-                            class='{{ Str::contains(Route::currentRouteName(), '#') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Forum</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'ForumOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Forum</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/organizer/formAddEvent'
