@@ -12,10 +12,22 @@ class Event extends Model
 {
     use HasFactory;
     
-
     protected $table = 'event';
 
-    protected $fillable = ['title', 'description', 'event_date','media','event_status','event_category','event_is_approve','event_approved_date','event_request_date','admin_id','organizer_id','community_id'];
+    protected $fillable = [
+        'title', 
+        'description', 
+        'event_date',
+        'media',
+        'event_status',
+        'event_category',
+        'event_is_approve',
+        'event_approved_date',
+        'event_request_date',
+        'admin_id',
+        'organizer_id',
+        'community_id'
+    ];
 
     // public function admin():hasMany {
     //     return $this->hasMany(Admin::class, 'id', 'admin_id');
