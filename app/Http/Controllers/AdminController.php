@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\Report;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -128,8 +129,10 @@ class AdminController extends Controller
 
         $allEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
         ->select('event.*', 'category.category_name')
+        ->where('event_is_approve', 0)
         ->get();
 
+        // dd($allEvent);
         if($allEvent){
             return view('Admin.Event.event', [
                 'allEvent' => $allEvent
@@ -295,4 +298,53 @@ class AdminController extends Controller
         }
     }
 
+    
+    // ==============================================================================================================
+    // Report
+     // Reporting/Forum
+
+     public function forum()
+     {
+         if (session()->get('login') != true) {
+             return redirect('/4dm1n/login');
+         } else {
+             if (session()->get('role') != '4dm1n') {
+                 return redirect('/4dm1n/login');
+             }
+         }
+ 
+         $forums = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->select('report.*', 'event.title')->select('report.id','report.report', 'report.media', 'report_is_approved', 'event.title')->get();
+         // $report = Report::all();
+         // return dd($forums);
+
+        //  return dd($forums);
+         return view('Admin.Forum.forum', [
+             'listForum' => $forums,
+         ]);
+     }
+
+    // Approve
+
+    public function approveForum(Request $request){
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $approveForum = Report::where('id', $request->id)->update([
+            "report_is_approved" => 1,
+            "admin_id" => session()->get('id_user'),
+            "report_approved_date" => now()->format('Y-m-d')
+        ]);
+        if($approveForum){
+            return redirect('/4dm1n/forum')->with('success', 'Forum was approved successfully!');
+        }else{
+            return redirect('/4dm1n/forum')->with('error', 'Forum was not approved!');
+        }
+
+    }
+    
 }
