@@ -13,9 +13,4 @@ class Community extends Model
     protected $table = 'community';
 
     protected $fillable = ['email', 'username', 'password','phone'];
-
-    public function events():BelongsTo
-    {
-        return $this->belongsTo();
-    }
 }
