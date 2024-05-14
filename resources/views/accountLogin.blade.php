@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2">
-                <img class="object-cover" src="/images/loginRegis/Group116.png" alt="">
+                <img class="w-full" src="/images/loginRegis/Group116.png" alt="">
             </div>
         </div>
     </section>
