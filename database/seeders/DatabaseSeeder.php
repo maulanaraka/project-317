@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Community;
 use App\Models\Event;
 use App\Models\Organizer;
+use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -181,74 +182,75 @@ class DatabaseSeeder extends Seeder
 
         Event::insert($events);
 
-        // $report = [
-        //     [
-        //         'report' => 'event 1',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-09',
-        //         'report_approved_date' => '2022-08-10',
-        //         'report_request_date' => '2022-08-12',
-        //         'event_id' => 1,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 3,
-        //     ],
-        //     [
-        //         'report' => 'event 2',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-12',
-        //         'report_approved_date' => '2022-08-13',
-        //         'report_request_date' => '2022-08-14',
-        //         'event_id' => 2,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 2,
-        //     ],
-        //     [
-        //         'report' => 'event 3',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-15',
-        //         'report_approved_date' => '2022-08-16',
-        //         'report_request_date' => '2022-08-17',
-        //         'event_id' => 3,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 1,
-        //     ],
-        //     [
-        //         'report' => 'event 4',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-20',
-        //         'report_approved_date' => '2022-08-21',
-        //         'report_request_date' => '2022-08-22',
-        //         'event_id' => 3,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 1,
-        //     ],
-        //     [
-        //         'report' => 'event 5',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-25',
-        //         'report_approved_date' => '2022-08-26',
-        //         'report_request_date' => '2022-08-27',
-        //         'event_id' => 1,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 1,
-        //     ],
-        //     [
-        //         'report' => 'event 6',
-        //         'media' => '',
-        //         'report_is_approved' => true,
-        //         'report_date' => '2022-08-22',
-        //         'event_approved_date' => '2022-08-23',
-        //         'event_request_date' => '2022-08-24',
-        //         'event_id' => 3,
-        //         'admin_id' => 1,
-        //         'organizer_id' => 1,
-        //     ]
-        //     ];
-        //     Report::insert($reports);
+        $report = [
+            [
+                'report' => 'event 1',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-09',
+                'report_approved_date' => '2022-08-10',
+                'report_request_date' => '2022-08-12',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 3,
+            ],
+            [
+                'report' => 'event 2',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-12',
+                'report_approved_date' => '2022-08-13',
+                'report_request_date' => '2022-08-14',
+                'event_id' => 2,
+                'admin_id' => 1,
+                'organizer_id' => 2,
+            ],
+            [
+                'report' => 'event 3',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-15',
+                'report_approved_date' => '2022-08-16',
+                'report_request_date' => '2022-08-17',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 4',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-20',
+                'report_approved_date' => '2022-08-21',
+                'report_request_date' => '2022-08-22',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 5',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-25',
+                'report_approved_date' => '2022-08-26',
+                'report_request_date' => '2022-08-27',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 6',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-22',
+                'event_approved_date' => '2022-08-23',
+                'event_request_date' => '2022-08-24',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ]
+        ];
+
+        Report::insert($report);
         }
 };
