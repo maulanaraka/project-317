@@ -10,11 +10,11 @@ use App\Models\Report;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-
 class AdminController extends Controller
 {
-    public function __construct(){
-       $this->DBadmin = DB::table('admin');
+    public function __construct()
+    {
+        $this->DBadmin = DB::table('admin');
     }
 
     // Dashboard Admin
@@ -31,7 +31,7 @@ class AdminController extends Controller
 
         return view('Admin.dashboard');
     }
- // Profile Admin
+    // Profile Admin
     // Auth
     public function profile()
     {
@@ -46,7 +46,7 @@ class AdminController extends Controller
         $dataProfile = Admin::where('id', session()->get('id_user'))->first();
         return view('Admin.Profile.profile', compact('dataProfile'));
     }
- // Form Update Profile Admin
+    // Form Update Profile Admin
     // Auth
     public function formUpdateProfile($id)
     {
@@ -65,7 +65,7 @@ class AdminController extends Controller
             return redirect('/4dm1n/dashboard');
         }
     }
- // Action Update Profile Admin
+    // Action Update Profile Admin
     // Auth
     public function updateProfile(Request $request)
     {
@@ -101,24 +101,26 @@ class AdminController extends Controller
         // Pengecekan Password
         if ($validation['password'] == $validation['passwordVerify']) {
             // Update Data
-           Admin::where('id', session()->get('id_user'))->update([
+            Admin::where('id', session()->get('id_user'))->update([
                 'email' => $emailVerify,
                 'username' => $validation['username'],
                 'password' => bcrypt($validation['password']),
             ]);
             // Ubah session username
             session()->put('username', $validation['username']);
-            return redirect('/4dm1n/profile' );
+            return redirect('/4dm1n/profile');
         } else {
             return redirect('/4dm1n/' . session()->get('id_user') . '/formUpdateProfile')->with('error', 'Password does not match!');
         }
     }
 
-// ========================================================================================================
-// Event
-// Event Menampilkan semua data
-    public function getAllEvent(){
+    // ========================================================================================================
+    // Event
 
+    // Search Event
+
+    public function search(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -126,23 +128,34 @@ class AdminController extends Controller
                 return redirect('/4dm1n/login');
             }
         }
+        // return dd($request->all());
 
-        $allEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
-        ->select('event.*', 'category.category_name')
-        ->where('event_is_approve', 0)
-        ->get();
+        if ($request->search == 'Community' || $request->search == 'community') {
+            $searchEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->select('event.*', 'category.category_name')->where('event_is_approve', 0)->whereNull('organizer_id')->paginate(5);;
+        } elseif ($request->search == 'Organizer' || $request->search == 'organizer') {
+            $searchEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->select('event.*', 'category.category_name')->where('event_is_approve', 0)->whereNull('community_id')->paginate(5);;
+        } else {
+            $searchEvent = DB::table('event')
+                ->leftJoin('category', 'event.event_category', '=', 'category.id')
+                ->select('event.*', 'category.category_name')
+                ->where('event_is_approve', 0)
+                ->where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+                ->orWhere('event_date', 'like', '%' . $request->search . '%')
+                ->paginate(5);
+        }
 
-        // dd($allEvent);
-        if($allEvent){
+        if ($searchEvent) {
             return view('Admin.Event.event', [
-                'allEvent' => $allEvent
+                'allEvent' => $searchEvent,
             ]);
         }
 
+        // return dd($searchEvent);
     }
-    
-// Hapus Event Admin 
-    public function deleteEvent(Request $request){
+    // Event Menampilkan semua data
+    public function getAllEvent()
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -151,19 +164,40 @@ class AdminController extends Controller
             }
         }
 
-        Storage::delete('public/event/'.$request->mediaHidden);
+        $allEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->select('event.*', 'category.category_name')->where('event_is_approve', 0)->paginate(5);
+
+        // dd($allEvent);
+        if ($allEvent) {
+            return view('Admin.Event.event', [
+                'allEvent' => $allEvent,
+            ]);
+        }
+    }
+
+    // Hapus Event Admin
+    public function deleteEvent(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        Storage::delete('public/event/' . $request->mediaHidden);
         $eventDeleted = Event::where('id', $request->id)->delete();
         if ($eventDeleted) {
             return redirect('/4dm1n/event')->with('success', 'Event was deleted successfully!');
-        }else{
+        } else {
             return redirect('/4dm1n/event')->with('error', 'Event was not deleted!');
         }
     }
 
-// Approval Event Admin
+    // Approval Event Admin
 
-    public function approvalEvent(Request $request){
-        
+    public function approvalEvent(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -172,11 +206,10 @@ class AdminController extends Controller
             }
         }
 
-        
         $eventUpdated = Event::where('id', $request->id)->update([
             'event_is_approve' => 1,
             'event_approved_date' => now()->format('Y-m-d'),
-            'admin_id' => session()->get('id_user')
+            'admin_id' => session()->get('id_user'),
         ]);
         if ($eventUpdated) {
             return redirect('/4dm1n/event')->with('success', 'Event was updated successfully!');
@@ -185,8 +218,9 @@ class AdminController extends Controller
         }
     }
 
-// Tampil data Category
-    public function getCategory(){
+    // Tampil data Category
+    public function getCategory()
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -196,13 +230,14 @@ class AdminController extends Controller
         }
 
         $category = Category::all();
-        return view("Admin.Category.category",[
-            'category' => $category
+        return view('Admin.Category.category', [
+            'category' => $category,
         ]);
     }
 
-// Form Add Category
-    public function formAddCategory(){
+    // Form Add Category
+    public function formAddCategory()
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -211,11 +246,12 @@ class AdminController extends Controller
             }
         }
 
-        return view("Admin.Category.formAddCategory");
+        return view('Admin.Category.formAddCategory');
     }
 
     // Action Add Category
-    public function addCategory(Request $request){
+    public function addCategory(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -229,18 +265,19 @@ class AdminController extends Controller
         ]);
 
         $addCategory = Category::create([
-            'category_name' => $validation['category_name']
+            'category_name' => $validation['category_name'],
         ]);
 
         if ($addCategory) {
             return redirect('/4dm1n/category')->with('success', 'Category was added successfully!');
-        }else{
+        } else {
             return redirect('/4dm1n/category')->with('error', 'Category was not added!');
         }
     }
 
     // Form Update Category
-    public function formUpdateCategory($id){
+    public function formUpdateCategory($id)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -250,12 +287,13 @@ class AdminController extends Controller
         }
         $category = Category::find($id);
         // dd($category);
-        return view("Admin.Category.formUpdateCategory", [
-            'category' => $category
+        return view('Admin.Category.formUpdateCategory', [
+            'category' => $category,
         ]);
     }
 
-    public function updateCategory(Request $request){
+    public function updateCategory(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -269,19 +307,19 @@ class AdminController extends Controller
         ]);
 
         $updateCategory = Category::where('id', $request->id)->update([
-            'category_name' => $validation['category_name']
+            'category_name' => $validation['category_name'],
         ]);
 
-        if($updateCategory){
+        if ($updateCategory) {
             return redirect('/4dm1n/category')->with('success', 'Category was updated successfully!');
-        }else{
+        } else {
             return redirect('/4dm1n/category')->with('error', 'Category was not updated!');
         }
-
     }
 
     // Action Delete
-    public function deleteCategory(Request $request){
+    public function deleteCategory(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -291,41 +329,65 @@ class AdminController extends Controller
         }
 
         $deleteCategory = Category::where('id', $request->id)->delete();
-        if($deleteCategory){
+        if ($deleteCategory) {
             return redirect('/4dm1n/category')->with('success', 'Category was deleted successfully!');
-        }else{
+        } else {
             return redirect('/4dm1n/category')->with('error', 'Category was not deleted!');
         }
     }
 
-    
     // ==============================================================================================================
     // Report
-     // Reporting/Forum
+    // Reporting/Forum
 
-     public function forum()
-     {
-         if (session()->get('login') != true) {
-             return redirect('/4dm1n/login');
-         } else {
-             if (session()->get('role') != '4dm1n') {
-                 return redirect('/4dm1n/login');
-             }
-         }
- 
-         $forums = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->select('report.*', 'event.title')->select('report.id','report.report', 'report.media', 'report_is_approved', 'event.title')->get();
-         // $report = Report::all();
-         // return dd($forums);
+    public function forum()
+    {
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
+
+        $forums = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->select('report.id', 'report.report','report.report_date' ,'report.media', 'report_is_approved', 'event.title')->paginate(5);
+        // $report = Report::all();
+        // return dd($forums);
 
         //  return dd($forums);
-         return view('Admin.Forum.forum', [
-             'listForum' => $forums,
-         ]);
-     }
+        return view('Admin.Forum.forum', [
+            'listForum' => $forums,
+        ]);
+    }
+// Melakukan searching forum
+    public function searchForum(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/4dm1n/login');
+        } else {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+        }
 
+            $searchEvent = DB::table('report')
+            ->leftJoin('event', 'report.event_id', '=', 'event.id')
+            ->select('report.*', 'event.title')
+            ->Where('event.title', 'like', '%' . $request->search . '%')
+            ->orwhere('report.report', 'like', '%' . $request->search . '%')
+            ->orwhere('report.report_date', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+        
+        if ($searchEvent) {
+            return view('Admin.Forum.forum', [
+                'listForum' => $searchEvent,
+            ]);
+        }
+    }
     // Approve
 
-    public function approveForum(Request $request){
+    public function approveForum(Request $request)
+    {
         if (session()->get('login') != true) {
             return redirect('/4dm1n/login');
         } else {
@@ -335,18 +397,16 @@ class AdminController extends Controller
         }
 
         $approveForum = Report::where('id', $request->id)->update([
-            "report_is_approved" => 1,
-            "admin_id" => session()->get('id_user'),
-            "report_approved_date" => now()->format('Y-m-d')
+            'report_is_approved' => 1,
+            'admin_id' => session()->get('id_user'),
+            'report_approved_date' => now()->format('Y-m-d'),
         ]);
-        if($approveForum){
+        if ($approveForum) {
             return redirect('/4dm1n/forum')->with('success', 'Forum was approved successfully!');
-        }else{
+        } else {
             return redirect('/4dm1n/forum')->with('error', 'Forum was not approved!');
         }
-
     }
-    
 }
 
 // ==============================================================================================================

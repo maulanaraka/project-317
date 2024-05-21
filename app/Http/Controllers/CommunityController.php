@@ -152,7 +152,6 @@ class CommunityController extends Controller
             'event_category' => $validation['event_category'],
             'event_status' => 0,
             'event_is_approve' => 0,
-            'event_approved_date' => '1111-11-11',
             'event_request_date' => now()->format('Y-m-d'),
             'community_id' => session()->get('id_user'),
         ]);
@@ -178,13 +177,41 @@ class CommunityController extends Controller
 
         // $myEvents = Event::where('community_id', session()->get('id_user'))->get();
         // Melakukan join
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))->select('event.*', 'category.category_name')->get();
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))->select('event.*', 'category.category_name')->paginate(5);
+
         if ($myEvents) {
             return view('Community.Event.listMyEvent', [
                 'myEvents' => $myEvents,
             ]);
         }
     }
+    // Melakukan Searching pada mylistevent
+    public function searchMyEvent(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/community/login');
+        } else {
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+        }
+
+        $searchEvent = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.*', 'category.category_name')
+            ->where('community_id', session()->get('id_user'))
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Community.Event.listMyEvent', [
+                'myEvents' => $searchEvent,
+            ]);
+        }
+    }
+
     // Menampilkan Form Update event
     // Auth
     public function formUpdateEvent($id)
