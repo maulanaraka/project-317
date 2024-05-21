@@ -43,7 +43,8 @@
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/organizer/forum'
-                            class='{{ Str::contains(Route::currentRouteName(), '#') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Forum</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'ForumOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Forum</a>
+
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/organizer/formAddEvent'
@@ -170,6 +171,11 @@
                         <a href='/4dm1n/category'
                             class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Category</a>
                     </li>
+                    <li class='max-lg:border-b max-lg:py-2'>
+                        <a href='/4dm1n/forum'
+                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
+                    </li>
+
                     <li class="relative">
                         <button
                             class="profile-button flex items-center text-gray-800 hover:text-blue-500 focus:outline-none transition duration-300 ease-in-out">

@@ -63,6 +63,16 @@ Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 // Action Delete Data
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
 
+
+// ========================================================================================================
+// Menampilkan data yang dapat dilakukan reporting
+Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
+// Melakukan aprove pada forum yang dibuat
+Route::put("/4dm1n/approveForum", [AdminController::class, 'approveForum']);
+
+
+
+
 // ========================================================================================================
 //Community
 
@@ -102,6 +112,11 @@ Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEven
 // Detail Event
 Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent']);
 
+
+Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus']);
+
+
+
 // ========================================================================================================
 //Organizer
 
@@ -140,10 +155,14 @@ Route::put('/organizer/updateEvent', [OrganizerController::class, 'updateEvent']
 Route::delete('/organizer/deleteEvent', [OrganizerController::class, 'deleteEvent']);
 // Detail Event
 Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEvent']);
-// Update Status Event 
+// Update Status Event
 Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus']);
 
 // Report
 
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/organizer/forum', [OrganizerController::class, 'forum']);
+Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('ForumOrg');
+// Menampilkan form membuat report
+Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
+// Menampilkan action membuat report
+Route::post('/organizer/addReport', [OrganizerController::class, 'addReport']);

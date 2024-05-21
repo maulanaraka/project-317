@@ -5,8 +5,7 @@
 @section('content')
 
 
-
-
+    <div class="w-1/2 m-auto border-2 border-black p-32">
     <section>
         <div class="w-full flex flex-col md:flex-row">
             <div class="w-full mb-5 md:w-1/2">

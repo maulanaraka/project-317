@@ -10,13 +10,15 @@
 
     <div class="pt-8 mt-40">
         <div class="flex px-4 place-content-between">
+            <a href="/organizer/formAddReport"
+                class="text-sm bg-green-300 hover:bg-green-400 text-gray-800 font-semibold py-2 px-4 rounded-l">Add
+                Report</a>
             <h3 class="text-gray-700 text-3xl font-medium">Tables</h3>
-
             <div class="mt-3 flex flex-col sm:flex-row">
                 <div class="flex">
                     <div class="relative">
                         <select
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            class="h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             <option>5</option>
                             <option>10</option>
                             <option>20</option>
@@ -31,7 +33,7 @@
 
                     <div class="relative">
                         <select
-                            class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                            class="h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                             <option>All</option>
                             <option>Active</option>
                             <option>Inactive</option>
@@ -80,31 +82,40 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($myEvents as $event)
+                        @forelse ($listForum as $forum)
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
                                         <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">{{ $event->title }}</p>
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $forum->title }}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ $event->description }}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $forum->report }}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
                                     <div class="w-40 h-40 ">
-                                        <img src="{{ Storage::url('public/event/') . $event->media }}" alt="">
+                                        <img class="w-full h-full"
+                                            src="{{ Storage::url('public/report/') . $forum->media }}" alt="">
                                     </div>
                                     </p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Activo</span>
+                                        @if ($forum->report_is_approved == 0)
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Pending</span>
+                                        @elseif ($forum->report_is_approved == 1)
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Approved</span>
+
+                                            <a href=""></a>
+                                        @endif
                                     </span>
                                 </td>
                             </tr>
