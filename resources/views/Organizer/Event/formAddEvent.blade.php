@@ -8,8 +8,9 @@
   @include('Layout.navbar')
   {{-- End Navbar --}}
 
-    <div class="w-1/2 m-auto border-2 border-black p-32">
 
+    <div class="bg-transparent-gray-100 px-4 my-32 max-2-3xl mx-auto space-y-6 w-1/2 rounded">
+   // stage <div class="w-1/2 m-auto border-2 border-black p-32">
 
         <h1 class="ml-4 text-2xl font-semibold text-center font-fredoka z-20">Add Event</h1>
 

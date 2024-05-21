@@ -189,7 +189,12 @@ class OrganizerController extends Controller
 
         // $myEvents = Event::where('organizer_id', session()->get('id_user'))->get();
         // Melakukan join
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))->select('event.*', 'category.category_name')->get();
+
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')
+        ->where('event.organizer_id', session()->get('id_user'))
+        ->where('event.event_status', 0)
+        ->select('event.*', 'category.category_name')
+        ->get();
 
         // dd($myEvents);
         if ($myEvents) {
@@ -303,7 +308,8 @@ class OrganizerController extends Controller
         return view('Organizer.Event.detailEvent', compact('event'));
     }
 
-    // Update Event status jika sudah dilobby oleh community dan sudah di approve oleh admin
+    // Update Event status jika sudah dilobby oleh community dan sudah di approve oleh admin 
+
 
     public function updateEventStatus(Request $request)
     {

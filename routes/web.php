@@ -63,6 +63,7 @@ Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 // Action Delete Data
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
 
+
 // ========================================================================================================
 // Menampilkan data yang dapat dilakukan reporting
 Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
@@ -111,7 +112,9 @@ Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEven
 // Detail Event
 Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent']);
 
+
 Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus']);
+
 
 
 // ========================================================================================================
