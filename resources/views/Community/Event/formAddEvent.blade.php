@@ -56,4 +56,5 @@
             </div>
         </form>
     </div>
+@include("Layout.footer")
 @endsection

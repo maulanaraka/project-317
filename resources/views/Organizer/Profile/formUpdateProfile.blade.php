@@ -126,11 +126,7 @@
 
                     <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
                         
-                        <div class="w-full">
-                            <h3 class="dark:text-gray-300 mb-2">Date Of Birth</h3>
-                            <input type="date"
-                                    class="text-grey p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
-                        </div>
+
                     </div>
                     <form action="/organizer/updateProfile" method="POST">
                         @csrf
