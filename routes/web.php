@@ -67,6 +67,7 @@ Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory']);
 Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 // Action Delete Data
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
+
 Route::post('/4dm1n/search', [AdminController::class, 'search']);
 // ========================================================================================================
 // Menampilkan data yang dapat dilakukan reporting
@@ -123,6 +124,7 @@ Route::put('/community/updateEventStatus', [CommunityController::class, 'updateE
 Route::post("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent']);
 
 
+
 // ========================================================================================================
 //Organizer
 
@@ -169,7 +171,7 @@ Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'search
 // Report
 
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/organizer/forum', [OrganizerController::class, 'forum']);
+Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('ForumOrg');
 // Menampilkan form membuat report
 Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
 // Menampilkan action membuat report

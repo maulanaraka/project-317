@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 {{-- Navbar --}}
     @include('Layout.navbar')
 {{-- End Navbar --}}
@@ -364,7 +365,7 @@
     {{-- backend --}}
     {{-- <div class="w-1/2 h-1/2 m-auto border-2 border-black p-32">
         @if (session('username'))
-            <h1 class="text-center">Selamat Datang {{ session('username') }}</h1>
+            <h1 class="text-center">Welcome {{ session('username') }}</h1>
         @endif
 
         <form action="/organizer/logout" method="POST">
@@ -374,7 +375,7 @@
         </form>
 
         <div class="flex flex-wrap w-full mt-10 space-x-4">
-            <a href="/organizer/formAddEvent" class="border-2 border-black">Tambah Event</a>
+            <a href="/organizer/formAddEvent" class="border-2 border-black">Add Event</a>
             <a href="/organizer/listMyEvent" class="border-2 border-black">My Event</a>
         </div>
     </div> --}}

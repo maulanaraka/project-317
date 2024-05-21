@@ -5,7 +5,6 @@
 @section('content')
 
 
-    <div class="w-1/2 m-auto border-2 border-black p-32">
     <section>
         <div class="w-full flex flex-col md:flex-row">
             <div class="w-full mb-5 md:w-1/2">
@@ -53,12 +52,12 @@
                 @endif
 {{-- End Alert --}}
 
-                    <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-[140px] sm:ml-[100px] md:ml-[130px] lg:ml-[205px] xl:ml-[230px]">
+                    <div class="w-[90%] mx-auto flex-wrap sm:w-full ml-4">
                         <form action="/community/login" method="POST">
                             @csrf
                             @method('post')
-                            <input type="email" name="email" placeholder="Email" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
-                            <input type="password" name="password" placeholder="Password" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="text" name="username" placeholder="Username" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="password" name="password" placeholder="Password" class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
                         </div>
                         <button type="submit" class="w-20 h-10 mx-auto bg-blue rounded-xl text-white font-bold font-fredoka">Kirim</button>
                     </form>
