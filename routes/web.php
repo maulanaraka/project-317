@@ -41,6 +41,9 @@ Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('action
 Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard
 Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard'])->name('dashboardAdm');
+
+
+
 // Profile
 Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
 // Form Update Profile
@@ -97,6 +100,10 @@ Route::post('/community/login', [AuthCommunityController::class, 'login'])->name
 Route::delete('/community/logout', [AuthCommunityController::class, 'logout']);
 // Dashboard
 Route::get('/community/dashboard', [CommunityController::class, 'dashboard']);
+// Dashboard Detail Event()
+Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard']);
+// Melakukan Searching pada Dashboard
+Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard']);
 // Profile
 Route::get('/community/profile', [CommunityController::class, 'profile']);
 // Form Update Profile
@@ -142,6 +149,11 @@ Route::post('/organizer/login', [AuthOrganizerController::class, 'login'])->name
 Route::delete('/organizer/logout', [AuthOrganizerController::class, 'logout']);
 // Dashboard
 Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->name('dashboardOrg');
+// Dashboard Detail Event()
+Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard']);
+// Melakukan Searching pada Dashboard
+Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
+
 // Profile
 Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
 // Form Update Profile
