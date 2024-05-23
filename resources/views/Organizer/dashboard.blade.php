@@ -4,9 +4,9 @@
 
 @section('content')
 
-{{-- Navbar --}}
+    {{-- Navbar --}}
     @include('Layout.navbar')
-{{-- End Navbar --}}
+    {{-- End Navbar --}}
 
     {{-- heading --}}
     <div class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-screen max-w-screen"
@@ -17,10 +17,10 @@
             <div class="flex h-full items-center justify-center">
                 <div class="text-white font-fredoka">
                     <p class="mt-8 mb-4 text-lg font-normal  text-white lg:text-3xl sm:px-16 lg:px-48">
-                        Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini menjadi tempat yang lebih baik untuk kita semua.
+                        Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini
+                        menjadi tempat yang lebih baik untuk kita semua.
                     </p>
-                    <h1
-                        class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+                    <h1 class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                         PhilanthroPal</h1>
                     {{-- <a href="#"
                         class="rounded-xl border-2 border-neutral-50 px-3 pb-[8px] pt-[10px] text-lg lg:text-md sm:px-10 font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200"
@@ -34,106 +34,62 @@
 
     {{-- carousel --}}
     <div class="overflow-x-auto flex items-center space-x-10 pt-4 px-8">
-        <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-            <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
+        @forelse ($dataCorousel as $item)
+            <a href="/organizer/dashboard/event/{{$item->id}}">
+                <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
+                    <img src="{{ Storage::url('event/') . $item->media }}" class="w-full h-full object-cover rounded-lg"
+                        alt="kegiatan-1" />
 
-            <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                <span
-                    class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
-                    <p>Category</p>
-                </span>
+                    <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
+                        <span
+                            class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
+                            <p>{{ $item->category_name }}</p>
+                        </span>
 
-                <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
-                    <h2 class="text-3xl font-semibold text-white">
-                        Dukung Program Sembako Murah untuk Warga Kelurahan Jelambar
-                        Baru
-                    </h2>
-                    <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                        <div
-                            class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
-                            <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
+                        <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
+                            <h2 class="text-3xl font-semibold text-white">
+                                {{ $item->title }}
+                            </h2>
+                            <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
+                                <div
+                                    class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
+                                    <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
+                                </div>
+
+                                <p class="text-lg ml-8 font-semibold text-white">{{ $item->event_date }}</p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </a>
+        @empty
+            <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
+                <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
 
-                        <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
+                <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
+                    <span
+                        class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
+                        <p>Category</p>
+                    </span>
+
+                    <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
+                        <h2 class="text-3xl font-semibold text-white">
+                            Belum Terdapat Event yang bisa dijalankan
+                        </h2>
+                        <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
+                            <div
+                                class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
+                                <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
+                            </div>
+
+                            <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-            <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
+        @endforelse
 
-            <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                <span
-                    class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
-                    <p>Category</p>
-                </span>
 
-                <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
-                    <h2 class="text-3xl font-semibold text-white">
-                        Dukung Program Sembako Murah untuk Warga Kelurahan Jelambar
-                        Baru
-                    </h2>
-                    <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                        <div
-                            class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
-                            <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
-                        </div>
-
-                        <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-            <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
-
-            <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                <span
-                    class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
-                    <p>Category</p>
-                </span>
-
-                <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
-                    <h2 class="text-3xl font-semibold text-white">
-                        Dukung Program Sembako Murah untuk Warga Kelurahan Jelambar
-                        Baru
-                    </h2>
-                    <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                        <div
-                            class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
-                            <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
-                        </div>
-
-                        <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-            <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
-
-            <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                <span
-                    class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
-                    <p>Category</p>
-                </span>
-
-                <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
-                    <h2 class="text-3xl font-semibold text-white">
-                        Dukung Program Sembako Murah untuk Warga Kelurahan Jelambar
-                        Baru
-                    </h2>
-                    <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                        <div
-                            class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
-                            <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
-                        </div>
-
-                        <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     {{-- carousel end --}}
 
@@ -144,7 +100,7 @@
 
             <div class="mt-3 flex flex-col sm:flex-row">
                 <div class="flex">
-                    <div class="relative">
+                    {{-- <div class="relative">
                         <select
                             class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             <option>5</option>
@@ -157,8 +113,8 @@
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                             </svg>
                         </div>
-                    </div>
-
+                    </div> --}}
+                    {{-- 
                     <div class="relative">
                         <select
                             class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
@@ -172,7 +128,7 @@
                                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                             </svg>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="block relative mt-2 sm:mt-0">
@@ -184,8 +140,16 @@
                         </svg>
                     </span>
 
-                    <input placeholder="Search"
-                        class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                    <form action="/organizer/dashboard/search" method="POST">
+                        @csrf
+                        @method('post')
+                        <div class="flex">
+                            <input type="text" placeholder="Search"
+                                class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                                name="search" />
+                            <button type="submit" class="w-14 h-10 border-2 border-black text-center">Search</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -197,89 +161,83 @@
                         <tr>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                User</th>
+                                Title</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Rol</th>
+                                Description</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Created at</th>
+                                Category</th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                Status</th>
+                                Start Date</th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Img</th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 w-10 h-10">
-                                        <img class="w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                            alt="" />
+                        @forelse ($dataEvent as $event)
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex items-center">
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $event->title }}</p>
+                                        </div>
                                     </div>
-
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">Vera Carpenter</p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $event->description }}</p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $event->category_name }}</p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $event->event_date }}</p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                    <div class="w-40 h-40 ">
+                                        <img class="w-full h-full" src="{{ Storage::url('public/event/') . $event->media }}"
+                                            alt="">
                                     </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Jan 21, 2020</p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                    <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                    <span class="relative">Activo</span>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 w-10 h-10">
-                                        <img class="w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                            alt="" />
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap"> Blake Bowman</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Editor</p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Jan 01, 2020</p>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                    <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                    <span class="relative">Activo</span>
-                                </span>
-                            </td>
-                        </tr>
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                        <a href="/organizer/dashboard/event/{{ $event->id }}">
+                                            <span class="relative">Detail</span>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        @empty
+                            <div
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Tidak ada data
+                            </div>
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
-                    <span class="text-xs xs:text-sm text-gray-900">Showing 1 to 4 of 50 Entries</span>
+                    {{-- <span class="text-xs xs:text-sm text-gray-900">Showing 1 to 4 of 50 Entries</span> --}}
 
                     <div class="inline-flex mt-2 xs:mt-0">
-                        <button
-                            class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">Prev</button>
-                        <button
-                            class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">Next</button>
+
+                        {{ $dataEvent->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="w-1/2 h-1/2 m-auto border-2 border-black p-32">
+    {{-- <div class="w-1/2 h-1/2 m-auto border-2 border-black p-32">
         @if (session('username'))
             <h1 class="text-center">Selamat Datang {{ session('username') }}</h1>
         @endif
@@ -294,7 +252,7 @@
             <a href="/organizer/formAddEvent" class="border-2 border-black">Tambah Event</a>
             <a href="/organizer/listMyEvent" class="border-2 border-black">My Event</a>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Sidebar -->
     {{-- <aside class="fixed inset-y-0 flex-wrap items-center justify-between flex-col-reverse block w-full p-0 my-4 overflow-y-auto antialiased transition-transform duration-200 bg-white border-0 shadow-xl max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0 font-fredoka" aria-expanded="false">
@@ -363,5 +321,5 @@
 
 
 
-@include("Layout.footer")
+    @include('Layout.footer')
 @endsection
