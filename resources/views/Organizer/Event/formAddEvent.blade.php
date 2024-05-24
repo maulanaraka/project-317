@@ -8,11 +8,9 @@
   @include('Layout.navbar')
   {{-- End Navbar --}}
 
-
-    <div class="bg-transparent-gray-100 px-4 my-32 max-2-3xl mx-auto space-y-6 w-1/2 rounded">
     <div class="w-1/2 m-auto border-2 border-black p-32">
 
-        <h1 class="ml-4 text-2xl font-semibold text-center font-fredoka z-20">Add Event</h1>
+        <h1 class="text-center">From Tambah Organizer</h1>
 
         @if ($errors->any())
             <div class="w-full h-full m-auto bg-red-300">
@@ -38,13 +36,12 @@
 
             <div class="w-1/2 m-auto space-y-4">
                 <input type="title" name="title" id="title" placeholder="title"
-                class="border border-gray-400 block py-2 px-4 w-full rounded"><br>
+                class="w-3/4 h-5 border-2 border-black"><br>
                 
-            <textarea name="description" id="description" placeholder="description"
-            class="border border-gray-400 block py-2 px-4 w-full rounded" name="description" id="" cols="30" rows="10"></textarea><br>
+            <textarea class="border-2 border-black" name="description" id="" cols="30" rows="10"></textarea><br>
 
             <input type="date" name="event_date" id="event_date" placeholder="event_date"
-                class="border border-gray-400  block py-2 px-4 w-full rounded"><br>
+                class="w-3/4 h-5 border-2 border-black"><br>
 
             <input type="file" name="media" class=""> <br>
 
@@ -55,7 +52,7 @@
                 @endforeach
                 </select><br>
 
-                <button type="submit" class="bg-white border border-gray-400 block py-2 px-4 w-full rounded font-fredoka z-20">Submit</button>
+                <button type="submit" class="w-14 h-10 border-2 border-black text-center ">Kirim</button>
             </div>
         </form>
     </div>
