@@ -243,8 +243,8 @@ class DatabaseSeeder extends Seeder
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-22',
-                'event_approved_date' => '2022-08-23',
-                'event_request_date' => '2022-08-24',
+                'report_approved_date' => '2022-08-23', // Corrected key name
+                'report_request_date' => '2022-08-24', // Corrected key name
                 'event_id' => 3,
                 'admin_id' => 1,
                 'organizer_id' => 1,
