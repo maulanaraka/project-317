@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('report');
             $table->string('media');
-            $table->string('report_is_approved');
+            $table->boolean('report_is_approved');
             $table->date('report_date');
-            $table->date('report_approved_date');
+            $table->date('report_approved_date')->nullable();
             $table->string('report_request_date');
-            $table->foreignId('event_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('event');
-            $table->foreignId('admin_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('admin');
-            $table->foreignId('organizer_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('organizer');
+            $table->foreignId('event_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('event');
+            $table->foreignId('admin_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('admin');
+            $table->foreignId('organizer_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('organizer');
             $table->timestamps();
         });
     }

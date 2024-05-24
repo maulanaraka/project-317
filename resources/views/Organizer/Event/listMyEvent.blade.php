@@ -47,14 +47,16 @@
                         <a href="/organizer/{{ $event->id }}/detailEvent"
                             class="w-14 h-10 border-2 border-black text-center bg-lime-200">Detail</a>
 
-                        @if ($event->event_is_approve)     
-                        <form action="/organizer/updateEventStatus" method="POST">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="id" value="{{ $event->id }}" id="">
-                            <button type="submit" class="w-14 h-10 border-2 border-black text-center bg-green-400"
-                                onclick="return confirm('Are you sure?')">Accept</button>
-                        </form>
+                        @if ($event->event_status)
+                            <div type="submit" class="w-20 h-10 border-2 border-black text-center bg-green-400">Kode : {{ $event->id }}</div>
+                        @elseif($event->event_is_approve)
+                            <form action="/organizer/updateEventStatus" method="POST">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="id" value="{{ $event->id }}" id="">
+                                <button type="submit" class="w-14 h-10 border-2 border-black text-center bg-green-400"
+                                    onclick="return confirm('Are you sure?')">Accept</button>
+                            </form>
                         @endif
 
 

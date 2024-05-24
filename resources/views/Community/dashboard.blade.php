@@ -278,7 +278,7 @@
             </div>
         </div>
     </div>
-
+<!-- 
     <div class="w-1/2 h-1/2 m-auto border-2 border-black p-32">
         @if (session('username'))
             <h1 class="text-center">Welcome {{ session('username') }}</h1>
@@ -294,7 +294,7 @@
             <a href="/organizer/formAddEvent" class="border-2 border-black">Add Event</a>
             <a href="/organizer/listMyEvent" class="border-2 border-black">My Event</a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Sidebar -->
     {{-- <aside class="fixed inset-y-0 flex-wrap items-center justify-between flex-col-reverse block w-full p-0 my-4 overflow-y-auto antialiased transition-transform duration-200 bg-white border-0 shadow-xl max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0 font-fredoka" aria-expanded="false">
