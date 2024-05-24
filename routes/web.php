@@ -171,7 +171,7 @@ Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'search
 // Report
 
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('ForumOrg');
+Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('forumOrg');
 // Menampilkan form membuat report
 Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
 // Menampilkan action membuat report
