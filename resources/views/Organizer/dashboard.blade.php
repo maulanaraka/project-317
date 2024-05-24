@@ -6,7 +6,9 @@
 
 
     {{-- Navbar --}}
+    {{-- Navbar --}}
     @include('Layout.navbar')
+    {{-- End Navbar --}}
     {{-- End Navbar --}}
 
     {{-- heading --}}
@@ -20,7 +22,10 @@
                     <p class="mt-8 mb-4 text-lg font-normal  text-white lg:text-3xl sm:px-16 lg:px-48">
                         Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini
                         menjadi tempat yang lebih baik untuk kita semua.
+                        Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini
+                        menjadi tempat yang lebih baik untuk kita semua.
                     </p>
+                    <h1 class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                     <h1 class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                         PhilanthroPal</h1>
                     {{-- <a href="#"
@@ -43,13 +48,32 @@
                 <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
                     <img src="{{ Storage::url('event/') . $item->media }}" class="w-full h-full object-cover rounded-lg"
                         alt="kegiatan-1" />
+        @forelse ($dataCorousel as $item)
+            <a href="/organizer/dashboard/event/{{$item->id}}">
+                <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
+                    <img src="{{ Storage::url('event/') . $item->media }}" class="w-full h-full object-cover rounded-lg"
+                        alt="kegiatan-1" />
 
                     <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
                         <span
                             class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
                             <p>{{ $item->category_name }}</p>
                         </span>
+                    <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
+                        <span
+                            class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
+                            <p>{{ $item->category_name }}</p>
+                        </span>
 
+                        <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
+                            <h2 class="text-3xl font-semibold text-white">
+                                {{ $item->title }}
+                            </h2>
+                            <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
+                                <div
+                                    class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
+                                    <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
+                                </div>
                         <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
                             <h2 class="text-3xl font-semibold text-white">
                                 {{ $item->title }}
