@@ -90,7 +90,7 @@ class AuthCommunityController extends Controller
         session()->forget('username');
         session()->forget('role');
         session()->forget('id_user');
-        return redirect('/community/login');
+        return redirect('/');
     }
 
    
