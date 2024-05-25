@@ -42,6 +42,7 @@ class CommunityController extends Controller
                 return redirect('/community/login');
             }
         }
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.community_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
 
         $searchEvent = DB::table('event')
             ->leftJoin('category', 'event.event_category', '=', 'category.id')
@@ -58,6 +59,7 @@ class CommunityController extends Controller
         if ($searchEvent) {
             return view('Organizer.dashboard', [
                 'dataEvent' => $searchEvent,
+                'dataCorousel' => $corousel,
             ]);
         }
     }

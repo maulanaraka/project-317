@@ -46,6 +46,8 @@ class OrganizerController extends Controller
             }
         }
 
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.organizer_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
+
         $searchEvent = DB::table('event')
             ->leftJoin('category', 'event.event_category', '=', 'category.id')
             ->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')
@@ -61,6 +63,7 @@ class OrganizerController extends Controller
         if ($searchEvent) {
             return view('Organizer.dashboard', [
                 'dataEvent' => $searchEvent,
+                'dataCorousel' => $corousel,
             ]);
         }
     }
@@ -247,7 +250,7 @@ class OrganizerController extends Controller
         // $myEvents = Event::where('organizer_id', session()->get('id_user'))->get();
         // Melakukan join
         $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))->select('event.*', 'category.category_name')->paginate(5);
-
+        
         // dd($myEvents);
         if ($myEvents) {
             return view('Organizer.Event.listMyEvent', [
@@ -384,7 +387,7 @@ class OrganizerController extends Controller
         }
 
         $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('organizer', 'event.organizer_id', '=', 'organizer.id')->select('event.*', 'category.category_name', 'organizer.username', 'organizer.phone')->first();
-
+        // return dd($event);
         return view('Organizer.Event.detailEvent', compact('event'));
     }
 
