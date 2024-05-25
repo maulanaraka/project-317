@@ -5,19 +5,22 @@
 @section('content')
 
 
-    <div class="w-1/2 m-auto border-2 border-black p-32">
+
+
     <section>
         <div class="w-full flex flex-col md:flex-row">
             <div class="w-full mb-5 md:w-1/2">
 
                 <div class="w-[100px] h-[100px] mb-10 sm:mb-16 md:mb-24">
+                <a href="/">
                     <img class="object-cover" src="/images/loginRegis/logo.png" alt="">
+                    </a>
                 </div>
 
                 <div >
                     <div class="w-full flex flex-wrap">
                         <div class="w-[40%] md:w-[30%] lg:w-[20%]">
-                            <img class="object-cover mx-auto w-1/2" src="/images/loginRegis/logoOrganizer.png" alt="">
+                            <img class="object-cover mx-auto w-1/2" src="/images/loginRegis/logoCommunity.png" alt="">
                         </div>
                         <div class="w-[60%] ">
                             <h1 class="font-bold text-grey text-2xl">Login Sebagai</h1>
