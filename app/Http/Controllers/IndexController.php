@@ -23,7 +23,7 @@ class IndexController extends Controller
         }
 
         $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_status', 0)->where('event.event_is_approve', 1)->select('event.*', 'category.category_name')->paginate(5);
-        
+        // return dd($myEvents);
         // return dd($myEvents);
         if ($myEvents) {
             return view('explore', [
