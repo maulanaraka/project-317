@@ -32,7 +32,7 @@
             <!--  -->
             <div class="">
                 <h1
-                    class="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-serif font-extrabold mb-2 dark:text-white">
+                    class="lg:text-3xl md:text-2xl sm:text-xl xs:text-xl font-fredoka font-extrabold mb-2 dark:text-white">
                     Profile
                 </h1>
                 <h2 class="text-grey text-sm mb-4 dark:text-gray-400">Edit Profile</h2>

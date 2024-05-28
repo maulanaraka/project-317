@@ -22,8 +22,67 @@ class CommunityController extends Controller
                 return redirect('/community/login');
             }
         }
-        return view('Community.dashboard');
+
+        $dataEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.community_id')->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')->paginate(5);
+
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.community_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('Community.dashboard', [
+            'dataEvent' => $dataEvent,
+            'dataCorousel' => $corousel,
+        ]);
     }
+
+    public function searchDashboard(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/community/login');
+        } else {
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+        }
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.community_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        $searchEvent = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')
+            ->where('event.event_is_approve', '1')
+            ->where('event.event_status', 0)
+            ->whereNull('event.community_id')
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->orWhere('description', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Organizer.dashboard', [
+                'dataEvent' => $searchEvent,
+                'dataCorousel' => $corousel,
+            ]);
+        }
+    }
+
+    // Menampilkan detail Event pada dashboard
+    // Auth
+    public function detailEventDashboard($id)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/community/login');
+        } else {
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+        }
+
+        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('organizer', 'event.organizer_id', '=', 'organizer.id')->select('event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name', 'organizer.username', 'organizer.phone')->first();
+
+        // return dd($event);
+
+        return view('Organizer.detailEventDashboard', compact('event'));
+    }
+
     // Profile Community
     // Auth
     public function profile()
@@ -152,7 +211,6 @@ class CommunityController extends Controller
             'event_category' => $validation['event_category'],
             'event_status' => 0,
             'event_is_approve' => 0,
-            'event_approved_date' => '1111-11-11',
             'event_request_date' => now()->format('Y-m-d'),
             'community_id' => session()->get('id_user'),
         ]);
@@ -178,13 +236,41 @@ class CommunityController extends Controller
 
         // $myEvents = Event::where('community_id', session()->get('id_user'))->get();
         // Melakukan join
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))->select('event.*', 'category.category_name')->get();
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.community_id', session()->get('id_user'))->select('event.*', 'category.category_name')->paginate(5);
+
         if ($myEvents) {
             return view('Community.Event.listMyEvent', [
                 'myEvents' => $myEvents,
             ]);
         }
     }
+    // Melakukan Searching pada mylistevent
+    public function searchMyEvent(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/community/login');
+        } else {
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+        }
+
+        $searchEvent = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.*', 'category.category_name')
+            ->where('community_id', session()->get('id_user'))
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Community.Event.listMyEvent', [
+                'myEvents' => $searchEvent,
+            ]);
+        }
+    }
+
     // Menampilkan Form Update event
     // Auth
     public function formUpdateEvent($id)

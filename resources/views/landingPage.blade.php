@@ -3,6 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+<!-- @include('Layout.navbar') -->
+
     <main class="font-fredoka space-y-14">
         <section class="h-screen">
             <div class="p-4 relative h-full w-full flex items-center justify-center">
@@ -26,12 +29,20 @@
                         Apakah Anda ingin menemukan cara yang lebih efektif untuk menyasar
                         dan membantu orang-orang yang membutuhkan?
                     </p>
-                    <a href="/accountLogin">
-                        <button
-                            class="px-8 py-4 text-white font-semibold rounded-lg bg-brand-primary hover:bg-brand-primary/80">
-                            Login
-                        </button>
-                    </a>
+                    <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 ">
+                        <a href="/accountLogin">
+                            <button
+                                class="px-8 py-4 text-white font-semibold rounded-lg bg-brand-primary hover:bg-brand-primary/80">
+                                Login
+                            </button>
+                        </a>
+                        <a href="/explore">
+                            <button
+                                class="px-8 py-4 text-white font-semibold rounded-lg bg-brand-yellow hover:bg-brand-yellow/80">
+                                Guest
+                            </button>
+                        </a>
+                    </div>
                     <h5 class="font-semibold text-lg text-brand-gray">
                         Belum punya akun?
                         <a href="/accountRegister" class="text-brand-secondary hover:underline">Registrasi</a>

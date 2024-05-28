@@ -7,7 +7,8 @@ use App\Http\Controllers\AuthCommunityController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\AuthOrganizerController;
 use App\Http\Controllers\OrganizerController;
-
+use App\Http\Controllers\IndexController;
+// ======================================================================================================
 Route::get('/', function () {
     return view('landingPage');
 });
@@ -17,6 +18,10 @@ Route::get('/accountLogin', function () {
 Route::get('/accountRegister', function () {
     return view('accountRegister');
 });
+Route::get('/explore',[IndexController::class, 'explore']);
+Route::post('/search', [IndexController::class, 'search']);
+
+
 
 // ========================================================================================================
 //Admin
@@ -36,6 +41,9 @@ Route::post('/4dm1n/login', [AuthAdminController::class, 'login'])->name('action
 Route::delete('/4dm1n/logout', [AuthAdminController::class, 'logout'])->name('logout');
 // Dashboard
 Route::get('/4dm1n/dashboard', [AdminController::class, 'dashboard'])->name('dashboardAdm');
+
+
+
 // Profile
 Route::get('/4dm1n/profile', [AdminController::class, 'profile']);
 // Form Update Profile
@@ -62,12 +70,14 @@ Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory']);
 Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 // Action Delete Data
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
-
+Route::post('/4dm1n/search', [AdminController::class, 'search']);
 // ========================================================================================================
 // Menampilkan data yang dapat dilakukan reporting
 Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
 // Melakukan aprove pada forum yang dibuat
 Route::put("/4dm1n/approveForum", [AdminController::class, 'approveForum']);
+// Melakukan search pada forum
+Route::post("/4dm1n/forum/search", [AdminController::class, 'searchForum']);
 
 
 
@@ -89,6 +99,10 @@ Route::post('/community/login', [AuthCommunityController::class, 'login'])->name
 Route::delete('/community/logout', [AuthCommunityController::class, 'logout']);
 // Dashboard
 Route::get('/community/dashboard', [CommunityController::class, 'dashboard']);
+// Dashboard Detail Event()
+Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard']);
+// Melakukan Searching pada Dashboard
+Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard']);
 // Profile
 Route::get('/community/profile', [CommunityController::class, 'profile']);
 // Form Update Profile
@@ -110,8 +124,10 @@ Route::put('/community/updateEvent', [CommunityController::class, 'updateEvent']
 Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEvent']);
 // Detail Event
 Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent']);
-
+// Malkukan approvee Status pada event
 Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus']);
+// Melakukan Searching pada mylistevent
+Route::post("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent']);
 
 
 // ========================================================================================================
@@ -131,6 +147,13 @@ Route::post('/organizer/login', [AuthOrganizerController::class, 'login'])->name
 Route::delete('/organizer/logout', [AuthOrganizerController::class, 'logout']);
 // Dashboard
 Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->name('dashboardOrg');
+// Dashboard Detail Event()
+Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard']);
+// Melakukan Searching pada Dashboard
+Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
+// Melakukan lihat event
+Route::get('/lihatevent',[OrganizerController::class, 'lihatevent']);
+
 // Profile
 Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
 // Form Update Profile
@@ -154,6 +177,8 @@ Route::delete('/organizer/deleteEvent', [OrganizerController::class, 'deleteEven
 Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEvent']);
 // Update Status Event
 Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus']);
+// Melakukan Searching pada mylistevent
+Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent']);
 
 // Report
 
@@ -163,3 +188,5 @@ Route::get('/organizer/forum', [OrganizerController::class, 'forum']);
 Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
 // Menampilkan action membuat report
 Route::post('/organizer/addReport', [OrganizerController::class, 'addReport']);
+// Melakukan Searching pada mylistevent
+Route::post("/organizer/forum/search",[OrganizerController::class, 'searchForum']);

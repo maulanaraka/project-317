@@ -24,8 +24,69 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
-        return view('Organizer.dashboard');
+
+        $dataEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.organizer_id')->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')->paginate(5);
+
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.organizer_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('Organizer.dashboard', [
+            'dataEvent' => $dataEvent,
+            'dataCorousel' => $corousel,
+        ]);
     }
+
+    // Search pada dashboard
+    public function searchDashboard(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/organizer/login');
+        } else {
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.organizer_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        $searchEvent = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')
+            ->where('event.event_is_approve', '1')
+            ->where('event.event_status', 0)
+            ->whereNull('event.organizer_id')
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->orWhere('description', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Organizer.dashboard', [
+                'dataEvent' => $searchEvent,
+                'dataCorousel' => $corousel,
+            ]);
+        }
+    }
+
+    // Menampilkan detail Event pada dashboard
+    // Auth
+    public function detailEventDashboard($id)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/organizer/login');
+        } else {
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('community', 'event.community_id', '=', 'community.id')->select('event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name', 'community.username', 'community.phone')->first();
+
+        // return dd($event);
+
+        return view('Organizer.detailEventDashboard', compact('event'));
+    }
+
     // Profile Organizer
     // Auth
     public function profile()
@@ -163,7 +224,6 @@ class OrganizerController extends Controller
             'event_category' => $validation['event_category'],
             'event_status' => 0,
             'event_is_approve' => 0,
-            'event_approved_date' => '2024-05-08',
             'event_request_date' => now()->format('Y-m-d'),
             'organizer_id' => session()->get('id_user'),
         ]);
@@ -189,8 +249,8 @@ class OrganizerController extends Controller
 
         // $myEvents = Event::where('organizer_id', session()->get('id_user'))->get();
         // Melakukan join
-        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))->select('event.*', 'category.category_name')->get();
-
+        $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))->select('event.*', 'category.category_name')->paginate(5);
+        
         // dd($myEvents);
         if ($myEvents) {
             return view('Organizer.Event.listMyEvent', [
@@ -198,6 +258,34 @@ class OrganizerController extends Controller
             ]);
         }
     }
+
+    // Melakukan Searching pada mylistevent
+    public function searchMyEvent(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/organizer/login');
+        } else {
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $searchEvent = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.*', 'category.category_name')
+            ->where('organizer_id', session()->get('id_user'))
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
+            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Organizer.Event.listMyEvent', [
+                'myEvents' => $searchEvent,
+            ]);
+        }
+    }
+
     // Menampilkan Form Update event
     // Auth
     public function formUpdateEvent($id)
@@ -299,7 +387,7 @@ class OrganizerController extends Controller
         }
 
         $event = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.id', $id)->leftJoin('organizer', 'event.organizer_id', '=', 'organizer.id')->select('event.*', 'category.category_name', 'organizer.username', 'organizer.phone')->first();
-
+        // return dd($event);
         return view('Organizer.Event.detailEvent', compact('event'));
     }
 
@@ -341,12 +429,38 @@ class OrganizerController extends Controller
             }
         }
 
-        $forums = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->select('report.*', 'event.title')->where('report.organizer_id', session()->get('id_user'))->select('report.report', 'report.media', 'report_is_approved', 'event.title')->get();
+        $forums = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->where('report.organizer_id', session()->get('id_user'))->select('report.report', 'report.report_date', 'report.media', 'report_is_approved', 'event.title')->paginate(5);
         // $report = Report::all();
         // return dd($forums);
         return view('Organizer.Forum.forum', [
             'listForum' => $forums,
         ]);
+    }
+    // Melakukan searching pada forum
+    public function searchForum(Request $request)
+    {
+        if (session()->get('login') != true) {
+            return redirect('/organizer/login');
+        } else {
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $searchEvent = DB::table('report')
+            ->leftJoin('event', 'report.event_id', '=', 'event.id')
+            ->select('report.*', 'event.title')
+            ->where('report.organizer_id', session()->get('id_user'))
+            ->Where('event.title', 'like', '%' . $request->search . '%')
+            ->orwhere('report.report', 'like', '%' . $request->search . '%')
+            ->orwhere('report.report_date', 'like', '%' . $request->search . '%')
+            ->paginate(5);
+
+        if ($searchEvent) {
+            return view('Organizer.Forum.forum', [
+                'listForum' => $searchEvent,
+            ]);
+        }
     }
 
     public function formAddReport(Request $request)
