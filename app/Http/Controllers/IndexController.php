@@ -10,20 +10,20 @@ class IndexController extends Controller
 {
     public function explore()
     {
-        if (session()->get('login') == true) {
-            if (session()->get('role') != '4dm1n') {
-                return redirect('/4dm1n/login');
-            }
-            if (session()->get('role') != 'community') {
-                return redirect('/community/login');
-            }
-            if (session()->get('role') != 'organizer') {
-                return redirect('/organizer/login');
-            }
-        }
+        // if (session()->get('login') == true) {
+        //     if (session()->get('role') != '4dm1n') {
+        //         return redirect('/4dm1n/login');
+        //     }
+        //     if (session()->get('role') != 'community') {
+        //         return redirect('/community/login');
+        //     }
+        //     if (session()->get('role') != 'organizer') {
+        //         return redirect('/organizer/login');
+        //     }
+        // }
 
         $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_status', 0)->where('event.event_is_approve', 1)->select('event.*', 'category.category_name')->paginate(5);
-        
+        // return dd($myEvents);
         // return dd($myEvents);
         if ($myEvents) {
             return view('explore', [

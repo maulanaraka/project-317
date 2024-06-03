@@ -11,14 +11,14 @@
     <div class="pt-8 mt-40">
         <div class="flex px-4 place-content-between">
             <a href="/organizer/formAddReport"
-                class="text-sm bg-green-300 hover:bg-green-400 text-gray-800 font-semibold py-2 px-4 rounded-l">Add
+                class="text-sm bg-white hover:bg-green text-gray-800 font-semibold py-2 px-4 rounded-l">Add
                 Report</a>
-            <h3 class="text-gray-700 text-3xl font-medium">Tables</h3>
+            <h3 class="text-gray-700 text-3xl font-medium">Hasil Event Kami</h3>
             <div class="mt-3 flex flex-col sm:flex-row">
                 <div class="flex">
                     <div class="relative">
                         <select
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            class="h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             <option>5</option>
                             <option>10</option>
                             <option>20</option>
@@ -33,7 +33,7 @@
 
                     <div class="relative">
                         <select
-                            class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                            class="h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                             <option>All</option>
                             <option>Active</option>
                             <option>Inactive</option>

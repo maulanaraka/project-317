@@ -10,7 +10,9 @@
             <div class="w-full mb-5 md:w-1/2">
 
                 <div class="w-[100px] h-[100px] mb-10 sm:mb-16 md:mb-24">
+                    <a href="/">
                     <img class="object-cover" src="/images/loginRegis/logo.png" alt="">
+                    </a>
                 </div>
 
                 <div class="w-full text-center">
@@ -24,7 +26,7 @@
                     <div class="w-full md:w-1/2 ">
                         <div class="w-[40%]  md:w-1/2 mx-auto ">
                             <a href="/community/login">
-                                <img class="w-full" src="/images/loginRegis/logoCommunity.png" alt="">
+                                <img class="w-full" src="/images/loginRegis/communityicon.jpg" alt="">
                             </a>
                         </div>
                         <a href="/community/login">
@@ -35,7 +37,7 @@
                     <div class="w-full my-10 sm:my-0 md:w-1/2 ">
                         <div class="w-[40%] md:w-1/2 mx-auto ">
                             <a href="/organizer/login">
-                                <img class="w-full" src="/images/loginRegis/logoOrganizer.png" alt="">
+                                <img class="w-full" src="/images/loginRegis/organizericon.png" alt="">
                             </a>
                         </div>
                         <a href="/organizer/login">

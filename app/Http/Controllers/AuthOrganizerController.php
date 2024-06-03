@@ -88,7 +88,7 @@ class AuthOrganizerController extends Controller
         session()->forget('username');
         session()->forget('role');
         session()->forget('id_user');
-        return redirect('/organizer/login');
+        return redirect('/');
     }
 
 

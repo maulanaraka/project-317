@@ -8,7 +8,7 @@
   @include('Layout.navbar')
   {{-- End Navbar --}}
 
-    <div class="w-1/2 h-1/2 m-auto border-2 border-black p-2">
+    <div class="w-1/2 h-1/2 mx-auto mt-40 border-2 border-black p-2">
         @if (Session::has('error'))
         <p class="text-red-500">{{ Session::get('error') }}</p>
     @endif
@@ -23,7 +23,6 @@
                     <li>Deskripsi : {{ $event->description }}</li>
                     <li>Tgl_dimulai : {{ $event->event_date }}</li>
                     <li>Category : {{ $event->category_name }}</li>
-                    <li>Type : {{ $event->type }}</li>
                     <li>username : {{ $event->username }}</li>
                     <li>WA : {{ $event->phone }}</li>
                     <div class="w-[100px] h-[100px] m-auto">

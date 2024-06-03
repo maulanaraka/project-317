@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Community;
 use App\Models\Event;
 use App\Models\Organizer;
+use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,141 +26,231 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'),
         ]);
 
-        Community::create([
-            'email' => 'community@mail.com',
-            'username' => 'community',
-            'password' => bcrypt('community'),
-            'phone' => '1234567890',
-        ]);
-
-        Community::create([
-            'email' => 'cicakbg@email.com',
-            'username' => 'cicakngambang',
-            'password' => bcrypt('password1'),
-            'phone' => '1234567890',
-        ]);
-
-        Community::create([
-            'email' => 'unicornn@mail.com',
-            'username' => 'unicornmanis',
-            'password' => bcrypt('password2'),
-            'phone' => '1234567890',
-        ]);
-
-        Community::create([
-            'email' => 'melompat@mail.com',
-            'username' => 'kudaloncat',
-            'password' => bcrypt('password3'),
-            'phone' => '1234567890',
-        ]);
-
-        Category::create([
-            'category_name' => 'pendidikan'
-        ]);
+        $communities = [
+            [
+                'email' => 'community@mail.com',
+                'username' => 'community',
+                'password' => bcrypt('community'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'cicakbg@email.com',
+                'username' => 'cicakngambang',
+                'password' => bcrypt('password1'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'unicornn@mail.com',
+                'username' => 'unicornmanis',
+                'password' => bcrypt('password2'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'melompat@mail.com',
+                'username' => 'kudaloncat',
+                'password' => bcrypt('password3'),
+                'phone' => '1234567890',
+            ],
+        ];
         
-        Category::create([
-            'category_name' => 'kesehatan'
-        ]);
+        Community::insert($communities);
 
-        Category::create([
-            'category_name' => 'lingkungan'
-        ]);
-
-        Category::create([
-            'category_name' => 'teknologi'
-        ]);
-
-        // Event::create([
-        //     'title' => 'title 1', 
-        //     'description' => 'event 1', 
-        //     'event_date' => '19/08/2022',
-        //     'media' => ' ',
-        //     'event_status' => 'waiting for confirmation',
-        //     'event_category' => 'pendidikan',
-        //     'event_is_approve' => 'yes',
-        //     'event_approved_date' => '10/08/2022',
-        //     'event_request_date' => '12/08/2022',
-        //     'admin_id' => '1',
-        //     'organizer_id'=> '1',
-        //     'community_id' => Null,
-        // ]);
-
-        // Event::create([
-        //     'title' => 'title 2', 
-        //     'description' => 'event 2', 
-        //     'event_date' => '19/08/2022',
-        //     'media' => ' ',
-        //     'event_status' => 'waiting for confirmation',
-        //     'event_category' => 'kesehatan',
-        //     'event_is_approve' => 'yes',
-        //     'event_approved_date' => '10/08/2022',
-        //     'event_request_date' => '12/08/2022',
-        //     'admin_id' => '1',
-        //     'organizer_id'=> '2',
-        //     'community_id' => Null,
-        // ]);
-
-        // Event::create([
-        //     'title' => 'title 3', 
-        //     'description' => 'event 3', 
-        //     'event_date' => '19/08/2022',
-        //     'media' => ' ',
-        //     'event_status' => 'waiting for confirmation',
-        //     'event_category' => 'lingkunngan',
-        //     'event_is_approve' => 'yes',
-        //     'event_approved_date' => '10/08/2022',
-        //     'event_request_date' => '12/08/2022',
-        //     'admin_id' => '1',
-        //     'organizer_id'=> '3',
-        //     'community_id' => Null,
-        // ]);
-
-        // Event::create([
-        //     'title' => 'title 4', 
-        //     'description' => 'event 4', 
-        //     'event_date' => '19/08/2022',
-        //     'media' => ' ',
-        //     'event_status' => 'waiting for confirmation',
-        //     'event_category' => 'teknologi',
-        //     'event_is_approve' => 'yes',
-        //     'event_approved_date' => '10/08/2022',
-        //     'event_request_date' => '12/08/2022',
-        //     'admin_id' => '1',
-        //     'organizer_id'=> '4',
-        //     'community_id' => Null,
-        // ]);
-
-       
-        Organizer::create([
-            'email' => 'organizer@mail.com',
-            'username' => 'organizer',
-            'password' => bcrypt('organizer'),
-            'phone' => '1234567890',
-        ]);
-
-        Organizer::create([
-            'email' => 'kambingkechiyl@example.com',
-            'username' => 'orgkambingkcl',
-            'password' => bcrypt('password1'), 
-        ]);
+        $organizer = [
+            [
+                'email' => 'organizer@mail.com',
+                'username' => 'organizer',
+                'password' => bcrypt('organizer'),
+                'phone' => '1234567890',
+            ],
+            [
+                'email' => 'kambingkechiyl@example.com',
+                'username' => 'orgkambingkcl',
+                'password' => bcrypt('password1'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'organizerimut@example.com',
+                'username' => 'orgimut',
+                'password' => bcrypt('password2'), 
+                'phone' => '9876543210',
+            ],
+            [
+                'email' => 'orgjahat@example.com',
+                'username' => 'orgjahat',
+                'password' => bcrypt('password3'), 
+                'phone' => '9876543210',
+            ],
+        ];
         
-        Organizer::create([
-            'email' => 'organizerimut@example.com',
-            'username' => 'orgimut',
-            'password' => bcrypt('password2'), 
-            'phone' => '9876543210',
-        ]);
+        Organizer::insert($organizer);        
 
-        Organizer::create([
-            'email' => 'orgjahat@example.com',
-            'username' => 'orgjahat',
-            'password' => bcrypt('password3'), 
-            'phone' => '9876543210',
-        ]);
+        $categories = [
+            ['category_name' => 'pendidikan'],
+            ['category_name' => 'kesehatan'],
+            ['category_name' => 'lingkungan'],
+            ['category_name' => 'teknologi'],
+        ];
 
+        Category::insert($categories);
 
-        // Repeat the process for other Organizer creations
+        $events = [
+            [
+                'title' => 'title 3',
+                'description' => 'event 3',
+                'event_date' => '2022-08-19',
+                'media' => '',
+                'event_status' => false,
+                'event_category' => '2',
+                'event_is_approve' => true,
+                'event_approved_date' => '2022-08-10',
+                'event_request_date' => '2022-08-12',
+                'admin_id' => 1,
+                'organizer_id' => 3,
+                'community_id' => Null,
+            ],
+            [
+                'title' => 'title 4',
+                'description' => 'event 4',
+                'event_date' => '2022-08-19',
+                'media' => '',
+                'event_status' => false,
+                'event_category' => '1',
+                'event_is_approve' => true,
+                'event_approved_date' => '2022-08-10',
+                'event_request_date' => '2022-08-12',
+                'admin_id' => 1,
+                'organizer_id' => 4,
+                'community_id' => Null,
+            ],
+            [
+                'title' => 'title 5',
+                'description' => 'event 5',
+                'event_date' => '2022-08-20',
+                'media' => '',
+                'event_status' => false,
+                'event_category' => '4',
+                'event_is_approve' => false,
+                'event_approved_date' => null,
+                'event_request_date' => '2022-08-13',
+                'admin_id' => 1,
+                'organizer_id' => 1,
+                'community_id' => null,
+            ],
+            [
+                'title' => 'title 6',
+                'description' => 'event 6',
+                'event_date' => '2022-08-21',
+                'media' => '',
+                'event_status' => true,
+                'event_category' => '3',
+                'event_is_approve' => true,
+                'event_approved_date' => '2022-08-11',
+                'event_request_date' => '2022-08-14',
+                'admin_id' => 1,
+                'organizer_id' => 2,
+                'community_id' => null,
+            ],
+            [
+                'title' => 'title 7',
+                'description' => 'event 7',
+                'event_date' => '2022-08-22',
+                'media' => '',
+                'event_status' => true,
+                'event_category' => '1',
+                'event_is_approve' => true,
+                'event_approved_date' => '2022-08-12',
+                'event_request_date' => '2022-08-15',
+                'admin_id' => 1,
+                'organizer_id' => 3,
+                'community_id' => null,
+            ],
+            [
+                'title' => 'title 8',
+                'description' => 'event 8',
+                'event_date' => '2022-08-23',
+                'media' => '',
+                'event_status' => true,
+                'event_category' => '2',
+                'event_is_approve' => true,
+                'event_approved_date' => '2022-08-13',
+                'event_request_date' => '2022-08-16',
+                'admin_id' => 1,
+                'organizer_id' => 4,
+                'community_id' => null,
+            ],
+        ];
 
-        // Repeat the process for other Report creations
-    }
-}
+        Event::insert($events);
+
+        $report = [
+            [
+                'report' => 'event 1',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-09',
+                'report_approved_date' => '2022-08-10',
+                'report_request_date' => '2022-08-12',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 3,
+            ],
+            [
+                'report' => 'event 2',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-12',
+                'report_approved_date' => '2022-08-13',
+                'report_request_date' => '2022-08-14',
+                'event_id' => 2,
+                'admin_id' => 1,
+                'organizer_id' => 2,
+            ],
+            [
+                'report' => 'event 3',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-15',
+                'report_approved_date' => '2022-08-16',
+                'report_request_date' => '2022-08-17',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 4',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-20',
+                'report_approved_date' => '2022-08-21',
+                'report_request_date' => '2022-08-22',
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 5',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-25',
+                'report_approved_date' => '2022-08-26',
+                'report_request_date' => '2022-08-27',
+                'event_id' => 1,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ],
+            [
+                'report' => 'event 6',
+                'media' => '',
+                'report_is_approved' => true,
+                'report_date' => '2022-08-22',
+                'report_approved_date' => '2022-08-23', // Corrected key name
+                'report_request_date' => '2022-08-24', // Corrected key name
+                'event_id' => 3,
+                'admin_id' => 1,
+                'organizer_id' => 1,
+            ]
+        ];
+
+        Report::insert($report);
+        }
+};
