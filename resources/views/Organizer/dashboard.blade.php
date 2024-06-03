@@ -8,7 +8,7 @@
 @include('Layout.navbar')
 {{-- End Navbar --}}
 
-{{-- heading --}}
+{{-- Heading --}}
 <div class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-screen max-w-screen"
     style="background-image: url('{{ asset('https://www.ctvnews.ca/polopoly_fs/1.5209840.1648432195!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg') }}')">
     <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
@@ -19,76 +19,20 @@
                 <p class="mt-8 mb-4 text-lg font-normal  text-white lg:text-3xl sm:px-16 lg:px-48">
                     Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini
                     menjadi tempat yang lebih baik untuk kita semua.
-
                 </p>
                 <h1 class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-                    PhilanthroPal</h1>
+                    PhilanthroPal
+                </h1>
             </div>
         </div>
     </div>
 </div>
-    {{-- heading --}}
-    <div class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-screen max-w-screen"
-        style="background-image: url('{{ asset('https://www.ctvnews.ca/polopoly_fs/1.5209840.1648432195!/httpImage/image.jpg_gen/derivatives/landscape_1020/image.jpg') }}')">
-        <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
-            style="background-color: rgba(18, 24, 46, 0.7)"></div>
-        <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed mt-10">
-            <div class="flex h-full items-center justify-center">
-                <div class="text-white font-fredoka">
-                    <p class="mt-8 mb-4 text-lg font-normal  text-white lg:text-3xl sm:px-16 lg:px-48">
-                        Mari bergabung dengan komunitas pengabdi masyarakat kami yang bersemangat untuk membuat dunia ini
-                        menjadi tempat yang lebih baik untuk kita semua.
-                    </p>
-                    <h1
-                        class="mb-8 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-                        PhilanthroPal
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
+{{-- End Heading --}}
 
-    {{-- carousel --}}
-    <div class="py-4 px-8">
-        <h3 class="text-gray-700 text-3xl font-medium font-fredoka">Event</h3>
-        <h4 class="text-gray-400 text-xl font-medium font-fredoka">Lihat event-event yang kami asosiasikan!</h4>
-    </div>
-    <div class="overflow-x-auto flex items-center space-x-10 pt-4 px-8">
-        @forelse ($dataCorousel as $item)
-            <a href="/organizer/dashboard/event/{{$item->id}}">
-                <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-                    <img src="{{ Storage::url('event/') . $item->media }}" class="w-full h-full object-cover rounded-lg"
-                        alt="kegiatan-1" />
-
-                    <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                        <span
-                            class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
-                            <p>{{ $item->category_name }}</p>
-                        </span>
-
-                        <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
-                            <h2 class="text-3xl font-semibold text-white">
-                                {{ $item->title }}
-                            </h2>
-                            <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                                <div
-                                    class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
-                                    <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
-                                </div>
-
-                                <p class="text-lg ml-8 font-semibold text-white">{{ $item->event_date }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        @empty
-            <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
-                <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
-
-{{-- carousel --}}
+{{-- Carousel --}}
 <div class="py-4 px-8">
-    <h3 class="text-gray-700 text-3xl font-medium">Event</h3>
+    <h3 class="text-gray-700 text-3xl font-medium font-fredoka">Event</h3>
+    <h4 class="text-gray-400 text-xl font-medium font-fredoka">Lihat event-event yang kami asosiasikan!</h4>
 </div>
 <div class="overflow-x-auto flex items-center space-x-10 pt-4 px-8">
     @forelse ($dataCorousel as $item)
@@ -97,8 +41,7 @@
                 <img src="{{ Storage::url('event/') . $item->media }}" class="w-full h-full object-cover rounded-lg"
                     alt="kegiatan-1" />
                 <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                    <span
-                        class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
+                    <span class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
                         <p>{{ $item->category_name }}</p>
                     </span>
                     <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
@@ -106,8 +49,7 @@
                             {{ $item->title }}
                         </h2>
                         <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                            <div
-                                class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
+                            <div class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
                                 <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
                             </div>
                             <p class="text-lg ml-8 font-semibold text-white">{{ $item->event_date }}</p>
@@ -120,8 +62,7 @@
         <div class="w-[49.188rem] h-[30.875rem] relative shrink-0">
             <img src="/images/kegiatan/kegiatan-1.png" class="w-full h-full object-cover rounded-lg" alt="kegiatan-1" />
             <div class="w-full h-full bg-black/50 absolute inset-0 m-auto rounded-lg z-10">
-                <span
-                    class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
+                <span class="absolute block top-0 left-0 text-xl font-semibold text-white bg-brand-secondary-lighter rounded-tl-lg rounded-br-lg px-6 py-2 z-20">
                     <p>Category</p>
                 </span>
                 <div class="absolute bottom-0 p-4 space-y-1.5 w-full">
@@ -129,8 +70,7 @@
                         Belum Terdapat Event yang bisa dijalankan
                     </h2>
                     <div class="flex items-center bg-brand-secondary-lighter relative rounded-lg w-fit px-8 py-2">
-                        <div
-                            class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
+                        <div class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
                             <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
                         </div>
                         <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
@@ -140,9 +80,9 @@
         </div>
     @endforelse
 </div>
-{{-- carousel end --}}
+{{-- End Carousel --}}
 
-{{-- table --}}
+{{-- Table --}}
 <div class="pt-8">
     <div class="flex px-4 place-content-between">
         <h3 class="text-gray-700 text-3xl font-medium">Tables</h3>
@@ -173,24 +113,12 @@
             <table class="min-w-full leading-normal">
                 <thead>
                     <tr>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Title</th>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Description</th>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Category</th>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Start Date</th>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Img</th>
-                        <th
-                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Action</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Title</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Description</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Category</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Start Date</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Img</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -213,18 +141,13 @@
                                 <p class="text-gray-900 whitespace-no-wrap">{{ $event->event_date }}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
-                                    <div class="w-40 h-40 ">
-                                        <img class="w-full h-full"
-                                            src="{{ Storage::url('public/event/') . $event->media }}" alt="">
-                                    </div>
-                                </p>
+                                <div class="w-40 h-40">
+                                    <img class="w-full h-full" src="{{ Storage::url('public/event/') . $event->media }}" alt="">
+                                </div>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span
-                                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                    <span aria-hidden
-                                        class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                     <a href="/organizer/dashboard/event/{{ $event->id }}">
                                         <span class="relative">Detail</span>
                                     </a>
@@ -233,8 +156,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6"
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <td colspan="6" class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Tidak ada data
                             </td>
                         </tr>
@@ -249,6 +171,7 @@
         </div>
     </div>
 </div>
+{{-- End Table --}}
 
 @include('Layout.footer')
 @endsection
