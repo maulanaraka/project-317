@@ -9,6 +9,7 @@
     {{-- End Navbar --}}
 
     <div class="container mx-auto mt-40 p-4">
+    <div class="container mx-auto mt-40 p-4">
         @if (Session::has('error'))
             <p class="text-red-500">{{ Session::get('error') }}</p>
         @endif
