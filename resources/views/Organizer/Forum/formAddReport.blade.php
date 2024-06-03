@@ -8,9 +8,10 @@
     @include('Layout.navbar')
     {{-- End Navbar --}}
 
-    <div class="w-1/2 mx-auto mt-40 border-2 border-black p-32">
+    <div class="w-1/2 mx-auto mt-40">
 
-        <h1 class="text-center">From Tambah Organizer Report</h1>
+    <h1 class="ml-4 text-2xl font-semibold text-center font-fredoka z-20">Add Report</h1>
+
 
         @if ($errors->any())
             <div class="w-full h-full m-auto bg-red-300">
@@ -35,16 +36,17 @@
             @method('post')
 
             <div class="w-1/2 m-auto space-y-4">
-                <input type="text" name="kode_event" placeholder="Kode Event" class="w-3/4 h-5 border-2 border-black"><br>
+                <input type="text" name="kode_event" placeholder="Kode Event" class="border border-gray-400 block py-2 px-4 w-full rounded"><br>
 
-                <textarea class="border-2 border-black" name="report" id="" cols="30" rows="10"></textarea><br>
+                <textarea name="description" id="description" placeholder="description"
+                    class="border border-gray-400 block py-2 px-4 w-full rounded" name="description" id="" cols="30" rows="10"></textarea><br>
 
                 <input type="date" name="report_date" id="report_date" placeholder="report_date"
-                    class="w-3/4 h-5 border-2 border-black"><br>
+                    class="border border-gray-400  block py-2 px-4 w-full rounded"><br>
 
                 <input type="file" name="media" class=""> <br>
 
-                <button type="submit" class="w-14 h-10 border-2 border-black text-center ">Kirim</button>
+                <button type="submit" class="bg-white border border-gray-400 block py-2 px-4 w-full rounded font-fredoka z-20">Submit</button>
             </div>
         </form>
     </div>

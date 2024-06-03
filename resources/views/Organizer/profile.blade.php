@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //<<<<<<< Malvin-Branch
 <section class="py-10 my-auto dark:bg-gray-900">
     <div class="lg:w-[80%] md:w-[90%] xs:w-[96%] mx-auto flex gap-4">
@@ -125,4 +123,3 @@
 
 @endsection
 //>>>>>>> Staging
->>>>>>> 8ac616d0e84ecb06e0a3d7612c8a2bd894034074

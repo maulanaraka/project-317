@@ -10,7 +10,9 @@
             <div class="w-full mb-5 md:w-1/2">
 
                 <div class="w-[100px] h-[100px] mb-10 sm:mb-16 md:mb-24">
+                <a href="/">
                     <img class="object-cover" src="/images/loginRegis/logo.png" alt="">
+                    </a>
                 </div>
 
                 <div >

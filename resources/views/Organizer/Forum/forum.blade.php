@@ -11,7 +11,7 @@
     <div class="pt-8 mt-40">
         <div class="flex px-4 place-content-between">
             <a href="/organizer/formAddReport"
-                class="text-sm bg-green-300 hover:bg-green-400 text-gray-800 font-semibold py-2 px-4 rounded-l">Add
+                class="text-sm bg-white hover:bg-green text-gray-800 font-semibold py-2 px-4 rounded-l">Add
                 Report</a>
             <h3 class="text-gray-700 text-3xl font-medium">Hasil Event Kami</h3>
             <div class="mt-3 flex flex-col sm:flex-row">

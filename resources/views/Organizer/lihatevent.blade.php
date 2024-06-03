@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('layout.navbar')
+
     {{-- Navbar --}}
     @include('Layout.navbar')
     {{-- End Navbar --}}

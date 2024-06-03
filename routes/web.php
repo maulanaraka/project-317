@@ -153,6 +153,8 @@ Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->n
 Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard']);
 // Melakukan Searching pada Dashboard
 Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
+// Melakukan lihat event
+Route::get('/lihatevent',[OrganizerController::class, 'lihatevent']);
 
 // Profile
 Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
