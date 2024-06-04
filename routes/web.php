@@ -20,6 +20,9 @@ Route::get('/accountRegister', function () {
 });
 Route::get('/explore',[IndexController::class, 'explore']);
 Route::post('/search', [IndexController::class, 'search']);
+Route::get('/forum', [IndexController::class, 'forum']);
+Route::post('/search/forum', [IndexController::class, 'forumSearch']);
+Route::get('/search/forum', [IndexController::class, 'forumSearch']);
 
 
 

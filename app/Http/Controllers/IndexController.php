@@ -71,4 +71,33 @@ class IndexController extends Controller
         }
 
     }
+
+    public function forum(){
+        $data = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->select('report.report', 'event.title')->paginate(5);
+        return view('forum', [
+            'data' => $data
+        ]);
+    }
+
+    public function forumSearch(Request $request){
+        if (session()->get('login') == true) {
+            if (session()->get('role') != '4dm1n') {
+                return redirect('/4dm1n/login');
+            }
+            if (session()->get('role') != 'community') {
+                return redirect('/community/login');
+            }
+            if (session()->get('role') != 'organizer') {
+                return redirect('/organizer/login');
+            }
+        }
+
+        $data = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->where('report.report', 'like', '%' . $request->search . '%')->orWhere('event.title', 'like', '%' . $request->search . '%')->select('report.report', 'event.title')->paginate(5);
+
+        // return dd($searchEvent);
+        return view('forum', [
+            'data' => $data
+        ]);
+
+    }
 }
