@@ -13,7 +13,7 @@
             <p class="text-red-500">{{ Session::get('error') }}</p>
         @endif
         @if (Session::has('success'))
-            <p class="text-green-500">{{ Session::get('success') }}</p>
+            <p class="text-emerald-800">{{ Session::get('success') }}</p>
         @endif
 
         <form action="/community/listMyEvent/search" method="POST">
