@@ -95,7 +95,7 @@
                     </div>
                     
                     <div class="w-full rounded-lg bg-blue-500 mt-4 text-black text-lg font-semibold">
-                            <a href="/organizer/{{$dataProfile->id}}/formUpdateProfile" class="bg-white border border-gray-400 block py-2 px-4 w-full rounded font-fredoka z-20">Update</a>
+                            <a href="/community/{{$dataProfile->id}}/formUpdateProfile" class="bg-white border border-gray-400 block py-2 px-4 w-full rounded font-fredoka z-20">Update</a>
                         </div>
                 </form>
             </div>

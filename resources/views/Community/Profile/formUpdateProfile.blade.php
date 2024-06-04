@@ -36,7 +36,7 @@
                     Profile
                 </h1>
                 <h2 class="text-grey text-sm mb-4 dark:text-gray-400">Edit Profile</h2>
-                <form action="/organizer/updateProfile" method="POST">
+                <form action="/community/updateProfile" method="POST">
                     @csrf
                     @method('put')
                     <!-- Cover Image -->
@@ -88,13 +88,13 @@
                     <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full"></div>
                         <div class="w-full  mb-4 mt-6">
                             <label for="" class="mb-2 dark:text-gray-800">Password</label>
-                            <input type="text"
+                            <input type="password"
                                     class="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-1000"
                                     placeholder="Password" name="password">
                         </div>
                         <div class="w-full  mb-4 lg:mt-6">
                             <label for="" class=" dark:text-gray-800">Password Verify</label>
-                            <input type="text"
+                            <input type="password"
                                     class="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-1000"
                                     placeholder="Password Verify" name="passwordVerify">
                         </div>
