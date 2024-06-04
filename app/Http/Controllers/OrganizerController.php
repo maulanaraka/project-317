@@ -161,6 +161,7 @@ class OrganizerController extends Controller
             Organizer::where('id', session()->get('id_user'))->update([
                 'email' => $emailVerify,
                 'username' => $validation['username'],
+                'phone' => $validation['phone'],
                 'password' => bcrypt($validation['password']),
             ]);
             // Ubah session username

@@ -20,6 +20,7 @@ Route::get('/accountRegister', function () {
 });
 Route::get('/explore',[IndexController::class, 'explore']);
 Route::post('/search', [IndexController::class, 'search']);
+Route::get('/search', [IndexController::class, 'search']);
 Route::get('/forum', [IndexController::class, 'forum']);
 Route::post('/search/forum', [IndexController::class, 'forumSearch']);
 Route::get('/search/forum', [IndexController::class, 'forumSearch']);
@@ -75,6 +76,7 @@ Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
 Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
 
 Route::post('/4dm1n/search', [AdminController::class, 'search']);
+Route::get('/4dm1n/search', [AdminController::class, 'search']);
 // ========================================================================================================
 // Menampilkan data yang dapat dilakukan reporting
 Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
@@ -82,6 +84,7 @@ Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
 Route::put("/4dm1n/approveForum", [AdminController::class, 'approveForum']);
 // Melakukan search pada forum
 Route::post("/4dm1n/forum/search", [AdminController::class, 'searchForum']);
+Route::get("/4dm1n/forum/search", [AdminController::class, 'searchForum']);
 
 
 
@@ -107,6 +110,7 @@ Route::get('/community/dashboard', [CommunityController::class, 'dashboard']);
 Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard']);
 // Melakukan Searching pada Dashboard
 Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard']);
+Route::get("/community/dashboard/search",[CommunityController::class, 'searchDashboard']);
 // Profile
 Route::get('/community/profile', [CommunityController::class, 'profile']);
 // Form Update Profile
@@ -132,6 +136,7 @@ Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEv
 Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus']);
 // Melakukan Searching pada mylistevent
 Route::post("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent']);
+Route::get("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent']);
 
 
 
@@ -156,6 +161,7 @@ Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->n
 Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard']);
 // Melakukan Searching pada Dashboard
 Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
+Route::get("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
 // Melakukan lihat event
 Route::get('/lihatevent',[OrganizerController::class, 'lihatevent']);
 
@@ -184,6 +190,7 @@ Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEv
 Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus']);
 // Melakukan Searching pada mylistevent
 Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent']);
+Route::get("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent']);
 
 // Report
 
@@ -195,3 +202,4 @@ Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddRepo
 Route::post('/organizer/addReport', [OrganizerController::class, 'addReport']);
 // Melakukan Searching pada mylistevent
 Route::post("/organizer/forum/search",[OrganizerController::class, 'searchForum']);
+Route::get("/organizer/forum/search",[OrganizerController::class, 'searchForum']);
