@@ -71,5 +71,5 @@
         </div>
     </section>
 
-   @include("Layout.footer");
+    @include("Layout.footer")
 @endsection
