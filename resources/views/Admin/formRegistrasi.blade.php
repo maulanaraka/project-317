@@ -56,11 +56,11 @@
                             @method('post')
 
                             <input type="email" name="email" placeholder="Email"
-                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7  h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7  h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white pl-4 placeholder:font-fredoka placeholder:font-bold">
                             <input type="text" name="username" placeholder="Username"
-                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white pl-4 placeholder:font-fredoka placeholder:font-bold">
                             <input type="password" name="password" placeholder="Password"
-                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                                class="w-full sm:w-[49%] mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white pl-4 placeholder:font-fredoka placeholder:font-bold">
 
                     </div>
                     <button type="submit"
