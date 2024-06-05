@@ -107,7 +107,7 @@ Route::delete('/community/logout', [AuthCommunityController::class, 'logout']);
 // Dashboard
 Route::get('/community/dashboard', [CommunityController::class, 'dashboard'])->name('dashboardCom');
 // Dashboard Detail Event()
-Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard'])->name('eventCom');
+Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard'])->name('myeventCom');
 // Melakukan Searching pada Dashboard
 Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard'])->name('dashboardCom');
 Route::get("/community/dashboard/search",[CommunityController::class, 'searchDashboard'])->name('dashboardCom');
