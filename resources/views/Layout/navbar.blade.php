@@ -224,17 +224,17 @@
                     </li>
                 </ul>
             @elseif (session()->get('login') !== true)
-            <ul id="collapseMenu"
+                <ul id="collapseMenu"
                     class='lg:!flex lg:space-x-10 max-lg:space-y-3 max-lg:hidden max-lg:w-full max-lg:my-4 my-auto'>
                     <li class='max-lg:border-b max-lg:py-2'>
-                        <a href='explore'
+                        <a href='/explore'
                             class='{{ Str::contains(Route::currentRouteName(), 'explore') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Explore</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
-                        <a href='forum'
+                        <a href='/forum'
                             class='{{ Str::contains(Route::currentRouteName(), 'forum') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
                     </li>
-                    
+
                     <li class="relative">
                         <button
                             class="profile-button flex items-center text-gray-800 hover:text-blue-500 focus:outline-none transition duration-300 ease-in-out">
@@ -266,12 +266,12 @@
                                     class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">
                                     Login</a>
                             </li>
-                          
-                          
+
+
                         </ul>
                     </li>
                 </ul>
-           
+
             @endif
 
 

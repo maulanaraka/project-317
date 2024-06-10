@@ -19,8 +19,8 @@ Route::get('/accountRegister', function () {
     return view('accountRegister');
 });
 Route::get('/explore',[IndexController::class, 'explore'])->name('explore');
-Route::post('/search', [IndexController::class, 'search'])->name('explore');
-Route::get('/search', [IndexController::class, 'search'])->name('explore');
+Route::post('/explore/search', [IndexController::class, 'search'])->name('explore');
+Route::get('/explore/search', [IndexController::class, 'search'])->name('explore');
 Route::get('/forum', [IndexController::class, 'forum'])->name('forum');
 Route::post('/search/forum', [IndexController::class, 'forumSearch'])->name('forum');
 Route::get('/search/forum', [IndexController::class, 'forumSearch'])->name('forum');
