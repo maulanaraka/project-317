@@ -1,6 +1,6 @@
 @extends('./Layout/app')
 
-@section('title', 'Dashboard')
+@section('title', 'Event')
 
 @section('content')
 
