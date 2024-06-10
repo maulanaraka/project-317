@@ -38,8 +38,8 @@
             <div class="w-1/2 m-auto space-y-4">
                 <input type="text" name="kode_event" placeholder="Kode Event" class="border border-gray-400 block py-2 px-4 w-full rounded"><br>
 
-                <textarea name="description" id="description" placeholder="description"
-                    class="border border-gray-400 block py-2 px-4 w-full rounded" name="description" id="" cols="30" rows="10"></textarea><br>
+                <textarea id="description" placeholder="description"
+                    class="border border-gray-400 block py-2 px-4 w-full rounded" name="report" id="" cols="30" rows="10"></textarea><br>
 
                 <input type="date" name="report_date" id="report_date" placeholder="report_date"
                     class="border border-gray-400  block py-2 px-4 w-full rounded"><br>
