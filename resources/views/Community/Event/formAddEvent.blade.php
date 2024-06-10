@@ -11,7 +11,7 @@
     <div class="pt-20">
         <div class="relative bg-zinc-100 overflow-hidden w-full max-w-5xl mx-auto my-16 p-8 rounded-3xl shadow">
             <div class="mb-8">
-                <p class="text-6xl font-medium text-stone-400 text-justify font-['Fredoka']">Input Data Event</p>
+                <p class="text-6xl font-medium text-stone-400 text-justify font-['Fredoka']">New Event</p>
             </div>
 
                 @if ($errors->any())
