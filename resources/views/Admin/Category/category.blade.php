@@ -8,7 +8,7 @@
   @include('Layout.navbar')
   {{-- End Navbar --}}
 
-  <div class="container mx-auto mt-44 mt-8">
+  <div class="container mx-auto mt-44">
     @if (Session::has('error'))
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
         <span class="block sm:inline">{{ Session::get('error') }}</span>
