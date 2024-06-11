@@ -73,7 +73,7 @@
                         <div class="bg-brand-primary absolute left-0 flex items-center justify-center h-full w-10 rounded-tl-lg rounded-bl-lg">
                             <img alt="h-6 w-6 shrink-0" src="/icons/group.svg" />
                         </div>
-                        <p class="text-lg ml-8 font-semibold text-white">Ukrida</p>
+                        <p class="text-lg ml-8 font-semibold text-white">---</p>
                     </div>
                 </div>
             </div>
