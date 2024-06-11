@@ -111,7 +111,19 @@ class IndexController extends Controller
             }
         }
 
-        $data = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->where('report.report', 'like', '%' . $request->search . '%')->orWhere('event.title', 'like', '%' . $request->search . '%')->select('report.report', 'event.title')->paginate(5);
+        if(empty($request->search)){
+            $data = DB::table('event')
+            ->leftJoin('category', 'event.event_category', '=', 'category.id')
+            ->select('event.*', 'category.category_name')
+            ->where('category.category_name', 'HXleVmb0glrTiHbD6dmS')
+            ->paginate(5);
+
+            return view('forum', [
+                'data' => $data
+            ]);
+        }
+
+        $data = DB::table('report')->leftJoin('event', 'report.event_id', '=', 'event.id')->where('event.title', 'like', '%' . $request->search . '%')->select('report.report', 'event.title')->paginate(5);
 
         // return dd($searchEvent);
         return view('forum', [
