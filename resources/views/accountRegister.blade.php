@@ -1,6 +1,6 @@
 @extends('./Layout/app')
 
-@section('title', 'Dashboard')
+@section('title', 'Register')
 
 @section('content')
 
@@ -52,5 +52,5 @@
         </div>
     </section>
 
-    @include('Layout.footer');
+    @include('Layout.footer')
 @endsection

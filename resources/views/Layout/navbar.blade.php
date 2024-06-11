@@ -110,16 +110,16 @@
 
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/community/dashboard'
-                            class='{{ Str::contains(Route::currentRouteName(), 'dashboardOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Dashboard</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'dashboardCom') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Dashboard</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/community/formAddEvent'
-                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Tambah
+                            class='{{ Str::contains(Route::currentRouteName(), 'addeventCom') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Tambah
                             Event</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/community/listMyEvent'
-                            class='{{ Str::contains(Route::currentRouteName(), 'eventOrg') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Event
+                            class='{{ Str::contains(Route::currentRouteName(), 'myeventCom') ? 'hover:font-bold font-semibold text-lg block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 text-lg text-[15px]' }}'>Event
                             Saya</a>
                     </li>
                     <li class="relative">
@@ -172,15 +172,15 @@
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/4dm1n/event'
-                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Event</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'eventAdm') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Event</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/4dm1n/category'
-                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Category</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'categoryAdm') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Category</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
                         <a href='/4dm1n/forum'
-                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
+                            class='{{ Str::contains(Route::currentRouteName(), 'forumAdm') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
                     </li>
 
                     <li class="relative">
@@ -224,17 +224,17 @@
                     </li>
                 </ul>
             @elseif (session()->get('login') !== true)
-            <ul id="collapseMenu"
+                <ul id="collapseMenu"
                     class='lg:!flex lg:space-x-10 max-lg:space-y-3 max-lg:hidden max-lg:w-full max-lg:my-4 my-auto'>
                     <li class='max-lg:border-b max-lg:py-2'>
-                        <a href='explore'
-                            class='{{ Str::contains(Route::currentRouteName(), 'dashboardAdm') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Explore</a>
+                        <a href='/explore'
+                            class='{{ Str::contains(Route::currentRouteName(), 'explore') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Explore</a>
                     </li>
                     <li class='max-lg:border-b max-lg:py-2'>
-                        <a href='forum'
-                            class='{{ Str::contains(Route::currentRouteName(), 'addEventOrg') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
+                        <a href='/forum'
+                            class='{{ Str::contains(Route::currentRouteName(), 'forum') ? 'hover:font-bold font-semibold block text-[15px] lg:border-b-2 lg:border-[#000000]' : 'hover:font-bold text-gray-600 font-reguler text-[15px]' }}'>Forum</a>
                     </li>
-                    
+
                     <li class="relative">
                         <button
                             class="profile-button flex items-center text-gray-800 hover:text-blue-500 focus:outline-none transition duration-300 ease-in-out">
@@ -248,20 +248,30 @@
                             class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden">
                             <li class="py-1">
                                 <a href="/explore"
-                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Show
+                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">
                                     Explore</a>
                             </li>
                             <li class="py-1">
                                 <a href="/forum"
-                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Show
+                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">
                                     Forum</a>
                             </li>
-                          
-                          
+                            <li class="py-1">
+                                <a href="/accountRegister"
+                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">
+                                    Register</a>
+                            </li>
+                            <li class="py-1">
+                                <a href="/accountLogin"
+                                    class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">
+                                    Login</a>
+                            </li>
+
+
                         </ul>
                     </li>
                 </ul>
-           
+
             @endif
 
 

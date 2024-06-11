@@ -1,6 +1,6 @@
 @extends('./Layout/app')
 
-@section('title', 'Dashboard')
+@section('title', 'Explore')
 
 @section('content')
 
@@ -16,7 +16,7 @@
             <p class="text-green-500">{{ Session::get('success') }}</p>
         @endif
 
-        <form action="/search" method="POST">
+        <form action="/explore/search" method="POST">
             @csrf
             @method('post')
             <div class="flex mb-5">

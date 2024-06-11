@@ -251,7 +251,7 @@ class OrganizerController extends Controller
         // $myEvents = Event::where('organizer_id', session()->get('id_user'))->get();
         // Melakukan join
         $myEvents = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.organizer_id', session()->get('id_user'))->select('event.*', 'category.category_name')->paginate(5);
-        
+
         // dd($myEvents);
         if ($myEvents) {
             return view('Organizer.Event.listMyEvent', [
@@ -270,14 +270,19 @@ class OrganizerController extends Controller
                 return redirect('/organizer/login');
             }
         }
+        if (empty($request->search)) {
+            $searchEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->select('event.*', 'category.category_name')->where('event.organizer_id', session()->get('id_user'))->where('category.category_name', 'HXleVmb0glrTiHbD6dmS')->paginate(5);
+
+            return view('Organizer.Event.listMyEvent', [
+                'myEvents' => $searchEvent,
+            ]);
+        }
 
         $searchEvent = DB::table('event')
             ->leftJoin('category', 'event.event_category', '=', 'category.id')
             ->select('event.*', 'category.category_name')
-            ->where('organizer_id', session()->get('id_user'))
+            ->where('event.organizer_id', session()->get('id_user'))
             ->where('title', 'like', '%' . $request->search . '%')
-            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
-            ->orWhere('event_date', 'like', '%' . $request->search . '%')
             ->paginate(5);
 
         if ($searchEvent) {

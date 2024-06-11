@@ -256,14 +256,28 @@ class CommunityController extends Controller
             }
         }
 
-        $searchEvent = DB::table('event')
+        
+          
+        if(empty($request->search)){
+            $searchEvent = DB::table('event')
             ->leftJoin('category', 'event.event_category', '=', 'category.id')
             ->select('event.*', 'category.category_name')
-            ->where('community_id', session()->get('id_user'))
-            ->where('title', 'like', '%' . $request->search . '%')
-            ->orWhere('category.category_name', 'like', '%' . $request->search . '%')
-            ->orWhere('event_date', 'like', '%' . $request->search . '%')
+            ->where('event.community_id', session()->get('id_user'))
+            ->where('category.category_name', 'HXleVmb0glrTiHbD6dmS')
             ->paginate(5);
+
+            return view('Community.Event.listMyEvent', [
+                'myEvents' => $searchEvent,
+            ]);
+        }
+
+        $searchEvent = DB::table('event')
+        ->leftJoin('category', 'event.event_category', '=', 'category.id')
+        ->select('event.*', 'category.category_name')
+        ->where('event.community_id', session()->get('id_user'))
+        ->where('title', 'like', '%' . $request->search . '%')
+        ->paginate(5);
+     
 
         if ($searchEvent) {
             return view('Community.Event.listMyEvent', [
