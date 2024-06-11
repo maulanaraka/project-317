@@ -44,6 +44,16 @@ class CommunityController extends Controller
         }
         $corousel = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->where('event.event_is_approve', '1')->where('event.event_status', 0)->whereNull('event.community_id')->select('event.id', 'event.title', 'event.event_date', 'event.media', 'category.category_name')->orderBy('created_at', 'desc')->limit(5)->get();
 
+        if (empty($request->search)) {
+            $dataEvent = DB::table('event')->leftJoin('category', 'event.event_category', '=', 'category.id')->select('event.*', 'category.category_name')->where('event.event_is_approve', '1')->where('event.event_status', 0)->where('category.category_name', "'HXleVmb0glrTiHbD6dmS'")->paginate(5);
+
+            return view('Community.dashboard', [
+                'dataEvent' => $dataEvent,
+                'dataCorousel' => $corousel,
+            ]);
+        }
+
+
         $searchEvent = DB::table('event')
             ->leftJoin('category', 'event.event_category', '=', 'category.id')
             ->select('event.id', 'event.title', 'event.description', 'event.event_date', 'event.media', 'category.category_name')
