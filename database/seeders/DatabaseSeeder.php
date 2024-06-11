@@ -34,20 +34,20 @@ class DatabaseSeeder extends Seeder
                 'phone' => '1234567890',
             ],
             [
-                'email' => 'cicakbg@email.com',
-                'username' => 'cicakngambang',
+                'email' => 'prasetyo@email.com',
+                'username' => 'prasetyo',
                 'password' => bcrypt('password1'),
                 'phone' => '1234567890',
             ],
             [
-                'email' => 'unicornn@mail.com',
-                'username' => 'unicornmanis',
+                'email' => 'tabuti@mail.com',
+                'username' => 'tabuti',
                 'password' => bcrypt('password2'),
                 'phone' => '1234567890',
             ],
             [
-                'email' => 'melompat@mail.com',
-                'username' => 'kudaloncat',
+                'email' => 'krisna@mail.com',
+                'username' => 'krisna',
                 'password' => bcrypt('password3'),
                 'phone' => '1234567890',
             ],
@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
         $events = [
             [
                 'title' => 'Seminar Kesehatan: Pencegahan Penyakit Stroke',
-                'description' => 'Seminar ini bertujuan untuk memberikan edukasi kepada masyarakat tentang pentingnya pencegahan penyakit stroke. Peserta akan mendapatkan pengetahuan tentang faktor risiko, gejala awal, serta langkah-langkah yang dapat diambil untuk mencegah terjadinya stroke. Seminar akan dibawakan oleh ahli kesehatan dan dokter spesialis.',
+                'description' => 'Seminar ini bertujuan untuk memberikan edukasi kepada masyarakat tentang pentingnya pencegahan penyakit stroke.',
                 'event_date' => '2022-08-19',
                 'media' => '',
                 'event_status' => false,
@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Penghijauan Desa: Menanam Seribu Pohon',
-                'description' => 'Program ini bertujuan untuk meningkatkan kualitas lingkungan dengan menanam seribu pohon di desa. Selain menanam pohon, acara ini juga akan memberikan edukasi tentang pentingnya menjaga kelestarian alam dan cara merawat tanaman. Seluruh warga desa diundang untuk berpartisipasi dalam kegiatan ini',
+                'description' => 'Program ini bertujuan untuk meningkatkan kualitas lingkungan dengan menanam seribu pohon di desa.',
                 'event_date' => '2022-08-19',
                 'media' => '',
                 'event_status' => false,
@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Workshop Pengolahan Sampah Organik Menjadi Kompos',
-                'description' => 'Workshop ini akan mengajarkan teknik pengolahan sampah organik menjadi kompos yang bermanfaat untuk pertanian dan perkebunan. Peserta akan belajar tentang proses komposting, jenis-jenis sampah yang bisa diolah, dan manfaat penggunaan kompos. Acara ini diharapkan dapat meningkatkan kesadaran masyarakat tentang pengelolaan sampah yang ramah lingkungan.',
+                'description' => 'Workshop ini akan mengajarkan teknik pengolahan sampah organik menjadi kompos yang bermanfaat.',
                 'event_date' => '2022-08-20',
                 'media' => '',
                 'event_status' => false,
@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Pelatihan Guru: Metode Pembelajaran Kreatif',
-                'description' => 'Pelatihan ini ditujukan untuk para guru dengan fokus pada pengembangan metode pembelajaran kreatif dan inovatif. Guru akan belajar tentang teknik-teknik baru dalam mengajar, penggunaan teknologi dalam pembelajaran, serta cara-cara meningkatkan partisipasi aktif siswa di kelas. Pelatihan ini bertujuan untuk meningkatkan kualitas pendidikan melalui peningkatan kompetensi guru.',
+                'description' => 'Pelatihan ini ditujukan untuk para guru dengan fokus pada pengembangan metode pembelajaran kreatif dan inovatif.',
                 'event_date' => '2022-08-21',
                 'media' => '',
                 'event_status' => true,
@@ -152,7 +152,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Edukasi Digital: Literasi Teknologi untuk Generasi Muda',
-                'description' => 'Edukasi ini bertujuan untuk meningkatkan literasi teknologi di kalangan generasi muda. Melalui berbagai sesi pelatihan, peserta akan belajar tentang penggunaan internet yang bijak, keamanan digital, dan dasar-dasar pemrograman. Acara ini juga akan membahas peluang karir di bidang teknologi informasi dan komunikasi.',
+                'description' => 'Edukasi ini bertujuan untuk meningkatkan literasi teknologi di kalangan generasi muda.',
                 'event_date' => '2022-08-22',
                 'media' => '',
                 'event_status' => true,
@@ -166,7 +166,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Bimbingan Belajar Gratis untuk Siswa Sekolah Dasar',
-                'description' => 'Program bimbingan belajar ini diselenggarakan untuk membantu siswa sekolah dasar yang membutuhkan dukungan tambahan dalam pelajaran. Relawan pengajar akan memberikan bimbingan dalam mata pelajaran matematika, bahasa Indonesia, dan ilmu pengetahuan alam. Tujuannya adalah untuk meningkatkan prestasi akademik siswa dan memberikan kesempatan belajar yang merata bagi semua anak.',
+                'description' => 'Program bimbingan belajar ini diselenggarakan untuk membantu siswa sekolah dasar yang membutuhkan dukungan tambahan dalam pelajaran.',
                 'event_date' => '2022-08-23',
                 'media' => '',
                 'event_status' => true,
