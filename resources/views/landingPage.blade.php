@@ -1,6 +1,6 @@
 @extends('./Layout/app')
 
-@section('title', 'Dashboard')
+@section('title', 'Landing Page')
 
 @section('content')
 
@@ -51,7 +51,7 @@
             </div>
         </section>
 
-        <section>
+        {{-- <section>
             <div class="pl-4 py-4 space-y-7 flex flex-col justify-center">
                 <div class="space-y-1.5">
                     <h1 class="text-5xl font-bold text-brand-primary">
@@ -171,7 +171,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 

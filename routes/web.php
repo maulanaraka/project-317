@@ -18,8 +18,12 @@ Route::get('/accountLogin', function () {
 Route::get('/accountRegister', function () {
     return view('accountRegister');
 });
-Route::get('/explore',[IndexController::class, 'explore']);
-Route::post('/search', [IndexController::class, 'search']);
+Route::get('/explore',[IndexController::class, 'explore'])->name('explore');
+Route::post('/explore/search', [IndexController::class, 'search'])->name('explore');
+Route::get('/explore/search', [IndexController::class, 'search'])->name('explore');
+Route::get('/forum', [IndexController::class, 'forum'])->name('forum');
+Route::post('/search/forum', [IndexController::class, 'forumSearch'])->name('forum');
+Route::get('/search/forum', [IndexController::class, 'forumSearch'])->name('forum');
 
 
 
@@ -52,33 +56,35 @@ Route::get('/4dm1n/{id}/formUpdateProfile', [AdminController::class, 'formUpdate
 Route::put('/4dm1n/updateProfile', [AdminController::class, 'updateProfile']);
 
 // Menampikan semua data pada Event
-Route::get('/4dm1n/event', [AdminController::class, 'getAllEvent']);
+Route::get('/4dm1n/event', [AdminController::class, 'getAllEvent'])->name('eventdAdm');
 // Menghapus data event
-Route::delete('/4dm1n/deleteEvent', [AdminController::class, 'deleteEvent']);
+Route::delete('/4dm1n/deleteEvent', [AdminController::class, 'deleteEvent'])->name('eventdAdm');
 // Melakukan Approval pada event
-Route::put('/4dm1n/approveEvent', [AdminController::class, 'approvalEvent']);
+Route::put('/4dm1n/approveEvent', [AdminController::class, 'approvalEvent'])->name('eventdAdm');
 
 // Menampilkan data category
-Route::get('/4dm1n/category', [AdminController::class, 'getCategory']);
+Route::get('/4dm1n/category', [AdminController::class, 'getCategory'])->name('categorydAdm');
 // Menampilkan Form Update Category
-Route::get('/4dm1n/formUpdateCategory/{id}', [AdminController::class, 'formUpdateCategory']);
+Route::get('/4dm1n/formUpdateCategory/{id}', [AdminController::class, 'formUpdateCategory'])->name('categorydAdm');
 // Form Tambah Data
-Route::get('/4dm1n/formAddCategory', [AdminController::class, 'formAddCategory']);
+Route::get('/4dm1n/formAddCategory', [AdminController::class, 'formAddCategory'])->name('categorydAdm');
 // Action Tambah Data
-Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory']);
+Route::post('/4dm1n/addCategory', [AdminController::class, 'addCategory'])->name('categorydAdm');
 // Action Update Data
-Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory']);
+Route::put('/4dm1n/updateCategory', [AdminController::class, 'updateCategory'])->name('categorydAdm');
 // Action Delete Data
-Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory']);
+Route::delete('/4dm1n/deleteCategory', [AdminController::class, 'deleteCategory'])->name('categorydAdm');
 
 Route::post('/4dm1n/search', [AdminController::class, 'search']);
+Route::get('/4dm1n/search', [AdminController::class, 'search']);
 // ========================================================================================================
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/4dm1n/forum', [AdminController::class, 'forum']);
+Route::get('/4dm1n/forum', [AdminController::class, 'forum'])->name('forumdAdm');
 // Melakukan aprove pada forum yang dibuat
-Route::put("/4dm1n/approveForum", [AdminController::class, 'approveForum']);
+Route::put("/4dm1n/approveForum", [AdminController::class, 'approveForum'])->name('forumdAdm');
 // Melakukan search pada forum
-Route::post("/4dm1n/forum/search", [AdminController::class, 'searchForum']);
+Route::post("/4dm1n/forum/search", [AdminController::class, 'searchForum'])->name('forumdAdm');
+Route::get("/4dm1n/forum/search", [AdminController::class, 'searchForum'])->name('forumdAdm');
 
 
 
@@ -99,11 +105,12 @@ Route::post('/community/login', [AuthCommunityController::class, 'login'])->name
 // Logout
 Route::delete('/community/logout', [AuthCommunityController::class, 'logout']);
 // Dashboard
-Route::get('/community/dashboard', [CommunityController::class, 'dashboard']);
+Route::get('/community/dashboard', [CommunityController::class, 'dashboard'])->name('dashboardCom');
 // Dashboard Detail Event()
-Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard']);
+Route::get('/community/dashboard/event/{id}', [CommunityController::class, 'detailEventDashboard'])->name('myeventCom');
 // Melakukan Searching pada Dashboard
-Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard']);
+Route::post("/community/dashboard/search",[CommunityController::class, 'searchDashboard'])->name('dashboardCom');
+Route::get("/community/dashboard/search",[CommunityController::class, 'searchDashboard'])->name('dashboardCom');
 // Profile
 Route::get('/community/profile', [CommunityController::class, 'profile']);
 // Form Update Profile
@@ -112,23 +119,24 @@ Route::get('/community/{id}/formUpdateProfile', [CommunityController::class, 'fo
 Route::put('/community/updateProfile', [CommunityController::class, 'updateProfile']);
 
 // Form Tambah Event Community
-Route::get('/community/formAddEvent', [CommunityController::class, 'formAddEvent']);
+Route::get('/community/formAddEvent', [CommunityController::class, 'formAddEvent'])->name('addeventCom');
 // Action Tambah Event Community
-Route::post('/community/addEvent', [CommunityController::class, 'addEvent']);
+Route::post('/community/addEvent', [CommunityController::class, 'addEvent'])->name('addeventCom');
 // Menampilkan data pada Event sesuai community yang login
-Route::get('/community/listMyEvent', [CommunityController::class, 'listMyEvent']);
+Route::get('/community/listMyEvent', [CommunityController::class, 'listMyEvent'])->name('myeventCom');
 // Form Update Event
-Route::get('/community/{id}/formUpdateEvent', [CommunityController::class, 'formUpdateEvent']);
+Route::get('/community/{id}/formUpdateEvent', [CommunityController::class, 'formUpdateEvent'])->name('myeventCom');
 // Action Update Event
-Route::put('/community/updateEvent', [CommunityController::class, 'updateEvent']);
+Route::put('/community/updateEvent', [CommunityController::class, 'updateEvent'])->name('myeventCom');
 // Hapus Event
-Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEvent']);
+Route::delete('/community/deleteEvent', [CommunityController::class, 'deleteEvent'])->name('myeventCom');
 // Detail Event
-Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent']);
+Route::get('/community/{id}/detailEvent', [CommunityController::class, 'detailEvent'])->name('myeventCom');
 // Malkukan approvee Status pada event
-Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus']);
+Route::put('/community/updateEventStatus', [CommunityController::class, 'updateEventStatus'])->name('myeventCom');
 // Melakukan Searching pada mylistevent
-Route::post("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent']);
+Route::post("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent'])->name('myeventCom');
+Route::get("/community/listMyEvent/search",[CommunityController::class, 'searchMyEvent'])->name('myeventCom');
 
 
 
@@ -150,11 +158,12 @@ Route::delete('/organizer/logout', [AuthOrganizerController::class, 'logout']);
 // Dashboard
 Route::get('/organizer/dashboard', [OrganizerController::class, 'dashboard'])->name('dashboardOrg');
 // Dashboard Detail Event()
-Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard']);
+Route::get('/organizer/dashboard/event/{id}', [OrganizerController::class, 'detailEventDashboard'])->name('dashboardOrg');
 // Melakukan Searching pada Dashboard
-Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard']);
+Route::post("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard'])->name('dashboardOrg');
+Route::get("/organizer/dashboard/search",[OrganizerController::class, 'searchDashboard'])->name('dashboardOrg');
 // Melakukan lihat event
-Route::get('/lihatevent',[OrganizerController::class, 'lihatevent']);
+Route::get('/lihatevent',[OrganizerController::class, 'lihatevent'])->name('eventOrg');
 
 // Profile
 Route::get('/organizer/profile', [OrganizerController::class, 'profile']);
@@ -166,29 +175,31 @@ Route::put('/organizer/updateProfile', [OrganizerController::class, 'updateProfi
 // Form Tambah Event Community
 Route::get('/organizer/formAddEvent', [OrganizerController::class, 'formAddEvent'])->name('addEventOrg');
 // Action Tambah Event Community
-Route::post('/organizer/addEvent', [OrganizerController::class, 'addEvent']);
+Route::post('/organizer/addEvent', [OrganizerController::class, 'addEvent'])->name('addEventOrg');
 // Menampilkan data pada Event sesuai community yang login
-Route::get('/organizer/listMyEvent', [OrganizerController::class, 'listMyEvent'])->name('eventOrg');
+Route::get('/organizer/listMyEvent', [OrganizerController::class, 'listMyEvent'])->name('myeventOrg');
 // Form Update Event
-Route::get('/organizer/{id}/formUpdateEvent', [OrganizerController::class, 'formUpdateEvent']);
+Route::get('/organizer/{id}/formUpdateEvent', [OrganizerController::class, 'formUpdateEvent'])->name('myeventOrg');
 // Action Update Event
-Route::put('/organizer/updateEvent', [OrganizerController::class, 'updateEvent']);
+Route::put('/organizer/updateEvent', [OrganizerController::class, 'updateEvent'])->name('myeventOrg');
 // Hapus Event
-Route::delete('/organizer/deleteEvent', [OrganizerController::class, 'deleteEvent']);
+Route::delete('/organizer/deleteEvent', [OrganizerController::class, 'deleteEvent'])->name('myeventOrg');
 // Detail Event
-Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEvent']);
+Route::get('/organizer/{id}/detailEvent', [OrganizerController::class, 'detailEvent'])->name('myeventOrg');
 // Update Status Event
-Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus']);
+Route::put('/organizer/updateEventStatus', [OrganizerController::class, 'updateEventStatus'])->name('myeventOrg');
 // Melakukan Searching pada mylistevent
-Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent']);
+Route::post("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent'])->name('myeventOrg');
+Route::get("/organizer/listMyEvent/search",[OrganizerController::class, 'searchMyEvent'])->name('myeventOrg');
 
 // Report
 
 // Menampilkan data yang dapat dilakukan reporting
-Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('forumOrg');
+Route::get('/organizer/forum', [OrganizerController::class, 'forum'])->name('forumOrg')->name('forumOrg');
 // Menampilkan form membuat report
-Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport']);
+Route::get('/organizer/formAddReport', [OrganizerController::class, 'formAddReport'])->name('forumOrg');
 // Menampilkan action membuat report
-Route::post('/organizer/addReport', [OrganizerController::class, 'addReport']);
+Route::post('/organizer/addReport', [OrganizerController::class, 'addReport'])->name('forumOrg');
 // Melakukan Searching pada mylistevent
-Route::post("/organizer/forum/search",[OrganizerController::class, 'searchForum']);
+Route::post("/organizer/forum/search",[OrganizerController::class, 'searchForum'])->name('forumOrg');
+Route::get("/organizer/forum/search",[OrganizerController::class, 'searchForum'])->name('forumOrg');

@@ -12,9 +12,9 @@ class AuthOrganizerController extends Controller
         if (session()->get('login') == true) {
             if (session()->get('role') == 'community') {
                 return redirect('/organizer/dashboard');
-            } else if (session()->get('role') == '4dm1n') {
+            } elseif (session()->get('role') == '4dm1n') {
                 return redirect('/4dm1n/dashboard');
-            } else if (session()->get('role') == 'organizer') {
+            } elseif (session()->get('role') == 'organizer') {
                 return redirect('/organizer/dashboard');
             }
         }
@@ -47,7 +47,13 @@ class AuthOrganizerController extends Controller
         $data->password = bcrypt($validation['password']);
         $data->phone = $validation['phone'];
         $data->save();
-        return redirect('/organizer/registrasi')->with('success', 'Registration was successful!');
+
+        $request->session()->put('login', true);
+        $request->session()->put('username', $data->username);
+        $request->session()->put('id_user', $data->id);
+        $request->session()->put('role', 'organizer');
+        return redirect('/organizer/dashboard');
+        // return redirect('/organizer/registrasi')->with('success', 'Registration was successful!');
     }
 
     public function login(Request $request)
@@ -90,6 +96,4 @@ class AuthOrganizerController extends Controller
         session()->forget('id_user');
         return redirect('/');
     }
-
-
 }

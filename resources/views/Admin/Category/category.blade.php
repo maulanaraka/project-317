@@ -8,37 +8,46 @@
   @include('Layout.navbar')
   {{-- End Navbar --}}
 
-    <div class="w-1/2 h-1/2 mx-auto mt-40 border-2 border-black p-2">
-        @if (Session::has('error'))
-            <p class="text-red-500">{{ Session::get('error') }}</p>
-        @endif
-        @if (Session::has('success'))
-            <p class="text-green-500">{{ Session::get('success') }}</p>
-        @endif
-        <a href="/4dm1n/formAddCategory"><button type="submit"
-                class="w-14 h-10 border-2 border-black text-center bg-cyan-500">Tambah</button></a>
+  <div class="container mx-auto mt-44">
+    @if (Session::has('error'))
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <span class="block sm:inline">{{ Session::get('error') }}</span>
+      </div>
+    @endif
+    @if (Session::has('success'))
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <span class="block sm:inline">{{ Session::get('success') }}</span>
+      </div>
+    @endif
+    <a href="/4dm1n/formAddCategory" class="inline-block mb-4">
+      <button type="submit"
+              class="bg-cyan-500 hover:bg-cyan-600 text-white text-center px-4 py-2 rounded-md focus:outline-none">Tambah</button>
+    </a>
 
-        @forelse ($category as $ctg)
-            <div class="w-[60%] h-1/2 m-auto border-2 border-black">
-                <ul class="text-center">
-                    <li>Nama Category : <span class="text-red-500 font-bold">{{ $ctg->category_name }}</span></li>
-                    <div class="flex justify-center gap-3">
-                        <form action="/4dm1n/deleteCategory" method="POST">
-                            @csrf
-                            @method('delete')
-                            <input type="hidden" name="id" value="{{ $ctg->id }}" id="">
-                            <button type="submit" class="w-14 h-10 border-2 border-black text-center bg-red-500"
-                                onclick="return confirm('Are you sure deleted this event {{ $ctg->category_name }} ?')">Delete</button>
-                        </form>
-                        <a href="/4dm1n/formUpdateCategory/{{ $ctg->id }}"><button type="submit"
-                                class="w-14 h-10 border-2 border-black text-center bg-green-500">Edit</button></a>
-                    </div>
-                </ul>
-            </div>
-        @empty
-            <h1 class="text-center text-4xl">Belum ada event</h1>
-        @endforelse
-
-
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      @forelse ($category as $ctg)
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+          <div class="px-6 py-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">{{ $ctg->category_name }}</h3>
+          </div>
+          <div class="px-6 py-4 flex justify-center">
+            <form action="/4dm1n/deleteCategory" method="POST">
+              @csrf
+              @method('delete')
+              <input type="hidden" name="id" value="{{ $ctg->id }}" id="">
+              <button type="submit"
+                      class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline"
+                      onclick="return confirm('Are you sure you want to delete this category {{ $ctg->category_name }}?')">Delete</button>
+            </form>
+            <a href="/4dm1n/formUpdateCategory/{{ $ctg->id }}" class="ml-2">
+              <button type="submit"
+                      class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
+            </a>
+          </div>
+        </div>
+      @empty
+        <div class="text-center text-4xl font-semibold">Belum ada kategori</div>
+      @endforelse
     </div>
+  </div>
 @endsection

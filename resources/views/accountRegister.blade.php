@@ -1,6 +1,6 @@
 @extends('./Layout/app')
 
-@section('title', 'Dashboard')
+@section('title', 'Register')
 
 @section('content')
 
@@ -26,7 +26,7 @@
                     <div class="w-full md:w-1/2 ">
                         <div class="w-[40%]  md:w-1/2 mx-auto ">
                             <a href="/community/registrasi">
-                                <img class="w-full" src="/images/loginRegis/logoCommunity.png" alt="">
+                                <img class="w-full" src="/images/loginRegis/communityicon.jpg" alt="">
                             </a>
                         </div>
                         <a href="/community/registrasi">
@@ -37,7 +37,7 @@
                     <div class="w-full my-10 sm:my-0 md:w-1/2 ">
                         <div class="w-[40%] md:w-1/2 mx-auto ">
                             <a href="/organizer/registrasi">
-                                <img class="w-full" src="/images/loginRegis/logoOrganizer.png" alt="">
+                                <img class="w-full" src="/images/loginRegis/organizericon.png"" alt="">
                             </a>
                         </div>
                         <a href="/organizer/registrasi">
@@ -52,5 +52,5 @@
         </div>
     </section>
 
-    @include('Layout.footer');
+    @include('Layout.footer')
 @endsection

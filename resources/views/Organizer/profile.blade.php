@@ -1,4 +1,3 @@
-//<<<<<<< Malvin-Branch
 <section class="py-10 my-auto dark:bg-gray-900">
     <div class="lg:w-[80%] md:w-[90%] xs:w-[96%] mx-auto flex gap-4">
         <div

@@ -60,8 +60,8 @@
                         <form action="/community/login" method="POST">
                             @csrf
                             @method('post')
-                            <input type="email" name="email" placeholder="Email" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
-                            <input type="password" name="password" placeholder="Password" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white placeholder:pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="email" name="email" placeholder="Email" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white pl-4 placeholder:font-fredoka placeholder:font-bold">
+                            <input type="password" name="password" placeholder="Password" class="w-2/4 mb-3 sm:mb-4 md:mb-5 lg:mb-7   h-10 font-bold font-fredoka text-white bg-grey rounded-xl placeholder:text-white pl-4 placeholder:font-fredoka placeholder:font-bold">
                         </div>
                         <button type="submit" class="w-20 h-10 mx-auto bg-blue rounded-xl text-white font-bold font-fredoka">Kirim</button>
                     </form>
