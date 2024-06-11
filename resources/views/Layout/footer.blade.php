@@ -5,10 +5,7 @@
       <div class="space-y-3">
         <h1 class="font-bold text-white text-5xl">About Us</h1>
         <p class="text-white font-semibold max-w-2xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-          numquam natus dolorum impedit ducimus eligendi reprehenderit sequi
-          illo harum obcaecati ullam soluta nesciunt modi architecto, ad dicta
-          autem nihil rerum.
+          Philanthropal adalah platform berbasis web yang inovatif, dirancang untuk memfasilitasi proyek pengabdian masyarakat di daerah yang membutuhkan atau kurang berkembang. Fokus utama kami adalah pada pendidikan, tetapi platform kami dapat mendukung berbagai inisiatif.
         </p>
       </div>
 
