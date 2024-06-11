@@ -49,7 +49,14 @@ class AuthCommunityController extends Controller
         $data->password = bcrypt($validation['password']);
         $data->phone = $validation['phone'];
         $data->save();
-        return redirect('/community/registrasi')->with('success', 'Registration was successful!');
+
+        $request->session()->put('login', true);
+        $request->session()->put('username', $data->username);
+        $request->session()->put('id_user', $data->id);
+        $request->session()->put('role', 'community');
+        return redirect('/community/dashboard');
+
+        // return redirect('/community/registrasi')->with('success', 'Registration was successful!');
     }
 
     public function login(Request $request)
