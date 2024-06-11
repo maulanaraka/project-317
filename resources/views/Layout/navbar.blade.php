@@ -208,7 +208,7 @@
                                     Profile</a>
                             </li>
                             <li class="py-1">
-                                <a href="/4dm1n/{{ session()->get('id_user') }}}/formUpdateProfile"
+                                <a href="/4dm1n/{{ session()->get('id_user') }}/formUpdateProfile"
                                     class="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-500 hover:font-bold">Edit
                                     Profile</a>
                             </li>

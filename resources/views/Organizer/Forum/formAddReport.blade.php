@@ -39,7 +39,7 @@
                     <input type="text" name="kode_event" placeholder="Kode Event"
                         class="mt-1 border bg-zinc-600 block w-full py-2 px-4 rounded-lg placeholder:text-white text-white font-fredoka"><br>
 
-                    <textarea name="description" id="description" placeholder="Description"
+                    <textarea name="report" id="description" placeholder="Description"
                         class="mt-1 border border-zinc-600 block w-full py-2 px-4 rounded-lg font-fredoka"
                         cols="30" rows="10"></textarea><br>
 

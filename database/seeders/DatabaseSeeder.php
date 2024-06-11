@@ -63,20 +63,20 @@ class DatabaseSeeder extends Seeder
                 'phone' => '1234567890',
             ],
             [
-                'email' => 'kambingkechiyl@example.com',
-                'username' => 'orgkambingkcl',
+                'email' => 'budiabudi@example.com',
+                'username' => 'budiabudi',
                 'password' => bcrypt('password1'), 
                 'phone' => '9876543210',
             ],
             [
-                'email' => 'organizerimut@example.com',
-                'username' => 'orgimut',
+                'email' => 'sitiaisyah@example.com',
+                'username' => 'sitiaisyah',
                 'password' => bcrypt('password2'), 
                 'phone' => '9876543210',
             ],
             [
-                'email' => 'orgjahat@example.com',
-                'username' => 'orgjahat',
+                'email' => 'supritakupri@example.com',
+                'username' => 'supri',
                 'password' => bcrypt('password3'), 
                 'phone' => '9876543210',
             ],
@@ -95,8 +95,8 @@ class DatabaseSeeder extends Seeder
 
         $events = [
             [
-                'title' => 'title 3',
-                'description' => 'event 3',
+                'title' => 'Seminar Kesehatan: Pencegahan Penyakit Stroke',
+                'description' => 'Seminar ini bertujuan untuk memberikan edukasi kepada masyarakat tentang pentingnya pencegahan penyakit stroke. Peserta akan mendapatkan pengetahuan tentang faktor risiko, gejala awal, serta langkah-langkah yang dapat diambil untuk mencegah terjadinya stroke. Seminar akan dibawakan oleh ahli kesehatan dan dokter spesialis.',
                 'event_date' => '2022-08-19',
                 'media' => '',
                 'event_status' => false,
@@ -109,8 +109,8 @@ class DatabaseSeeder extends Seeder
                 'community_id' => Null,
             ],
             [
-                'title' => 'title 4',
-                'description' => 'event 4',
+                'title' => 'Penghijauan Desa: Menanam Seribu Pohon',
+                'description' => 'Program ini bertujuan untuk meningkatkan kualitas lingkungan dengan menanam seribu pohon di desa. Selain menanam pohon, acara ini juga akan memberikan edukasi tentang pentingnya menjaga kelestarian alam dan cara merawat tanaman. Seluruh warga desa diundang untuk berpartisipasi dalam kegiatan ini',
                 'event_date' => '2022-08-19',
                 'media' => '',
                 'event_status' => false,
@@ -123,8 +123,8 @@ class DatabaseSeeder extends Seeder
                 'community_id' => Null,
             ],
             [
-                'title' => 'title 5',
-                'description' => 'event 5',
+                'title' => 'Workshop Pengolahan Sampah Organik Menjadi Kompos',
+                'description' => 'Workshop ini akan mengajarkan teknik pengolahan sampah organik menjadi kompos yang bermanfaat untuk pertanian dan perkebunan. Peserta akan belajar tentang proses komposting, jenis-jenis sampah yang bisa diolah, dan manfaat penggunaan kompos. Acara ini diharapkan dapat meningkatkan kesadaran masyarakat tentang pengelolaan sampah yang ramah lingkungan.',
                 'event_date' => '2022-08-20',
                 'media' => '',
                 'event_status' => false,
@@ -137,8 +137,8 @@ class DatabaseSeeder extends Seeder
                 'community_id' => null,
             ],
             [
-                'title' => 'title 6',
-                'description' => 'event 6',
+                'title' => 'Pelatihan Guru: Metode Pembelajaran Kreatif',
+                'description' => 'Pelatihan ini ditujukan untuk para guru dengan fokus pada pengembangan metode pembelajaran kreatif dan inovatif. Guru akan belajar tentang teknik-teknik baru dalam mengajar, penggunaan teknologi dalam pembelajaran, serta cara-cara meningkatkan partisipasi aktif siswa di kelas. Pelatihan ini bertujuan untuk meningkatkan kualitas pendidikan melalui peningkatan kompetensi guru.',
                 'event_date' => '2022-08-21',
                 'media' => '',
                 'event_status' => true,
@@ -151,8 +151,8 @@ class DatabaseSeeder extends Seeder
                 'community_id' => null,
             ],
             [
-                'title' => 'title 7',
-                'description' => 'event 7',
+                'title' => 'Edukasi Digital: Literasi Teknologi untuk Generasi Muda',
+                'description' => 'Edukasi ini bertujuan untuk meningkatkan literasi teknologi di kalangan generasi muda. Melalui berbagai sesi pelatihan, peserta akan belajar tentang penggunaan internet yang bijak, keamanan digital, dan dasar-dasar pemrograman. Acara ini juga akan membahas peluang karir di bidang teknologi informasi dan komunikasi.',
                 'event_date' => '2022-08-22',
                 'media' => '',
                 'event_status' => true,
@@ -165,8 +165,8 @@ class DatabaseSeeder extends Seeder
                 'community_id' => null,
             ],
             [
-                'title' => 'title 8',
-                'description' => 'event 8',
+                'title' => 'Bimbingan Belajar Gratis untuk Siswa Sekolah Dasar',
+                'description' => 'Program bimbingan belajar ini diselenggarakan untuk membantu siswa sekolah dasar yang membutuhkan dukungan tambahan dalam pelajaran. Relawan pengajar akan memberikan bimbingan dalam mata pelajaran matematika, bahasa Indonesia, dan ilmu pengetahuan alam. Tujuannya adalah untuk meningkatkan prestasi akademik siswa dan memberikan kesempatan belajar yang merata bagi semua anak.',
                 'event_date' => '2022-08-23',
                 'media' => '',
                 'event_status' => true,
@@ -184,7 +184,7 @@ class DatabaseSeeder extends Seeder
 
         $report = [
             [
-                'report' => 'event 1',
+                'report' => 'Seminar Kesehatan: Pencegahan Penyakit Stroke',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-09',
@@ -195,7 +195,7 @@ class DatabaseSeeder extends Seeder
                 'organizer_id' => 3,
             ],
             [
-                'report' => 'event 2',
+                'report' => 'Penghijauan Desa: Menanam Seribu Pohon',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-12',
@@ -206,7 +206,7 @@ class DatabaseSeeder extends Seeder
                 'organizer_id' => 2,
             ],
             [
-                'report' => 'event 3',
+                'report' => 'Workshop Pengolahan Sampah Organik Menjadi Kompos',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-15',
@@ -217,7 +217,7 @@ class DatabaseSeeder extends Seeder
                 'organizer_id' => 1,
             ],
             [
-                'report' => 'event 4',
+                'report' => 'Pelatihan Guru: Metode Pembelajaran Kreatif',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-20',
@@ -228,7 +228,7 @@ class DatabaseSeeder extends Seeder
                 'organizer_id' => 1,
             ],
             [
-                'report' => 'event 5',
+                'report' => 'Edukasi Digital: Literasi Teknologi untuk Generasi Muda',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-25',
@@ -239,7 +239,7 @@ class DatabaseSeeder extends Seeder
                 'organizer_id' => 1,
             ],
             [
-                'report' => 'event 6',
+                'report' => 'Bimbingan Belajar Gratis untuk Siswa Sekolah Dasar',
                 'media' => '',
                 'report_is_approved' => true,
                 'report_date' => '2022-08-22',
